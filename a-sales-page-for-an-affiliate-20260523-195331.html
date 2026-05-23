@@ -1,0 +1,1920 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Affiliate Mastery Pro — Turn Clicks Into Commissions</title>
+    
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        /* =========================================
+           CSS VARIABLES
+           ========================================= */
+        :root {
+            --lp-color-primary: #0f172a;
+            --lp-color-secondary: #1e293b;
+            --lp-color-accent: #6366f1;
+            --lp-color-accent-light: #818cf8;
+            --lp-color-gradient-start: #4f46e5;
+            --lp-color-gradient-end: #06b6d4;
+            --lp-color-text: #334155;
+            --lp-color-text-light: #64748b;
+            --lp-color-text-inverse: #ffffff;
+            --lp-color-bg: #ffffff;
+            --lp-color-bg-alt: #f8fafc;
+            --lp-color-bg-dark: #0f172a;
+            --lp-color-border: #e2e8f0;
+            --lp-color-success: #10b981;
+            --lp-color-warning: #f59e0b;
+            
+            --lp-font-body: 'Poppins', sans-serif;
+            --lp-font-heading: 'Poppins', sans-serif;
+            
+            --lp-space-xs: 0.5rem;
+            --lp-space-sm: 1rem;
+            --lp-space-md: 2rem;
+            --lp-space-lg: 4rem;
+            --lp-space-xl: 6rem;
+            --lp-space-xxl: 8rem;
+            
+            --lp-radius-sm: 0.5rem;
+            --lp-radius-md: 1rem;
+            --lp-radius-lg: 1.5rem;
+            --lp-radius-xl: 2rem;
+            --lp-radius-full: 9999px;
+            
+            --lp-shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.05);
+            --lp-shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.08), 0 2px 4px -2px rgba(15, 23, 42, 0.05);
+            --lp-shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.1), 0 4px 6px -4px rgba(15, 23, 42, 0.05);
+            --lp-shadow-xl: 0 20px 25px -5px rgba(15, 23, 42, 0.1), 0 8px 10px -6px rgba(15, 23, 42, 0.05);
+            --lp-shadow-glow: 0 0 40px rgba(99, 102, 241, 0.3);
+            
+            --lp-transition-fast: 0.2s ease;
+            --lp-transition-base: 0.3s ease;
+            --lp-transition-slow: 0.5s ease;
+        }
+
+        /* =========================================
+           RESET & BASE
+           ========================================= */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--lp-font-body);
+            color: var(--lp-color-text);
+            background-color: var(--lp-color-bg);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button {
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        /* =========================================
+           UTILITIES
+           ========================================= */
+        .lp-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--lp-space-md);
+        }
+
+        .lp-gradient-text {
+            background: linear-gradient(135deg, var(--lp-color-gradient-start), var(--lp-color-gradient-end));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .lp-gradient-bg {
+            background: linear-gradient(135deg, var(--lp-color-gradient-start), var(--lp-color-gradient-end));
+        }
+
+        /* =========================================
+           ANIMATIONS
+           ========================================= */
+        @keyframes lp-float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes lp-pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(99, 102, 241, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(99, 102, 241, 0.6); }
+        }
+
+        @keyframes lp-fade-in-up {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .lp-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .lp-reveal.lp-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* =========================================
+           BUTTONS
+           ========================================= */
+        .lp-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--lp-space-xs);
+            padding: var(--lp-space-sm) var(--lp-space-md);
+            border-radius: var(--lp-radius-full);
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all var(--lp-transition-base);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lp-btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .lp-btn:hover::after {
+            transform: translateX(100%);
+        }
+
+        .lp-btn--primary {
+            background: linear-gradient(135deg, var(--lp-color-gradient-start), var(--lp-color-gradient-end));
+            color: var(--lp-color-text-inverse);
+            box-shadow: var(--lp-shadow-lg);
+        }
+
+        .lp-btn--primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--lp-shadow-xl), var(--lp-shadow-glow);
+        }
+
+        .lp-btn--secondary {
+            background: var(--lp-color-bg);
+            color: var(--lp-color-primary);
+            border: 2px solid var(--lp-color-border);
+            box-shadow: var(--lp-shadow-sm);
+        }
+
+        .lp-btn--secondary:hover {
+            border-color: var(--lp-color-accent);
+            color: var(--lp-color-accent);
+            transform: translateY(-2px);
+            box-shadow: var(--lp-shadow-md);
+        }
+
+        .lp-btn--large {
+            padding: 1rem 2.5rem;
+            font-size: 1.125rem;
+        }
+
+        /* =========================================
+           HEADER
+           ========================================= */
+        .lp-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+            transition: all var(--lp-transition-base);
+        }
+
+        .lp-header__inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 80px;
+        }
+
+        .lp-header__logo {
+            font-family: var(--lp-font-heading);
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--lp-color-primary);
+            display: flex;
+            align-items: center;
+            gap: var(--lp-space-xs);
+        }
+
+        .lp-header__logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--lp-color-gradient-start), var(--lp-color-gradient-end));
+            border-radius: var(--lp-radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.25rem;
+        }
+
+        .lp-header__nav {
+            display: flex;
+            align-items: center;
+            gap: var(--lp-space-md);
+        }
+
+        .lp-header__nav-link {
+            font-weight: 500;
+            color: var(--lp-color-text);
+            transition: color var(--lp-transition-fast);
+            position: relative;
+        }
+
+        .lp-header__nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--lp-color-gradient-start), var(--lp-color-gradient-end));
+            transition: width var(--lp-transition-base);
+        }
+
+        .lp-header__nav-link:hover {
+            color: var(--lp-color-accent);
+        }
+
+        .lp-header__nav-link:hover::after {
+            width: 100%;
+        }
+
+        .lp-header__cta {
+            display: flex;
+            align-items: center;
+            gap: var(--lp-space-sm);
+        }
+
+        .lp-mobile-toggle {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--lp-color-primary);
+        }
+
+        /* =========================================
+           HERO SECTION
+           ========================================= */
+        .lp-hero {
+            position: relative;
+            padding: 160px 0 120px;
+            overflow: hidden;
+            background: linear-gradient(180deg, #f0f9ff 0%, #ffffff 100%);
+        }
+
+        .lp-hero__bg-shapes {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .lp-hero__blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+        }
+
+        .lp-hero__blob--1 {
+            width: 600px;
+            height: 600px;
+            background: linear-gradient(135deg, #6366f1, #a855f7);
+            top: -200px;
+            right: -100px;
+            animation: lp-float 8s ease-in-out infinite;
+        }
+
+        .lp-hero__blob--2 {
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(135deg, #06b6d4, #3b82f6);
+            bottom: -100px;
+            left: -100px;
+            animation: lp-float 10s ease-in-out infinite reverse;
+        }
+
+        .lp-hero__inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--lp-space-lg);
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .lp-hero__content {
+            max-width: 600px;
+        }
+
+        .lp-hero__badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--lp-space-xs);
+            padding: var(--lp-space-xs) var(--lp-space-sm);
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: var(--lp-radius-full);
+            color: var(--lp-color-accent);
+            font-weight: 600;
+            font-size: 0.875rem;
+            margin-bottom: var(--lp-space-md);
+        }
+
+        .lp-hero__title {
+            font-family: var(--lp-font-heading);
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            color: var(--lp-color-primary);
+            margin-bottom: var(--lp-space-md);
+        }
+
+        .lp-hero__subtitle {
+            font-size: 1.25rem;
+            color: var(--lp-color-text-light);
+            margin-bottom: var(--lp-space-lg);
+            line-height: 1.7;
+        }
+
+        .lp-hero__ctas {
+            display: flex;
+            align-items: center;
+            gap: var(--lp-space-md);
+            margin-bottom: var(--lp-space-lg);
+        }
+
+        .lp-hero__trust {
+            display: flex;
+            align-items: center;
+            gap: var(--lp-space-sm);
+            color: var(--lp-color-text-light);
+            font-size: 0.875rem;
+        }
+
+        .lp-hero__trust-avatars {
+            display: flex;
+        }
+
+        .lp-hero__trust-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 3px solid white;
+            margin-left: -12px;
+            object-fit: cover;
+        }
+
+        .lp-hero__trust-avatar:first-child {
+            margin-left: 0;
+        }
+
+        .lp-hero__visual {
+            position: relative;
+        }
+
+        .lp-hero__image-wrapper {
+            position: relative;
+            border-radius: var(--lp-radius-xl);
+            overflow: hidden;
+            box-shadow: var(--lp-shadow-xl);
+            background: linear-gradient(135deg, var(--lp-color-secondary), var(--lp-color-primary));
+            padding: var(--lp-space-md);
+        }
+
+        .lp-hero__dashboard-mockup {
+            background: white;
+            border-radius: var(--lp-radius-lg);
+            padding: var(--lp-space-md);
+            aspect-ratio: 4/3;
+            display: flex;
+            flex-direction: column;
+            gap: var(--lp-space-sm);
+        }
+
+        .lp-hero__mockup-header {
+            display: flex;
+            align-items: center;
+            gap: var(--lp-space-xs);
+            padding-bottom: var(--lp-space-sm);
+            border-bottom: 1px solid var(--lp-color-border);
+        }
+
+        .lp-hero__mockup-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--lp-color-border);
+        }
+
+        .lp-hero__mockup-dot--active {
+            background: var(--lp-color-success);
+        }
+
+        .lp-hero__mockup-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--lp-space-sm);
+            margin-top: var(--lp-space-sm);
+        }
+
+        .lp-hero__mockup-stat {
+            background: var(--lp-color-bg-alt);
+            border-radius: var(--lp-radius-md);
+            padding: var(--lp-space-sm);
+            text-align: center;
+        }
+
+        .lp-hero__mockup-stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--lp-color-success);
+        }
+
+        .lp-hero__mockup-stat-label {
+            font-size: 0.75rem;
+            color: var(--lp-color-text-light);
+        }
+
+        .lp-hero__floating-card {
+            position: absolute;
+            background: white;
+            border-radius: var(--lp-radius-lg);
+            padding: var(--lp-space-sm) var(--lp-space-md);
+            box-shadow: var(--lp-shadow-xl);
+            display: flex;
+            align-items: center;
+            gap: var(--lp-space-sm);
+            animation: lp-float 6s ease-in-out infinite;
+        }
+
+        .lp-hero__floating-card--1 {
+            top: 20px;
+            left: -30px;
+            animation-delay: 0s;
+        }
+
+        .lp-hero__floating-card--2 {
+            bottom: 40px;
+            right: -20px;
+            animation-delay: 3s;
+        }
+
+        .lp-hero__floating-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #10b981, #34d399);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lp-hero__floating-text strong {
+            display: block;
+            color: var(--lp-color-primary);
+            font-weight: 700;
+        }
+
+        .lp-hero__floating-text span {
+            font-size: 0.875rem;
+            color: var(--lp-color-text-light);
+        }
+
+        /* =========================================
+           STATS SECTION
+           ========================================= */
+        .lp-stats {
+            padding: var(--lp-space-lg) 0;
+            background: var(--lp-color-bg);
+            position: relative;
+            z-index: 3;
+        }
+
+        .lp-stats__grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--lp-space-md);
+        }
+
+        .lp-stat-card {
+            text-align: center;
+            padding: var(--lp-space-md);
+            border-radius: var(--lp-radius-lg);
+            background: var(--lp-color-bg-alt);
+            border: 1px solid var(--lp-color-border);
+            transition: all var(--lp-transition-base);
+        }
+
+        .lp-stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--lp-shadow-lg);
+            border-color: var(--lp-color-accent-light);
+        }
+
+        .lp-stat-card__icon {
+            width: 50px;
+            height: 50px;
+            margin: 0 auto var(--lp-space-sm);
+            background: linear-gradient(135deg, var(--lp-color-gradient-start), var(--lp-color-gradient-end));
+            border-radius: var(--lp-radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.25rem;
+        }
+
+        .lp-stat-card__number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--lp-color-primary);
+            margin-bottom: var(--lp-space-xs);
+        }
+
+        .lp-stat-card__label {
+            color: var(--lp-color-text-light);
+            font-size: 0.875rem;
+        }
+
+        /* =========================================
+           PROBLEM / AGITATION SECTION
+           ========================================= */
+        .lp-agitate {
+            padding: var(--lp-space-xl) 0;
+            background: var(--lp-color-bg-dark);
+            color: var(--lp-color-text-inverse);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lp-agitate__bg-pattern {
+            position: absolute;
+            inset: 0;
+            opacity: 0.05;
+            background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0);
+            background-size: 40px 40px;
+        }
+
+        .lp-agitate__header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto var(--lp-space-lg);
+        }
+
+        .lp-agitate__label {
+            display: inline-block;
+            padding: var(--lp-space-xs) var(--lp-space-sm);
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--lp-radius-full);
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--lp-color-accent-light);
+            margin-bottom: var(--lp-space-md);
+        }
+
+        .lp-agitate__title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: var(--lp-space-md);
+            line-height: 1.2;
+        }
+
+        .lp-agitate__subtitle {
+            color: #94a3b8;
+            font-size: 1.125rem;
+        }
+
+        .lp-agitate__grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--lp-space-md);
+        }
+
+        .lp-pain-point {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--lp-radius-lg);
+            padding: var(--lp-space-lg) var(--lp-space-md);
+            text-align: center;
+            transition: all var(--lp-transition-base);
+        }
+
+        .lp-pain-point:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-5px);
+            border-color: var(--lp-color-accent);
+        }
+
+        .lp-pain-point__icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto var(--lp-space-md);
+            background: rgba(239, 68, 68, 0.2);
+            color: #f87171;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .lp-pain-point__title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: var(--lp-space-sm);
+        }
+
+        .lp-pain-point__text {
+            color: #94a3b8;
+            line-height: 1.7;
+        }
+
+        /* =========================================
+           SOLUTION / FEATURES SECTION
+           ========================================= */
+        .lp-features {
+            padding: var(--lp-space-xl) 0;
+            background: var(--lp-color-bg-alt);
+            position: relative;
+        }
+
+        .lp-features__header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto var(--lp-space-lg);
+        }
+
+        .lp-section-label {
+            display: inline-block;
+            padding: var(--lp-space-xs) var(--lp-space-sm);
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: var(--lp-radius-full);
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--lp-color-accent);
+            margin-bottom: var(--lp-space-md);
+        }
+
+        .lp-section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--lp-color-primary);
+            margin-bottom: var(--lp-space-md);
+            line-height: 1.2;
+        }
+
+        .lp-section-subtitle {
+            color: var(--lp-color-text-light);
+            font-size: 1.125rem;
+        }
+
+        .lp-features__grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--lp-space-md);
+        }
+
+        .lp-feature-card {
+            background: var(--lp-color-bg);
+            border-radius: var(--lp-radius-xl);
+            padding: var(--lp-space-lg);
+            border: 1px solid var(--lp-color-border);
+            transition: all var(--lp-transition-base);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lp-feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--lp-color-gradient-start), var(--lp-color-gradient-end));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform var(--lp-transition-base);
+        }
+
+        .lp-feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--lp-shadow-xl);
+            border-color: transparent;
+        }
+
+        .lp-feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .lp-feature-card__icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--lp-color-gradient-start), var(--lp-color-gradient-end));
+            border-radius: var(--lp-radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: var(--lp-space-md);
+            transition: transform var(--lp-transition-base);
+        }
+
+        .lp-feature-card:hover .lp-feature-card__icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .lp-feature-card__title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--lp-color-primary);
+            margin-bottom: var(--lp-space-sm);
+        }
+
+        .lp-feature-card__text {
+            color: var(--lp-color-text-light);
+            line-height: 1.7;
+        }
+
+        /* =========================================
+           MODULES / CURRICULUM SECTION
+           ========================================= */
+        .lp-modules {
+            padding: var(--lp-space-xl) 0;
+            background: var(--lp-color-bg);
+        }
+
+        .lp-modules__header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto var(--lp-space-lg);
+        }
+
+        .lp-modules__grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--lp-space-md);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .lp-module-item {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--lp-space-md);
+            padding: var(--lp-space-md);
+            background: var(--lp-color-bg-alt);
+            border-radius: var(--lp-radius-lg);
+            border: 1px solid var(--lp-color-border);
+            transition: all var(--lp-transition-base);
+        }
+
+        .lp-module-item:hover {
+            border-color: var(--lp-color-accent-light);
+            box-shadow: var(--lp-shadow-md);
+            transform: translateX(5px);
+        }
+
+        .lp-module-item__number {
+            flex-shrink: 0;
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--lp-color-gradient-start), var(--lp-color-gradient-end));
+            color: white;
+            border-radius: var(--lp-radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+
+        .lp-module-item__content h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--lp-color-primary);
+            margin-bottom: var(--lp-space-xs);
+        }
+
+        .lp-module-item__content p {
+            color: var(--lp-color-text-light);
+            font-size: 0.9375rem;
+            line-height: 1.6;
+        }
+
+        /* =========================================
+           TESTIMONIALS SECTION
+           ========================================= */
+        .lp-testimonials {
+            padding: var(--lp-space-xl) 0;
+            background: linear-gradient(180deg, var(--lp-color-bg-alt) 0%, var(--lp-color-bg) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lp-testimonials__header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto var(--lp-space-lg);
+        }
+
+        .lp-testimonials__grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--lp-space-md);
+        }
+
+        .lp-testimonial-card {
+            background: var(--lp-color-bg);
+            border-radius: var(--lp-radius-xl);
+            padding: var(--lp-space-lg);
+            border: 1px solid var(--lp-color-border);
+            box-shadow: var(--lp-shadow-md);
+            transition: all var(--lp-transition-base);
+            position: relative;
+        }
+
+        .lp-testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--lp-shadow-xl);
+        }
+
+        .lp-testimonial-card__quote {
+            position: absolute;
+            top: var(--lp-space-md);
+            right: var(--lp-space-md);
+            font-size: 4rem;
+            line-height: 1;
+            color: var(--lp-color-accent);
+            opacity: 0.2;
+            font-family: Georgia, serif;
+        }
+
+        .lp-testimonial-card__stars {
+            display: flex;
+            gap: 4px;
+            margin-bottom: var(--lp-space-sm);
+            color: var(--lp-color-warning);
+        }
+
+        .lp-testimonial-card__text {
+            color: var(--lp-color-text);
+            line-height: 1.7;
+            margin-bottom: var(--lp-space-md);
+            position: relative;
+            z-index: 2;
+        }
+
+        .lp-testimonial-card__author {
+            display: flex;
+            align-items: center;
+            gap: var(--lp-space-sm);
+        }
+
+        .lp-testimonial-card__avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .lp-testimonial-card__name {
+            font-weight: 600;
+            color: var(--lp-color-primary);
+        }
+
+        .lp-testimonial-card__role {
+            font-size: 0.875rem;
+            color: var(--lp-color-text-light);
+        }
+
+        /* =========================================
+           PRICING SECTION
+           ========================================= */
+        .lp-pricing {
+            padding: var(--lp-space-xl) 0;
+            background: var(--lp-color-bg-dark);
+            color: var(--lp-color-text-inverse);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lp-pricing__bg-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.3) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .lp-pricing__header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto var(--lp-space-lg);
+            position: relative;
+            z-index: 2;
+        }
+
+        .lp-pricing__title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: var(--lp-space-md);
+        }
+
+        .lp-pricing__subtitle {
+            color: #94a3b8;
+            font-size: 1.125rem;
+        }
+
+        .lp-pricing__card {
+            max-width: 500px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--lp-radius-xl);
+            padding: var(--lp-space-xl) var(--lp-space-lg);
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            transition: transform var(--lp-transition-base);
+        }
+
+        .lp-pricing__card:hover {
+            transform: scale(1.02);
+            border-color: rgba(99, 102, 241, 0.3);
+        }
+
+        .lp-pricing__badge {
+            display: inline-block;
+            padding: var(--lp-space-xs) var(--lp-space-md);
+            background: linear-gradient(135deg, var(--lp-color-gradient-start), var(--lp-color-gradient-end));
+            border-radius: var(--lp-radius-full);
+            font-weight: 700;
+            font-size: 0.875rem;
+            margin-bottom: var(--lp-space-md);
+        }
+
+        .lp-pricing__name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: var(--lp-space-xs);
+        }
+
+        .lp-pricing__description {
+            color: #94a3b8;
+            margin-bottom: var(--lp-space-lg);
+        }
+
+        .lp-pricing__price {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: var(--lp-space-xs);
+            background: linear-gradient(135deg, #fff, #c7d2fe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .lp-pricing__price-old {
+            font-size: 1.5rem;
+            color: #64748b;
+            text-decoration: line-through;
+            margin-bottom: var(--lp-space-lg);
+        }
+
+        .lp-pricing__features {
+            list-style: none;
+            text-align: left;
+            margin-bottom: var(--lp-space-lg);
+        }
+
+        .lp-pricing__feature {
+            display: flex;
+            align-items: center;
+            gap: var(--lp-space-sm);
+            padding: var(--lp-space-xs) 0;
+            color: #e2e8f0;
+        }
+
+        .lp-pricing__feature i {
+            color: var(--lp-color-success);
+        }
+
+        .lp-pricing__guarantee {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--lp-space-xs);
+            margin-top: var(--lp-space-md);
+            color: #94a3b8;
+            font-size: 0.875rem;
+        }
+
+        /* =========================================
+           FAQ SECTION
+           ========================================= */
+        .lp-faq {
+            padding: var(--lp-space-xl) 0;
+            background: var(--lp-color-bg);
+        }
+
+        .lp-faq__header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto var(--lp-space-lg);
+        }
+
+        .lp-faq__list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .lp-faq__item {
+            border-bottom: 1px solid var(--lp-color-border);
+        }
+
+        .lp-faq__question {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: var(--lp-space-md) 0;
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--lp-color-primary);
+            text-align: left;
+            transition: color var(--lp-transition-fast);
+        }
+
+        .lp-faq__question:hover {
+            color: var(--lp-color-accent);
+        }
+
+        .lp-faq__icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--lp-color-bg-alt);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all var(--lp-transition-base);
+            flex-shrink: 0;
+        }
+
+        .lp-faq__item.lp-active .lp-faq__icon {
+            background: var(--lp-color-accent);
+            color: white;
+            transform: rotate(180deg);
+        }
+
+        .lp-faq__answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height var(--lp-transition-base), padding var(--lp-transition-base);
+        }
+
+        .lp-faq__item.lp-active .lp-faq__answer {
+            max-height: 300px;
+            padding-bottom: var(--lp-space-md);
+        }
+
+        .lp-faq__answer p {
+            color: var(--lp-color-text-light);
+            line-height: 1.7;
+            padding-right: var(--lp-space-lg);
+        }
+
+        /* =========================================
+           CTA / FOOTER SECTION
+           ========================================= */
+        .lp-final-cta {
+            padding: var(--lp-space-xl) 0;
+            background: linear-gradient(135deg, var(--lp-color-gradient-start), var(--lp-color-gradient-end));
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lp-final-cta__pattern {
+            position: absolute;
+            inset: 0;
+            opacity: 0.1;
+            background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0);
+            background-size: 30px 30px;
+        }
+
+        .lp-final-cta__content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .lp-final-cta__title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: var(--lp-space-md);
+        }
+
+        .lp-final-cta__text {
+            font-size: 1.25rem;
+            opacity: 0.95;
+            margin-bottom: var(--lp-space-lg);
+        }
+
+        .lp-final-cta__btn {
+            background: white;
+            color: var(--lp-color-accent);
+            font-size: 1.25rem;
+            padding: 1.25rem 3rem;
+            box-shadow: var(--lp-shadow-xl);
+        }
+
+        .lp-final-cta__btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        .lp-footer {
+            padding: var(--lp-space-lg) 0;
+            background: var(--lp-color-primary);
+            color: #94a3b8;
+            text-align: center;
+        }
+
+        .lp-footer__logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: var(--lp-space-sm);
+        }
+
+        .lp-footer__links {
+            display: flex;
+            justify-content: center;
+            gap: var(--lp-space-md);
+            margin-bottom: var(--lp-space-md);
+        }
+
+        .lp-footer__link {
+            transition: color var(--lp-transition-fast);
+        }
+
+        .lp-footer__link:hover {
+            color: white;
+        }
+
+        /* =========================================
+           RESPONSIVE
+           ========================================= */
+        @media (max-width: 1024px) {
+            .lp-hero__inner {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .lp-hero__content {
+                max-width: 100%;
+            }
+
+            .lp-hero__ctas {
+                justify-content: center;
+            }
+
+            .lp-hero__trust {
+                justify-content: center;
+            }
+
+            .lp-hero__visual {
+                order: -1;
+                max-width: 600px;
+                margin: 0 auto;
+            }
+
+            .lp-features__grid,
+            .lp-testimonials__grid,
+            .lp-agitate__grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .lp-header__nav,
+            .lp-header__cta .lp-btn--secondary {
+                display: none;
+            }
+
+            .lp-mobile-toggle {
+                display: block;
+            }
+
+            .lp-hero__title {
+                font-size: 2.5rem;
+            }
+
+            .lp-stats__grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .lp-features__grid,
+            .lp-testimonials__grid,
+            .lp-agitate__grid,
+            .lp-modules__grid {
+                grid-template-columns: 1fr;
+            }
+
+            .lp-section-title,
+            .lp-agitate__title,
+            .lp-pricing__title,
+            .lp-final-cta__title {
+                font-size: 2rem;
+            }
+
+            .lp-pricing__price {
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .lp-hero__title {
+                font-size: 2rem;
+            }
+
+            .lp-hero__ctas {
+                flex-direction: column;
+            }
+
+            .lp-stats__grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="lp-header">
+        <div class="lp-container">
+            <div class="lp-header__inner">
+                <a href="#" class="lp-header__logo">
+                    <div class="lp-header__logo-icon">
+                        <i class="fa-solid fa-bolt"></i>
+                    </div>
+                    Affiliate Pro
+                </a>
+                <nav class="lp-header__nav">
+                    <a href="#features" class="lp-header__nav-link">Curriculum</a>
+                    <a href="#testimonials" class="lp-header__nav-link">Results</a>
+                    <a href="#faq" class="lp-header__nav-link">FAQ</a>
+                </nav>
+                <div class="lp-header__cta">
+                    <a href="#pricing" class="lp-btn lp-btn--secondary">Log In</a>
+                    <a href="#pricing" class="lp-btn lp-btn--primary">Enroll Now</a>
+                    <button class="lp-mobile-toggle">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="lp-hero">
+            <div class="lp-hero__bg-shapes">
+                <div class="lp-hero__blob lp-hero__blob--1"></div>
+                <div class="lp-hero__blob lp-hero__blob--2"></div>
+            </div>
+            <div class="lp-container">
+                <div class="lp-hero__inner">
+                    <div class="lp-hero__content lp-reveal">
+                        <div class="lp-hero__badge">
+                            <i class="fa-solid fa-fire"></i>
+                            Trusted by 12,000+ students worldwide
+                        </div>
+                        <h1 class="lp-hero__title">
+                            The Complete System to <span class="lp-gradient-text">$10K/Month</span> in Affiliate Commissions
+                        </h1>
+                        <p class="lp-hero__subtitle">
+                            Stop chasing tricks. Learn the exact framework top affiliates use to build predictable, passive income streams — even if you're starting from zero.
+                        </p>
+                        <div class="lp-hero__ctas">
+                            <a href="#pricing" class="lp-btn lp-btn--primary lp-btn--large">
+                                Start Learning Today
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                            <a href="#features" class="lp-btn lp-btn--secondary lp-btn--large">
+                                <i class="fa-solid fa-play"></i>
+                                Watch Overview
+                            </a>
+                        </div>
+                        <div class="lp-hero__trust">
+                            <div class="lp-hero__trust-avatars">
+                                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face" alt="Student" class="lp-hero__trust-avatar">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" alt="Student" class="lp-hero__trust-avatar">
+                                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face" alt="Student" class="lp-hero__trust-avatar">
+                                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face" alt="Student" class="lp-hero__trust-avatar">
+                            </div>
+                            <p>Join <strong>12,000+</strong> successful affiliates</p>
+                        </div>
+                    </div>
+                    <div class="lp-hero__visual lp-reveal">
+                        <div class="lp-hero__image-wrapper">
+                            <div class="lp-hero__dashboard-mockup">
+                                <div class="lp-hero__mockup-header">
+                                    <div class="lp-hero__mockup-dot"></div>
+                                    <div class="lp-hero__mockup-dot"></div>
+                                    <div class="lp-hero__mockup-dot lp-hero__mockup-dot--active"></div>
+                                    <span style="margin-left: auto; font-size: 0.75rem; color: var(--lp-color-text-light);">Dashboard Live</span>
+                                </div>
+                                <div style="height: 20px; background: linear-gradient(90deg, #e2e8f0, #f1f5f9); border-radius: 4px; margin-bottom: 8px;"></div>
+                                <div style="height: 20px; background: linear-gradient(90deg, #e2e8f0, #f1f5f9); border-radius: 4px; width: 80%; margin-bottom: 8px;"></div>
+                                <div class="lp-hero__mockup-stats">
+                                    <div class="lp-hero__mockup-stat">
+                                        <div class="lp-hero__mockup-stat-value">$8,420</div>
+                                        <div class="lp-hero__mockup-stat-label">This Month</div>
+                                    </div>
+                                    <div class="lp-hero__mockup-stat">
+                                        <div class="lp-hero__mockup-stat-value">+142%</div>
+                                        <div class="lp-hero__mockup-stat-label">Growth</div>
+                                    </div>
+                                    <div class="lp-hero__mockup-stat">
+                                        <div class="lp-hero__mockup-stat-value">34</div>
+                                        <div class="lp-hero__mockup-stat-label">Conversions</div>
+                                    </div>
+                                </div>
+                                <div style="margin-top: auto; height: 100px; background: linear-gradient(180deg, #f0fdf4, #dcfce7); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--lp-color-success); font-weight: 700;">
+                                    <i class="fa-solid fa-chart-line" style="margin-right: 8px;"></i> Revenue Trending Up
+                                </div>
+                            </div>
+                            <div class="lp-hero__floating-card lp-hero__floating-card--1">
+                                <div class="lp-hero__floating-icon">
+                                    <i class="fa-solid fa-check"></i>
+                                </div>
+                                <div class="lp-hero__floating-text">
+                                    <strong>New Sale!</strong>
+                                    <span>+$97 commission</span>
+                                </div>
+                            </div>
+                            <div class="lp-hero__floating-card lp-hero__floating-card--2">
+                                <div class="lp-hero__floating-icon" style="background: linear-gradient(135deg, #6366f1, #8b5cf6);">
+                                    <i class="fa-solid fa-trophy"></i>
+                                </div>
+                                <div class="lp-hero__floating-text">
+                                    <strong>Top 5%</strong>
+                                    <span>Affiliate rank</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="lp-stats">
+            <div class="lp-container">
+                <div class="lp-stats__grid">
+                    <div class="lp-stat-card lp-reveal">
+                        <div class="lp-stat-card__icon">
+                            <i class="fa-solid fa-users"></i>
+                        </div>
+                        <div class="lp-stat-card__number">12,000+</div>
+                        <div class="lp-stat-card__label">Students Enrolled</div>
+                    </div>
+                    <div class="lp-stat-card lp-reveal">
+                        <div class="lp-stat-card__icon">
+                            <i class="fa-solid fa-sack-dollar"></i>
+                        </div>
+                        <div class="lp-stat-card__number">$4.2M+</div>
+                        <div class="lp-stat-card__label">Student Earnings</div>
+                    </div>
+                    <div class="lp-stat-card lp-reveal">
+                        <div class="lp-stat-card__icon">
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <div class="lp-stat-card__number">4.9/5</div>
+                        <div class="lp-stat-card__label">Average Rating</div>
+                    </div>
+                    <div class="lp-stat-card lp-reveal">
+                        <div class="lp-stat-card__icon">
+                            <i class="fa-solid fa-clock-rotate-left"></i>
+                        </div>
+                        <div class="lp-stat-card__number">30 Days</div>
+                        <div class="lp-stat-card__label">Money-Back Guarantee</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Agitate / Problem Section -->
+        <section class="lp-agitate">
+            <div class="lp-agitate__bg-pattern"></div>
+            <div class="lp-container">
+                <div class="lp-agitate__header lp-reveal">
+                    <div class="lp-agitate__label">Let's Be Honest</div>
+                    <h2 class="lp-agitate__title">Affiliate Marketing Can Feel Like a Maze</h2>
+                    <p class="lp-agitate__subtitle">Most beginners spin their wheels for months. Here's why most people fail before they earn a single dollar.</p>
+                </div>
+                <div class="lp-agitate__grid">
+                    <div class="lp-pain-point lp-reveal">
+                        <div class="lp-pain-point__icon">
+                            <i class="fa-solid fa-route"></i>
+                        </div>
+                        <h3 class="lp-pain-point__title">No Clear Roadmap</h3>
+                        <p class="lp-pain-point__text">You're overwhelmed by conflicting advice, endless tactics, and guru methods that stopped working in 2019.</p>
+                    </div>
+                    <div class="lp-pain-point lp-reveal">
+                        <div class="lp-pain-point__icon">
+                            <i class="fa-solid fa-money-bill-wave"></i>
+                        </div>
+                        <h3 class="lp-pain-point__title">Wasted Ad Spend</h3>
+                        <p class="lp-pain-point__text">You burn cash testing campaigns with zero framework, watching your budget disappear with nothing to show for it.</p>
+                    </div>
+                    <div class="lp-pain-point lp-reveal">
+                        <div class="lp-pain-point__icon">
+                            <i class="fa-solid fa-bug"></i>
+                        </div>
+                        <h3 class="lp-pain-point__title">Technical Barriers</h3>
+                        <p class="lp-pain-point__text">Funnels, tracking pixels, email sequences — the tech stack feels impossible if you don't have a coding background.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features / Solution Section -->
+        <section id="features" class="lp-features">
+            <div class="lp-container">
+                <div class="lp-features__header lp-reveal">
+                    <div class="lp-section-label">The Solution</div>
+                    <h2 class="lp-section-title">A Step-by-Step Blueprint for Predictable Income</h2>
+                    <p class="lp-section-subtitle">We stripped away the fluff and built a system that works in 2024. Here's what makes this different.</p>
+                </div>
+                <div class="lp-features__grid">
+                    <div class="lp-feature-card lp-reveal">
+                        <div class="lp-feature-card__icon">
+                            <i class="fa-solid fa-bullseye"></i>
+                        </div>
+                        <h3 class="lp-feature-card__title">Precision Targeting</h3>
+                        <p class="lp-feature-card__text">Learn how to identify high-intent buyer audiences before you spend a dime. No more guessing — just data-driven decisions.</p>
+                    </div>
+                    <div class="lp-feature-card lp-reveal">
+                        <div class="lp-feature-card__icon">
+                            <i class="fa-solid fa-robot"></i>
+                        </div>
+                        <h3 class="lp-feature-card__title">Automated Funnels</h3>
+                        <p class="lp-feature-card__text">Build self-running conversion machines that nurture leads and close sales while you sleep. Copy our exact templates.</p>
+                    </div>
+                    <div class="lp-feature-card lp-reveal">
+                        <div class="lp-feature-card__icon">
+                            <i class="fa-solid fa-magnifying-glass-chart"></i>
+                        </div>
+                        <h3 class="lp-feature-card__title">Offer Selection</h3>
+                        <p class="lp-feature-card__text">Discover the 3-step vetting process to find offers with high commissions, low refunds, and hungry audiences.</p>
+                    </div>
+                    <div class="lp-feature-card lp-reveal">
+                        <div class="lp-feature-card__icon">
+                            <i class="fa-solid fa-pen-nib"></i>
+                        </div>
+                        <h3 class="lp-feature-card__title">Copy That Converts</h3>
+                        <p class="lp-feature-card__text">You don't need to be a writer. Use our fill-in-the-blank frameworks for emails, landing pages, and ad creatives.</p>
+                    </div>
+                    <div class="lp-feature-card lp-reveal">
+                        <div class="lp-feature-card__icon">
+                            <i class="fa-solid fa-chart-pie"></i>
+                        </div>
+                        <h3 class="lp-feature-card__title">Scaling Systems</h3>
+                        <p class="lp-feature-card__text">Once you hit your first $1K, use our scaling matrix to 10x your results without multiplying your work hours.</p>
+                    </div>
+                    <div class="lp-feature-card lp-reveal">
+                        <div class="lp-feature-card__icon">
+                            <i class="fa-solid fa-headset"></i>
+                        </div>
+                        <h3 class="lp-feature-card__title">Live Coaching</h3>
+                        <p class="lp-feature-card__text">Weekly Q&A calls, a private community, and direct feedback on your campaigns so you never stay stuck.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Modules / Curriculum Section -->
+        <section class="lp-modules">
+            <div class="lp-container">
+                <div class="lp-modules__header lp-reveal">
+                    <div class="lp-section-label">Curriculum</div>
+                    <h2 class="lp-section-title">8 Modules. Zero Fluff. Pure Execution.</h2>
+                    <p class="lp-section-subtitle">Everything you need, in the exact order you need it.</p>
+                </div>
+                <div class="lp-modules__grid">
+                    <div class="lp-module-item lp-reveal">
+                        <div class="lp-module-item__number">01</div>
+                        <div class="lp-module-item__content">
+                            <h3>The Affiliate Mindset Shift</h3>
+                            <p>Why most affiliates think like employees, and how to adopt the owner mentality that drives 7-figure decisions.</p>
+                        </div>
+                    </div>
+                    <div class="lp-module-item lp-reveal">
+                        <div class="lp-module-item__number">02</div>
+                        <div class="lp-module-item__content">
+                            <h3>Niche & Offer Vault</h3>
+                            <p>Our curated database of winning niches and high-paying offers for every experience level and budget.</p>
+                        </div>
+                    </div>
+                    <div class="lp-module-item lp-reveal">
+                        <div class="lp-module-item__number">03</div>
+                        <div class="lp-module-item__content">
+                            <h3>Traffic Architecture</h3>
+                            <p>Organic vs. paid, short-form vs. long-form. Build a traffic mix that doesn't depend on a single platform.</p>
+                        </div>
+                    </div>
+                    <div class="lp-module-item lp-reveal">
+                        <div class="lp-module-item__number">04</div>
+                        <div class="lp-module-item__content">
+                            <h3>Funnel Engineering</h3>
+                            <p>Drag-and-drop funnel maps, bridge page templates, and presell secrets that 3x your EPC.</p>
+                        </div>
+                    </div>
+                    <div class="lp-module-item lp-reveal">
+                        <div class="lp-module-item__number">05</div>
+                        <div class="lp-module-item__content">
+                            <h3>Email Monetization</h3>
+                            <p>7-day launch sequences, evergreen newsletters, and list-building tactics that add $2K+ per month passively.</p>
+                        </div>
+                    </div>
+                    <div class="lp-module-item lp-reveal">
+                        <div class="lp-module-item__number">06</div>
+                        <div class="lp-module-item__content">
+                            <h3>Creative Mastery</h3>
+                            <p>Ad angles, hooks, and visual frameworks. Plus, how to use AI to produce 30 days of content in 2 hours.</p>
+                        </div>
+                    </div>
+                    <div class="lp-module-item lp-reveal">
+                        <div class="lp-module-item__number">07</div>
+                        <div class="lp-module-item__content">
+                            <h3>Analytics & Optimization</h3>
+                            <p>Read the numbers like a pro. Cut losers fast, double down on winners, and protect your margins.</p>
+                        </div>
+                    </div>
+                    <div class="lp-module-item lp-reveal">
+                        <div class="lp-module-item__number">08</div>
+                        <div class="lp-module-item__content">
+                            <h3>Scale to 6 Figures</h3>
+                            <p>Hiring VAs, building a team, and transitioning from operator to owner. The final evolution.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="lp-testimonials">
+            <div class="lp-container">
+                <div class="lp-testimonials__header lp-reveal">
+                    <div class="lp-section-label">Success Stories</div>
+                    <h2 class="lp-section-title">Real Students. Real Results.</h2>
+                    <p class="lp-section-subtitle">Here's what happened when they stopped guessing and started following the system.</p>
+                </div>
+                <div class="lp-testimonials__grid">
+                    <div class="lp-testimonial-card lp-reveal">
+                        <div class="lp-testimonial-card__quote">"</div>
+                        <div class="lp-testimonial-card__stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="lp-testimonial-card__text">I went from $0 to my first $3,400 month in 67 days. The funnel templates alone saved me weeks of frustration. This isn't theory — it's a real playbook.</p>
+                        <div class="lp-testimonial-card__author">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" alt="James" class="lp-testimonial-card__avatar">
+                            <div>
+                                <div class="lp-testimonial-card__name">James Wilson</div>
+                                <div class="lp-testimonial-card__role">Former Retail Manager</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lp-testimonial-card lp-reveal">
+                        <div class="lp-testimonial-card__quote">"</div>
+                        <div class="lp-testimonial-card__stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="lp-testimonial-card__text">I had tried three other courses before this one. Affiliate Pro was the first that actually showed me how to track, test, and scale. I'm now at $8K/month consistently.</p>
+                        <div class="lp-testimonial-card__author">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face" alt="Sarah" class="lp-testimonial-card__avatar">
+                            <div>
+                                <div class="lp-testimonial-card__name">Sarah Chen</div>
+                                <div class="lp-testimonial-card__role">Digital Nomad</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lp-testimonial-card lp-reveal">
+                        <div class="lp-testimonial-card__quote">"</div>
+                        <div class="lp-testimonial-card__stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="lp-testimonial-card__text">The community is worth the price alone. Having direct access to coaches who review your actual campaigns? Game changer. Hit $12K last month.</p>
+                        <div class="lp-testimonial-card__author">
+                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=face" alt="Marcus" class="lp-testimonial-card__avatar">
+                            <div>
+                                <div class="lp-testimonial-card__name">Marcus Johnson</div>
+                                <div class="lp-testimonial-card__role">Side Hustler → Full Time</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section id="pricing" class="lp-pricing">
+            <div class="lp-pricing__bg-glow"></div>
+            <div class="lp-container">
+                <div class="lp-pricing__header lp-reveal">
+                    <div class="lp-section-label" style="background: rgba(255,255,255,0.1); color: #c7d2fe; border-color: rgba(255,255,255,0.2);">Limited Offer</div>
+                    <h2 class="lp-pricing__title">Invest Once. Earn Forever.</h2>
+                    <p class="lp-pricing__subtitle">Enrollment closes soon. Lock in lifetime access and all future updates at today's price.</p>
+                </div>
+                <div class="lp-pricing__card lp-reveal">
+                    <div class="lp-pricing__badge">Best Value</div>
+                    <h3 class="lp-pricing__name">Affiliate Mastery Pro</h3>
+                    <p class="lp-pricing__description">Complete system + bonuses + community</p>
+                    <div class="lp-pricing__price">$297</div>
+                    <div class="lp-pricing__price-old">Was $997</div>
+                    
+                    <ul class="lp-pricing__features">
+                        <li class="lp-pricing__feature">
+                            <i class="fa-solid fa-check"></i>
+                            <span>8 Core Training Modules (40+ hours)</span>
+                        </li>
+                        <li class="lp-pricing__feature">
+                            <i class="fa-solid fa-check"></i>
+                            <span>Done-for-You Funnel Templates</span>
+                        </li>
+                        <li class="lp-pricing__feature">
+                            <i class="fa-solid fa-check"></i>
+                            <span>Weekly Live Q&A Calls (6 months)</span>
+                        </li>
+                        <li class="lp-pricing__feature">
+                            <i class="fa-solid fa-check"></i>
+                            <span>Private Community Access</span>
+                        </li>
+                        <li class="lp-pricing__feature">
+                            <i class="fa-solid fa-check"></i>
+                            <span>Offer Vault & Niche Database</span>
+                        </li>
+                        <li class="lp-pricing__feature">
+                            <i class="fa-solid fa-check"></i>
+                            <span>Email Swipe File (50+ sequences)</span>
+                        </li>
+                        <li class="lp-pricing__feature">
+                            <i class="fa-solid fa-check"></i>
+                            <span>Lifetime Updates</span>
+                        </li>
+                        <li class="lp-pricing__feature">
+                            <i class="fa-solid fa-check"></i>
+                            <span>30-Day Money-Back Guarantee</span>
+                        </li>
+                    </ul>
+
+                    <a href="#" class="lp-btn lp-btn--primary lp-btn--large" style="width: 100%; animation: lp-pulse-glow 3s infinite;">
+                        Enroll Now — $297
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                    <div class="lp-pricing__guarantee">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        <span>Secure checkout. Instant access. 30-day guarantee.</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="lp-faq">
+            <div class="lp-container">
+                <div class="lp-faq__header lp-reveal">
+                    <div class="lp-section-label">FAQ</div>
+                    <h2 class="lp-section-title">Still Have Questions?</h2>
+                    <p class="lp-section-subtitle">Everything you need to know before joining.</p>
+                </div>
+                <div class="lp-faq__list">
+                    <div class="lp-faq__item lp-reveal">
+                        <button class="lp-faq__question">
+                            How long do I have access to the course?
+                            <span class="lp-faq__icon"><i class="fa-solid fa-chevron-down"></i></span>
+                        </button>
+                        <div class="lp-faq__answer">
+                            <p>You get lifetime access to all course materials, including any future updates we release. This is a one-time investment, not a subscription.</p>
+                        </div>
+                    </div>
+                    <div class="lp-faq__item lp-reveal">
+                        <button class="lp-faq__question">
+                            I'm a complete beginner. Is this too advanced?
+                            <span class="lp-faq__icon"><i class="fa-solid fa-chevron-down"></i></span>
+                        </button>
+                        <div class="lp-faq__answer">
+                            <p>Not at all. We start from the absolute basics and gradually move into advanced strategies. Whether you've never made a dime online or you're looking to scale, the curriculum adapts to your level.</p>
+                        </div>
+                    </div>
+                    <div class="lp-faq__item lp-reveal">
+                        <button class="lp-faq__question">
+                            Do I need a big budget for ads?
+                            <span class="lp-faq__icon"><i class="fa-solid fa-chevron-down"></i></span>
+                        </button>
+                        <div class="lp-faq__answer">
+                            <p>No. We teach both free (organic) and paid traffic methods. Many of our students start with zero ad spend and reinvest their first commissions into scaling.</p>
+                        </div>
+                    </div>
+                    <div class="lp-faq__item lp-reveal">
+                        <button class="lp-faq__question">
+                            What if I don't see results in 30 days?
+                            <span class="lp-faq__icon"><i class="fa-solid fa-chevron-down"></i></span>
+                        </button>
+                        <div class="lp-faq__answer">
+                            <p>We offer a full 30-day money-back guarantee. If you complete the first two modules, implement the work, and honestly feel it's not for you, we'll refund every penny.</p>
+                        </div>
+                    </div>
+                    <div class="lp-faq__item lp-reveal">
+                        <button class="lp-faq__question">
+                            How is this different from other affiliate courses?
+                            <span class="lp-faq__icon"><i class="fa-solid fa-chevron-down"></i></span>
+                        </button>
+                        <div class="lp-faq__answer">
+                            <p>Most courses dump information on you. We give you a step-by-step execution system with templates, weekly coaching, and direct feedback. You're not buying videos — you're buying a transformation.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA Section -->
+        <section class="lp-final-cta">
+            <div class="lp-final-cta__pattern"></div>
+            <div class="lp-container">
+                <div class="lp-final-cta__content lp-reveal">
+                    <h2 class="lp-final-cta__title">Your First Commission Is Closer Than You Think</h2>
+                    <p class="lp-final-cta__text">Join 12,000+ affiliates who stopped dreaming and started earning. The system works. The only question is: are you ready to work it?</p>
+                    <a href="#pricing" class="lp-btn lp-final-cta__btn">
+                        Get Instant Access
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="lp-footer">
+        <div class="lp-container">
+            <div class="lp-footer__logo">Affiliate Pro</div>
+            <div class="lp-footer__links">
+                <a href="#" class="lp-footer__link">Privacy</a>
+                <a href="#" class="lp-footer__link">Terms</a>
+                <a href="#" class="lp-footer__link">Support</a>
+                <a href="#" class="lp-footer__link">Contact</a>
+            </div>
+            <p> Affiliate Mastery Pro. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Vanilla JS -->
+    <script>
+        // IntersectionObserver for scroll reveal animations
+        const revealElements = document.querySelectorAll('.lp-reveal');
+        
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('lp-visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // FAQ Accordion
+        const faqItems = document.querySelectorAll('.lp-faq__item');
+        
+        faqItems.forEach(item => {
+            const question = item.querySelector('.lp-faq__question');
+            question.addEventListener('click', () => {
+                const isActive = item.classList.contains('lp-active');
+                
+                // Close all
+                faqItems.forEach(i => i.classList.remove('lp-active'));
+                
+                // Open clicked if it wasn't active
+                if (!isActive) {
+                    item.classList.add('lp-active');
+                }
+            });
+        });
+
+        // Header scroll effect
+        const header = document.querySelector('.lp-header');
+        let lastScroll = 0;
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                header.style.boxShadow = '0 4px 6px -1px rgba(15, 23, 42, 0.08)';
+            } else {
+                header.style.boxShadow = 'none';
+            }
+            
+            lastScroll = currentScroll;
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
