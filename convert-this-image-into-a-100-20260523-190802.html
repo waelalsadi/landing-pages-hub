@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>rendr. - Versatile Solution For Your Everyday Needs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --lp-bg: #f3f3ee;
+      --lp-white: #ffffff;
+      --lp-dark: #111111;
+      --lp-text: #333333;
+      --lp-text-muted: #888888;
+      --lp-accent: #d9e44c;
+      --lp-accent-dark: #c8d63a;
+      --lp-card-dark: #1c1c1e;
+      --lp-peach: #fde8e0;
+      --lp-cream: #f4f7d0;
+      --lp-blue-light: #e0f0fd;
+      --lp-cream-bg: #f5f5f0;
+      --lp-border: #e8e8e3;
+
+      --lp-font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+      --lp-container: 1140px;
+      --lp-section-pad: 80px;
+      --lp-gap: 24px;
+
+      --lp-r-sm: 8px;
+      --lp-r-md: 16px;
+      --lp-r-lg: 24px;
+      --lp-r-xl: 32px;
+      --lp-r-pill: 999px;
+
+      --lp-shadow-sm: 0 2px 8px rgba(0,0,0,0.04);
+      --lp-shadow-md: 0 8px 24px rgba(0,0,0,0.06);
+      --lp-shadow-lg: 0 16px 48px rgba(0,0,0,0.1);
+      --lp-shadow-card: 0 20px 60px rgba(0,0,0,0.12);
+
+      --lp-trans: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--lp-font);
+      color: var(--lp-text);
+      background: var(--lp-white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .lp-container {
+      width: 100%;
+      max-width: var(--lp-container);
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    @media (min-width: 768px) {
+      .lp-container { padding: 0 40px; }
+    }
+
+    /* Utility */
+    .lp-sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border-width: 0;
+    }
+
+    /* Header */
+    .lp-header {
+      background: var(--lp-bg);
+      padding: 16px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .lp-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .lp-logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--lp-dark);
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+
+    .lp-nav__menu {
+      display: none;
+      list-style: none;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .lp-nav__menu a {
+      text-decoration: none;
+      color: var(--lp-text);
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: var(--lp-trans);
+    }
+
+    .lp-nav__menu a:hover { color: var(--lp-dark); }
+
+    .lp-nav__actions {
+      display: none;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .lp-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 22px;
+      border-radius: var(--lp-r-pill);
+      font-weight: 600;
+      font-size: 0.85rem;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: var(--lp-trans);
+      font-family: inherit;
+    }
+
+    .lp-btn--accent {
+      background: var(--lp-accent);
+      color: var(--lp-dark);
+    }
+
+    .lp-btn--accent:hover {
+      background: var(--lp-accent-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(217, 228, 76, 0.4);
+    }
+
+    .lp-btn--ghost {
+      background: transparent;
+      color: var(--lp-text);
+      padding: 10px 16px;
+    }
+
+    .lp-btn--ghost:hover { color: var(--lp-dark); }
+
+    .lp-btn--dark {
+      background: var(--lp-dark);
+      color: var(--lp-white);
+      padding: 14px 28px;
+    }
+
+    .lp-btn--dark:hover {
+      background: #000000;
+      transform: translateY(-2px);
+      box-shadow: var(--lp-shadow-md);
+    }
+
+    .lp-nav__toggle {
+      display: flex;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--lp-dark);
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    @media (min-width: 1024px) {
+      .lp-nav__menu { display: flex; }
+      .lp-nav__actions { display: flex; }
+      .lp-nav__toggle { display: none; }
+    }
+
+    /* Mobile Menu */
+    .lp-mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--lp-bg);
+      z-index: 99;
+      padding: 100px 40px;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .lp-mobile-menu.is-open { display: flex; }
+
+    .lp-mobile-menu a {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--lp-dark);
+      text-decoration: none;
+    }
+
+    /* Hero Section */
+    .lp-hero {
+      background: var(--lp-bg);
+      padding: 40px 0 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .lp-hero__container {
+      display: flex;
+      flex-direction: column;
+      gap: 60px;
+      align-items: center;
+      padding-bottom: 100px;
+    }
+
+    @media (min-width: 1024px) {
+      .lp-hero__container {
+        flex-direction: row;
+        justify-content: space-between;
+        padding-bottom: 140px;
+      }
+    }
+
+    .lp-hero__content {
+      max-width: 500px;
+      width: 100%;
+    }
+
+    .lp-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--lp-text-muted);
+      text-transform: capitalize;
+      margin-bottom: 12px;
+      letter-spacing: 0.5px;
+    }
+
+    .lp-tag i { color: var(--lp-accent-dark); font-size: 0.8rem; }
+
+    .lp-hero__title {
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--lp-dark);
+      line-height: 1.15;
+      margin-bottom: 16px;
+      letter-spacing: -1.5px;
+    }
+
+    .lp-emoji { font-weight: 400; }
+
+    .lp-hero__desc {
+      color: var(--lp-text-muted);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin-bottom: 32px;
+      max-width: 420px;
+    }
+
+    .lp-hero__actions {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .lp-hero__meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.75rem;
+      color: var(--lp-text-muted);
+      font-weight: 500;
+    }
+
+    .lp-hero__meta i {
+      font-size: 1.3rem;
+      color: var(--lp-dark);
+    }
+
+    /* Hero Visuals */
+    .lp-hero__visual {
+      position: relative;
+      width: 100%;
+      max-width: 520px;
+      height: 440px;
+      flex-shrink: 0;
+    }
+
+    @media (min-width: 1024px) {
+      .lp-hero__visual { max-width: 480px; }
+    }
+
+    .lp-mockup-card {
+      position: absolute;
+      border-radius: var(--lp-r-lg);
+      box-shadow: var(--lp-shadow-card);
+      transition: var(--lp-trans);
+    }
+
+    .lp-mockup-card--dark {
+      background: var(--lp-card-dark);
+      color: var(--lp-white);
+      width: 270px;
+      padding: 24px;
+      top: 30px;
+      left: 10px;
+      z-index: 4;
+    }
+
+    .lp-mockup-card--dark__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 4px;
+    }
+
+    .lp-mockup-card--dark__label {
+      font-size: 0.65rem;
+      color: #999;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .lp-mockup-card--dark__menu {
+      color: #999;
+      font-size: 0.8rem;
+    }
+
+    .lp-mockup-card--dark__amount {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 28px;
+      letter-spacing: -0.5px;
+    }
+
+    .lp-mockup-card--dark__footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.75rem;
+      color: #aaa;
+    }
+
+    .lp-mockup-card--dark__dots {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .lp-mockup-card--dark__dot {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+    }
+
+    .lp-mockup-card--dark__dot--lime { background: var(--lp-accent); }
+    .lp-mockup-card--dark__dot--light { background: #e0e0e0; }
+
+    .lp-mockup-card--line {
+      background: var(--lp-white);
+      width: 230px;
+      padding: 20px;
+      top: 0;
+      right: 10px;
+      z-index: 2;
+    }
+
+    .lp-mockup-card--line__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--lp-dark);
+    }
+
+    .lp-mockup-card--line__header i {
+      color: var(--lp-text-muted);
+      font-size: 0.7rem;
+    }
+
+    .lp-mockup-card--line__svg {
+      width: 100%;
+      height: 50px;
+    }
+
+    .lp-mockup-card--donut {
+      background: var(--lp-white);
+      width: 210px;
+      padding: 20px;
+      bottom: 60px;
+      left: 30px;
+      z-index: 3;
+    }
+
+    .lp-mockup-card--donut__header {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--lp-dark);
+      margin-bottom: 12px;
+    }
+
+    .lp-donut-chart {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: conic-gradient(var(--lp-accent) 0% 35%, var(--lp-dark) 35% 70%, #e0e0e0 70% 100%);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lp-donut-chart::after {
+      content: '';
+      width: 40px;
+      height: 40px;
+      background: var(--lp-white);
+      border-radius: 50%;
+    }
+
+    .lp-mockup-card--donut__legend {
+      margin-top: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .lp-legend-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.7rem;
+      color: var(--lp-text-muted);
+    }
+
+    .lp-legend-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    .lp-mockup-card--bars {
+      background: var(--lp-white);
+      width: 210px;
+      padding: 20px;
+      bottom: 40px;
+      right: 0;
+      z-index: 3;
+    }
+
+    .lp-mockup-card--bars__header {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--lp-dark);
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .lp-mockup-card--bars__header i {
+      color: var(--lp-text-muted);
+      font-size: 0.7rem;
+    }
+
+    .lp-bar-chart {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      height: 50px;
+      gap: 6px;
+    }
+
+    .lp-bar {
+      flex: 1;
+      border-radius: 3px;
+      background: var(--lp-accent);
+      opacity: 0.8;
+    }
+
+    .lp-bar:nth-child(2) { height: 70%; background: #ff9f43; }
+    .lp-bar:nth-child(3) { height: 45%; background: #ff6b6b; }
+    .lp-bar:nth-child(4) { height: 85%; background: var(--lp-dark); }
+    .lp-bar:nth-child(1) { height: 55%; background: var(--lp-accent); }
+    .lp-bar:nth-child(5) { height: 60%; background: #ddd; }
+
+    .lp-float-icon {
+      position: absolute;
+      width: 48px;
+      height: 48px;
+      background: var(--lp-accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--lp-dark);
+      font-size: 1.1rem;
+      box-shadow: 0 8px 24px rgba(217, 228, 76, 0.5);
+      z-index: 5;
+      top: 130px;
+      left: 250px;
+      animation: lp-float 3s ease-in-out infinite;
+    }
+
+    @keyframes lp-float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @media (max-width: 640px) {
+      .lp-hero__visual { transform: scale(0.85); transform-origin: top left; height: 380px; }
+      .lp-float-icon { left: 220px; }
+    }
+
+    /* Curve Divider */
+    .lp-curve {
+      line-height: 0;
+      margin-top: -1px;
+      background: var(--lp-white);
+    }
+
+    .lp-curve svg {
+      display: block;
+      width: 100%;
+      height: 120px;
+    }
+
+    @media (min-width: 768px) {
+      .lp-curve svg { height: 180px; }
+    }
+
+    /* Intro Section */
+    .lp-intro {
+      background: var(--lp-white);
+      padding: 40px 0 80px;
+      text-align: center;
+    }
+
+    .lp-intro__title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--lp-dark);
+      max-width: 720px;
+      margin: 0 auto 16px;
+      line-height: 1.25;
+      letter-spacing: -0.5px;
+    }
+
+    .lp-intro__desc {
+      color: var(--lp-text-muted);
+      font-size: 0.85rem;
+      max-width: 500px;
+      margin: 0 auto;
+      line-height: 1.5;
+    }
+
+    /* Different Section */
+    .lp-different {
+      background: var(--lp-white);
+      padding: 40px 0 80px;
+    }
+
+    .lp-different__container {
+      display: flex;
+      flex-direction: column;
+      gap: 60px;
+    }
+
+    @media (min-width: 1024px) {
+      .lp-different__container {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+      }
+    }
+
+    .lp-different__content {
+      max-width: 480px;
+      width: 100%;
+    }
+
+    .lp-different__title {
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: var(--lp-dark);
+      line-height: 1.2;
+      margin-bottom: 16px;
+      letter-spacing: -0.5px;
+    }
+
+    .lp-underline {
+      position: relative;
+      display: inline;
+    }
+
+    .lp-underline::after {
+      content: '';
+      position: absolute;
+      bottom: 2px;
+      left: 0;
+      width: 100%;
+      height: 10px;
+      background: var(--lp-accent);
+      opacity: 0.5;
+      z-index: -1;
+      border-radius: 4px;
+    }
+
+    .lp-different__content > p {
+      color: var(--lp-text-muted);
+      font-size: 0.85rem;
+      line-height: 1.6;
+      margin-bottom: 40px;
+    }
+
+    .lp-progress {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    .lp-progress__item {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .lp-progress__header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--lp-dark);
+    }
+
+    .lp-progress__bar {
+      height: 5px;
+      background: #eee;
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .lp-progress__fill {
+      height: 100%;
+      border-radius: 3px;
+      background: var(--lp-dark);
+      width: 0;
+      transition: width 1.2s ease;
+    }
+
+    .lp-progress__fill--accent {
+      background: var(--lp-accent);
+    }
+
+    .lp-btn--play {
+      padding: 10px 10px 10px 24px;
+      gap: 12px;
+    }
+
+    .lp-play-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--lp-white);
+      color: var(--lp-dark);
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      margin-left: 8px;
+      transition: var(--lp-trans);
+    }
+
+    .lp-btn--play:hover .lp-play-icon {
+      transform: scale(1.1);
+      background: var(--lp-accent);
+    }
+
+    /* Feature Grid */
+    .lp-different__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      max-width: 500px;
+      width: 100%;
+    }
+
+    @media (min-width: 640px) {
+      .lp-different__grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (min-width: 1024px) {
+      .lp-different__grid { max-width: 480px; }
+    }
+
+    .lp-feature-card {
+      background: var(--lp-white);
+      padding: 28px;
+      border-radius: var(--lp-r-md);
+      border: 1px solid var(--lp-border);
+      transition: var(--lp-trans);
+    }
+
+    .lp-feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--lp-shadow-md);
+      border-color: transparent;
+    }
+
+    .lp-feature-card__icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      margin-bottom: 16px;
+      color: var(--lp-dark);
+    }
+
+    .lp-feature-card__icon--yellow { background: var(--lp-cream); }
+    .lp-feature-card__icon--cream { background: var(--lp-cream-bg); }
+    .lp-feature-card__icon--peach { background: var(--lp-peach); }
+    .lp-feature-card__icon--blue { background: var(--lp-blue-light); }
+
+    .lp-feature-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--lp-dark);
+      margin-bottom: 8px;
+    }
+
+    .lp-feature-card p {
+      font-size: 0.8rem;
+      color: var(--lp-text-muted);
+      line-height: 1.5;
+    }
+
+    /* FAQ Section */
+    .lp-faq {
+      background: var(--lp-bg);
+      padding: 80px 0;
+      position: relative;
+    }
+
+    .lp-faq__container {
+      display: flex;
+      flex-direction: column;
+      gap: 60px;
+      align-items: center;
+    }
+
+    @media (min-width: 1024px) {
+      .lp-faq__container {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+
+    .lp-faq__content {
+      max-width: 500px;
+      width: 100%;
+    }
+
+    .lp-faq__title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--lp-dark);
+      line-height: 1.2;
+      margin-bottom: 32px;
+      letter-spacing: -0.5px;
+    }
+
+    .lp-faq__list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .lp-faq__list li {
+      background: var(--lp-white);
+      border-radius: var(--lp-r-pill);
+      overflow: hidden;
+      box-shadow: var(--lp-shadow-sm);
+      transition: var(--lp-trans);
+    }
+
+    .lp-faq__list li:hover {
+      box-shadow: var(--lp-shadow-md);
+    }
+
+    .lp-faq__list button {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 24px;
+      background: none;
+      border: none;
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--lp-dark);
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .lp-faq__list button i {
+      color: var(--lp-text-muted);
+      font-size: 0.8rem;
+      transition: var(--lp-trans);
+    }
+
+    .lp-faq__list button:hover i {
+      color: var(--lp-dark);
+      transform: translateY(2px);
+    }
+
+    /* FAQ Visual */
+    .lp-faq__visual {
+      position: relative;
+      width: 100%;
+      max-width: 360px;
+      flex-shrink: 0;
+    }
+
+    .lp-activity-card {
+      background: var(--lp-white);
+      border-radius: var(--lp-r-lg);
+      padding: 24px;
+      box-shadow: var(--lp-shadow-lg);
+      margin-bottom: 16px;
+    }
+
+    .lp-activity-card__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--lp-dark);
+    }
+
+    .lp-activity-card__header i {
+      color: var(--lp-text-muted);
+      font-size: 0.9rem;
+    }
+
+    .lp-activity-card__list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .lp-activity-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .lp-activity-item__dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .lp-activity-item__dot--yellow { background: var(--lp-accent); }
+    .lp-activity-item__dot--dark { background: var(--lp-card-dark); }
+    .lp-activity-item__dot--lime { background: #a4d037; }
+
+    .lp-activity-item__info {
+      flex: 1;
+    }
+
+    .lp-activity-item__info span {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--lp-dark);
+    }
+
+    .lp-activity-item__info small {
+      font-size: 0.7rem;
+      color: var(--lp-text-muted);
+    }
+
+    .lp-activity-item__amount {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--lp-dark);
+    }
+
+    .lp-balance-mini {
+      background: var(--lp-card-dark);
+      color: var(--lp-white);
+      border-radius: var(--lp-r-md);
+      padding: 18px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: var(--lp-shadow-md);
+    }
+
+    .lp-balance-mini__label {
+      font-size: 0.7rem;
+      color: #888;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .lp-balance-mini__amount {
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .lp-balance-mini__arrow {
+      color: #888;
+      font-size: 0.8rem;
+    }
+
+    /* Scroll Reveal */
+    .lp-reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .lp-reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Stagger delays */
+    .lp-reveal--1 { transition-delay: 0.1s; }
+    .lp-reveal--2 { transition-delay: 0.2s; }
+    .lp-reveal--3 { transition-delay: 0.3s; }
+    .lp-reveal--4 { transition-delay: 0.4s; }
+  </style>
+</head>
+<body class="lp-page">
+
+  <!-- Header / Navbar -->
+  <header class="lp-header">
+    <div class="lp-container">
+      <nav class="lp-nav" aria-label="Main navigation">
+        <a href="#" class="lp-logo">rendr.</a>
+        <ul class="lp-nav__menu">
+          <li><a href="#">Demos</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Works</a></li>
+          <li><a href="#">Elements</a></li>
+          <li><a href="#">features</a></li>
+          <li><a href="#">Shop</a></li>
+        </ul>
+        <div class="lp-nav__actions">
+          <a href="#" class="lp-btn lp-btn--accent">Get App</a>
+          <a href="#" class="lp-btn lp-btn--ghost"><i class="fa-regular fa-user"></i> Sign In</a>
+        </div>
+        <button class="lp-nav__toggle" aria-label="Open menu" aria-expanded="false" onclick="document.querySelector('.lp-mobile-menu').classList.toggle('is-open')">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="lp-mobile-menu" aria-hidden="true">
+    <a href="#">Demos</a>
+    <a href="#">Blog</a>
+    <a href="#">Works</a>
+    <a href="#">Elements</a>
+    <a href="#">features</a>
+    <a href="#">Shop</a>
+    <a href="#" class="lp-btn lp-btn--accent">Get App</a>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="lp-hero">
+    <div class="lp-container lp-hero__container">
+      <div class="lp-hero__content lp-reveal">
+        <span class="lp-tag"><i class="fa-solid fa-wand-magic-sparkles"></i> Customize everything</span>
+        <h1 class="lp-hero__title">Versatile Solution For Your Everyday Needs <span class="lp-emoji">👌</span></h1>
+        <p class="lp-hero__desc">Enthusiastically empower client-centric materials for an expanded array of potentialities.</p>
+        <div class="lp-hero__actions">
+          <a href="#" class="lp-btn lp-btn--dark"><i class="fa-brands fa-apple"></i> Download App</a>
+          <div class="lp-hero__meta">
+            <i class="fa-brands fa-android"></i>
+            <span>Android application<br>coming soon</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="lp-hero__visual lp-reveal lp-reveal--2">
+        <div class="lp-mockup-card lp-mockup-card--dark">
+          <div class="lp-mockup-card--dark__header">
+            <span class="lp-mockup-card--dark__label">Main Balance</span>
+            <span class="lp-mockup-card--dark__menu"><i class="fa-solid fa-ellipsis"></i></span>
+          </div>
+          <div class="lp-mockup-card--dark__amount">$384,556.36</div>
+          <div class="lp-mockup-card--dark__footer">
+            <span>06/24</span>
+            <div class="lp-mockup-card--dark__dots">
+              <span>Robert Kenter</span>
+              <span class="lp-mockup-card--dark__dot lp-mockup-card--dark__dot--lime"></span>
+              <span class="lp-mockup-card--dark__dot lp-mockup-card--dark__dot--light"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="lp-mockup-card lp-mockup-card--line">
+          <div class="lp-mockup-card--line__header">
+            <span>New Balance</span>
+            <i class="fa-solid fa-arrow-up-right"></i>
+          </div>
+          <svg class="lp-mockup-card--line__svg" viewBox="0 0 180 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 40 C20 40, 30 10, 50 20 C70 30, 80 45, 100 25 C120 5, 140 30, 160 15 C170 8, 175 12, 180 5" stroke="#d9e44c" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+            <circle cx="180" cy="5" r="3" fill="#d9e44c"/>
+          </svg>
+        </div>
+
+        <div class="lp-mockup-card lp-mockup-card--donut">
+          <div class="lp-mockup-card--donut__header">Insight</div>
+          <div style="display:flex;align-items:center;gap:16px;">
+            <div class="lp-donut-chart"></div>
+            <div class="lp-mockup-card--donut__legend">
+              <div class="lp-legend-item"><span class="lp-legend-dot" style="background:var(--lp-accent)"></span> Revenue</div>
+              <div class="lp-legend-item"><span class="lp-legend-dot" style="background:var(--lp-dark)"></span> Expense</div>
+              <div class="lp-legend-item"><span class="lp-legend-dot" style="background:#e0e0e0"></span> Profit</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lp-mockup-card lp-mockup-card--bars">
+          <div class="lp-mockup-card--bars__header">
+            <span>Statistics</span>
+            <i class="fa-solid fa-ellipsis"></i>
+          </div>
+          <div class="lp-bar-chart">
+            <div class="lp-bar"></div>
+            <div class="lp-bar"></div>
+            <div class="lp-bar"></div>
+            <div class="lp-bar"></div>
+            <div class="lp-bar"></div>
+          </div>
+        </div>
+
+        <div class="lp-float-icon">
+          <i class="fa-solid fa-dollar-sign"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="lp-curve" aria-hidden="true">
+      <svg viewBox="0 0 1440 160" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <path d="M0 0 L1440 0 L1440 80 Q720 160 0 80 Z" fill="#f3f3ee"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- Intro Section -->
+  <section class="lp-intro">
+    <div class="lp-container">
+      <h2 class="lp-intro__title lp-reveal">Create Your Own Mobile App Website In No Time Without Any Coding Knowledge. <span class="lp-emoji">👌</span></h2>
+      <p class="lp-intro__desc lp-reveal lp-reveal--1">Dramatically unleash excellent strategic theme areas for functionals.</p>
+    </div>
+  </section>
+
+  <!-- How We Are Different Section -->
+  <section class="lp-different">
+    <div class="lp-container lp-different__container">
+      <div class="lp-different__content lp-reveal">
+        <span class="lp-tag"><i class="fa-solid fa-wand-magic-sparkles"></i> Quality guaranteed</span>
+        <h2 class="lp-different__title">Here's How We Are Different <span class="lp-underline">From Others</span></h2>
+        <p>Credibly repurpose multidisciplinary content and cross-unit methodologies. Authoritatively build premium niches.</p>
+
+        <div class="lp-progress">
+          <div class="lp-progress__item">
+            <div class="lp-progress__header">
+              <span>Development</span>
+              <span>90%</span>
+            </div>
+            <div class="lp-progress__bar">
+              <div class="lp-progress__fill" data-width="90%" style="width: 90%"></div>
+            </div>
+          </div>
+          <div class="lp-progress__item">
+            <div class="lp-progress__header">
+              <span>Design</span>
+              <span>60%</span>
+            </div>
+            <div class="lp-progress__bar">
+              <div class="lp-progress__fill lp-progress__fill--accent" data-width="60%" style="width: 60%"></div>
+            </div>
+          </div>
+        </div>
+
+        <a href="#" class="lp-btn lp-btn--dark lp-btn--play">
+          Studio Button
+          <span class="lp-play-icon"><i class="fa-solid fa-play"></i></span>
+        </a>
+      </div>
+
+      <div class="lp-different__grid">
+        <div class="lp-feature-card lp-reveal lp-reveal--1">
+          <div class="lp-feature-card__icon lp-feature-card__icon--yellow"><i class="fa-solid fa-chart-simple"></i></div>
+          <h3>Flexible Settings</h3>
+          <p>Collaboratively unleash end-to-end channels via out-of-the-box core competencies.</p>
+        </div>
+        <div class="lp-feature-card lp-reveal lp-reveal--2">
+          <div class="lp-feature-card__icon lp-feature-card__icon--cream"><i class="fa-solid fa-headset"></i></div>
+          <h3>Dedicated support</h3>
+          <p>Competently evolve cross-platform innovation rather than transparent alignments.</p>
+        </div>
+        <div class="lp-feature-card lp-reveal lp-reveal--3">
+          <div class="lp-feature-card__icon lp-feature-card__icon--peach"><i class="fa-solid fa-rotate"></i></div>
+          <h3>Lifetime updates</h3>
+          <p>Conveniently morph goal-oriented growth strategies and resource sucking total linkage.</p>
+        </div>
+        <div class="lp-feature-card lp-reveal lp-reveal--4">
+          <div class="lp-feature-card__icon lp-feature-card__icon--blue"><i class="fa-solid fa-pen-nib"></i></div>
+          <h3>Unique Design</h3>
+          <p>Appropriately drive bricks-and-clicks customer service through just in time supply chains.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="lp-faq">
+    <div class="lp-container lp-faq__container">
+      <div class="lp-faq__content lp-reveal">
+        <span class="lp-tag"><i class="fa-solid fa-wand-magic-sparkles"></i> Professional support</span>
+        <h2 class="lp-faq__title">Having Any Questions? We've Got You Covered <span class="lp-emoji">🙌</span></h2>
+        <ul class="lp-faq__list">
+          <li>
+            <button type="button" aria-expanded="false">
+              What are my payment options?
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+          </li>
+          <li>
+            <button type="button" aria-expanded="false">
+              Is it safe to provide my credit card details?
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+          </li>
+        </ul>
+      </div>
+
+      <div class="lp-faq__visual lp-reveal lp-reveal--2">
+        <div class="lp-activity-card">
+          <div class="lp-activity-card__header">
+            <span>Card Activity</span>
+            <i class="fa-solid fa-ellipsis"></i>
+          </div>
+          <div class="lp-activity-card__list">
+            <div class="lp-activity-item">
+              <div class="lp-activity-item__dot lp-activity-item__dot--yellow"></div>
+              <div class="lp-activity-item__info">
+                <span>Sent Money</span>
+                <small>Transaction</small>
+              </div>
+              <div class="lp-activity-item__amount">$500</div>
+            </div>
+            <div class="lp-activity-item">
+              <div class="lp-activity-item__dot lp-activity-item__dot--dark"></div>
+              <div class="lp-activity-item__info">
+                <span>Receive Money</span>
+                <small>Transaction</small>
+              </div>
+              <div class="lp-activity-item__amount">$200</div>
+            </div>
+            <div class="lp-activity-item">
+              <div class="lp-activity-item__dot lp-activity-item__dot--lime"></div>
+              <div class="lp-activity-item__info">
+                <span>Cashback</span>
+                <small>Transaction</small>
+              </div>
+              <div class="lp-activity-item__amount">$150</div>
+            </div>
+          </div>
+        </div>
+        <div class="lp-balance-mini">
+          <div>
+            <span class="lp-balance-mini__label">Main Balance</span>
+            <div class="lp-balance-mini__amount">$48,556.36</div>
+          </div>
+          <div class="lp-balance-mini__arrow"><i class="fa-solid fa-arrow-right"></i></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Scroll reveal with IntersectionObserver
+    const revealElements = document.querySelectorAll('.lp-reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    // Animate progress bars when visible
+    const progressBars = document.querySelectorAll('.lp-progress__fill');
+    const progressObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const width = entry.target.getAttribute('data-width');
+          entry.target.style.width = width;
+          progressObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    progressBars.forEach(bar => {
+      bar.style.width = '0';
+      progressObserver.observe(bar);
+    });
+
+    // Mobile menu close on link click
+    document.querySelectorAll('.lp-mobile-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.querySelector('.lp-mobile-menu').classList.remove('is-open');
+      });
+    });
+  </script>
+</body>
+</html>
