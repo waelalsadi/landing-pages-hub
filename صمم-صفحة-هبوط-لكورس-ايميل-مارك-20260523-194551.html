@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>كورس الإيميل ماركتنج الاحترافي</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --lp-primary-600: #4f46e5;
+      --lp-primary-700: #4338ca;
+      --lp-accent-500: #f97316;
+      --lp-accent-600: #ea580c;
+      --lp-neutral-900: #0f172a;
+      --lp-neutral-700: #334155;
+      --lp-neutral-500: #64748b;
+      --lp-neutral-200: #e2e8f0;
+      --lp-neutral-100: #f1f5f9;
+      --lp-white: #ffffff;
+
+      --lp-font-ar: 'Cairo', sans-serif;
+      --lp-font-en: 'Poppins', sans-serif;
+
+      --lp-sp-1: 0.25rem;
+      --lp-sp-2: 0.5rem;
+      --lp-sp-3: 0.75rem;
+      --lp-sp-4: 1rem;
+      --lp-sp-5: 1.25rem;
+      --lp-sp-6: 1.5rem;
+      --lp-sp-8: 2rem;
+      --lp-sp-10: 2.5rem;
+      --lp-sp-12: 3rem;
+      --lp-sp-16: 4rem;
+      --lp-sp-20: 5rem;
+      --lp-sp-24: 6rem;
+
+      --lp-rad: 0.75rem;
+      --lp-rad-lg: 1rem;
+      --lp-rad-full: 9999px;
+
+      --lp-shad-sm: 0 1px 2px 0 rgba(0,0,0,0.05);
+      --lp-shad: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1);
+      --lp-shad-lg: 0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);
+      --lp-shad-xl: 0 25px 50px -12px rgba(0,0,0,0.25);
+
+      --lp-trans: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--lp-font-ar);
+      color: var(--lp-neutral-900);
+      background: var(--lp-white);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 { font-weight: 700; line-height: 1.3; }
+    img { max-width: 100%; height: auto; display: block; }
+    a { text-decoration: none; color: inherit; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; }
+    ul { list-style: none; }
+
+    .lp-container {
+      width: 90%;
+      max-width: 1140px;
+      margin-inline: auto;
+    }
+
+    .lp-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--lp-sp-2);
+      padding: var(--lp-sp-3) var(--lp-sp-8);
+      border-radius: var(--lp-rad);
+      font-weight: 700;
+      transition: var(--lp-trans);
+      font-size: 1rem;
+    }
+    .lp-button--primary {
+      background: linear-gradient(135deg, var(--lp-primary-600), var(--lp-primary-700));
+      color: var(--lp-white);
+      box-shadow: 0 4px 14px rgba(79, 70, 229, 0.4);
+    }
+    .lp-button--primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(79, 70, 229, 0.5);
+    }
+    .lp-button--accent {
+      background: linear-gradient(135deg, var(--lp-accent-500), var(--lp-accent-600));
+      color: var(--lp-white);
+      box-shadow: 0 4px 14px rgba(249, 115, 22, 0.4);
+    }
+    .lp-button--accent:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(249, 115, 22, 0.5);
+    }
+    .lp-button--large {
+      padding: var(--lp-sp-4) var(--lp-sp-12);
+      font-size: 1.125rem;
+      border-radius: var(--lp-rad-lg);
+    }
+    .lp-button--white {
+      background: var(--lp-white);
+      color: var(--lp-primary-700);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+    }
+    .lp-button--white:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    }
+
+    .lp-reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .lp-reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Header */
+    .lp-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: var(--lp-sp-4) 0;
+      transition: var(--lp-trans);
+    }
+    .lp-header--scrolled {
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: var(--lp-shad-sm);
+      padding: var(--lp-sp-3) 0;
+    }
+    .lp-header__container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .lp-header__logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--lp-primary-600), var(--lp-accent-500));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .lp-header__nav {
+      display: flex;
+      align-items: center;
+      gap: var(--lp-sp-8);
+    }
+    .lp-header__link {
+      color: var(--lp-neutral-700);
+      font-weight: 600;
+      position: relative;
+      font-size: 0.95rem;
+      transition: var(--lp-trans);
+    }
+    .lp-header__link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      right: 0;
+      width: 0;
+      height: 2px;
+      background: var(--lp-primary-600);
+      transition: var(--lp-trans);
+    }
+    .lp-header__link:hover {
+      color: var(--lp-primary-600);
+    }
+    .lp-header__link:hover::after {
+      width: 100%;
+    }
+    .lp-header__menu-btn {
+      display: none;
+      font-size: 1.5rem;
+      color: var(--lp-neutral-900);
+    }
+
+    /* Hero Section */
+    .lp-hero {
+      position: relative;
+      padding: calc(var(--lp-sp-24) + 80px) 0 var(--lp-sp-24);
+      overflow: hidden;
+    }
+    .lp-hero__bg {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+    }
+    .lp-hero__blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(100px);
+      opacity: 0.35;
+    }
+    .lp-hero__blob--1 {
+      width: 500px; height: 500px;
+      background: var(--lp-primary-600);
+      top: -100px; left: -100px;
+    }
+    .lp-hero__blob--2 {
+      width: 400px; height: 400px;
+      background: var(--lp-accent-500);
+      bottom: -50px; right: -50px;
+      opacity: 0.25;
+    }
+    .lp-hero__container {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: var(--lp-sp-12);
+      align-items: center;
+    }
+    .lp-hero__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--lp-sp-2);
+      background: rgba(79, 70, 229, 0.1);
+      color: var(--lp-primary-600);
+      padding: var(--lp-sp-2) var(--lp-sp-5);
+      border-radius: var(--lp-rad-full);
+      font-weight: 700;
+      font-size: 0.875rem;
+      margin-bottom: var(--lp-sp-4);
+    }
+    .lp-hero__title {
+      font-size: 3.5rem;
+      margin-bottom: var(--lp-sp-6);
+      color: var(--lp-neutral-900);
+      font-weight: 800;
+    }
+    .lp-hero__title span {
+      color: var(--lp-primary-600);
+      position: relative;
+    }
+    .lp-hero__title span::after {
+      content: '';
+      position: absolute;
+      bottom: 5px;
+      left: 0; right: 0;
+      height: 12px;
+      background: rgba(249, 115, 22, 0.2);
+      z-index: -1;
+      border-radius: 4px;
+    }
+    .lp-hero__desc {
+      font-size: 1.25rem;
+      color: var(--lp-neutral-500);
+      margin-bottom: var(--lp-sp-8);
+      max-width: 90%;
+    }
+    .lp-hero__cta-group {
+      display: flex;
+      align-items: center;
+      gap: var(--lp-sp-4);
+      flex-wrap: wrap;
+    }
+    .lp-hero__stats {
+      display: flex;
+      gap: var(--lp-sp-10);
+      margin-top: var(--lp-sp-12);
+      padding-top: var(--lp-sp-8);
+      border-top: 1px solid var(--lp-neutral-200);
+    }
+    .lp-hero__stat {
+      display: flex;
+      flex-direction: column;
+    }
+    .lp-hero__stat-number {
+      font-size: 2.25rem;
+      font-weight: 800;
+      color: var(--lp-primary-600);
+      line-height: 1;
+      font-family: var(--lp-font-en);
+    }
+    .lp-hero__stat-label {
+      font-size: 0.875rem;
+      color: var(--lp-neutral-500);
+      margin-top: var(--lp-sp-1);
+    }
+    .lp-hero__image-wrap {
+      position: relative;
+    }
+    .lp-hero__image {
+      border-radius: var(--lp-rad-lg);
+      box-shadow: var(--lp-shad-xl);
+      position: relative;
+      z-index: 2;
+      width: 100%;
+    }
+    .lp-hero__float {
+      position: absolute;
+      background: var(--lp-white);
+      padding: var(--lp-sp-3) var(--lp-sp-5);
+      border-radius: var(--lp-rad);
+      box-shadow: var(--lp-shad);
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      gap: var(--lp-sp-3);
+      font-weight: 700;
+      color: var(--lp-neutral-700);
+      font-size: 0.9rem;
+    }
+    .lp-hero__float--1 {
+      top: 30px; left: -20px;
+    }
+    .lp-hero__float--2 {
+      bottom: 50px; right: -30px;
+    }
+    .lp-hero__float-icon {
+      width: 40px; height: 40px;
+      background: rgba(79, 70, 229, 0.1);
+      color: var(--lp-primary-600);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Section Base */
+    .lp-section {
+      padding: var(--lp-sp-24) 0;
+    }
+    .lp-section--alt {
+      background: var(--lp-neutral-100);
+    }
+    .lp-section__header {
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto var(--lp-sp-16);
+    }
+    .lp-section__label {
+      display: inline-block;
+      color: var(--lp-primary-600);
+      font-weight: 800;
+      font-size: 0.875rem;
+      margin-bottom: var(--lp-sp-2);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .lp-section__title {
+      font-size: 2.5rem;
+      margin-bottom: var(--lp-sp-4);
+      font-weight: 800;
+    }
+    .lp-section__subtitle {
+      color: var(--lp-neutral-500);
+      font-size: 1.125rem;
+    }
+
+    /* Features Section */
+    .lp-features__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--lp-sp-6);
+    }
+    .lp-feature {
+      background: var(--lp-white);
+      padding: var(--lp-sp-8);
+      border-radius: var(--lp-rad-lg);
+      border: 1px solid var(--lp-neutral-200);
+      transition: var(--lp-trans);
+    }
+    .lp-feature:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--lp-shad-lg);
+      border-color: transparent;
+    }
+    .lp-feature__icon {
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--lp-primary-600), var(--lp-primary-700));
+      color: var(--lp-white);
+      font-size: 1.5rem;
+      border-radius: var(--lp-rad);
+      margin-bottom: var(--lp-sp-4);
+      transition: var(--lp-trans);
+    }
+    .lp-feature:hover .lp-feature__icon {
+      transform: scale(1.1) rotate(-5deg);
+    }
+    .lp-feature__title {
+      font-size: 1.25rem;
+      margin-bottom: var(--lp-sp-2);
+      font-weight: 700;
+    }
+    .lp-feature__text {
+      color: var(--lp-neutral-500);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    /* Curriculum Section */
+    .lp-curriculum__list {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .lp-accordion__item {
+      background: var(--lp-white);
+      border: 1px solid var(--lp-neutral-200);
+      border-radius: var(--lp-rad);
+      margin-bottom: var(--lp-sp-3);
+      overflow: hidden;
+      transition: var(--lp-trans);
+    }
+    .lp-accordion__item:hover {
+      border-color: var(--lp-primary-600);
+    }
+    .lp-accordion__header {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--lp-sp-5) var(--lp-sp-6);
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--lp-neutral-900);
+    }
+    .lp-accordion__icon {
+      color: var(--lp-primary-600);
+      transition: var(--lp-trans);
+      font-size: 0.875rem;
+    }
+    .lp-accordion__item.is-open .lp-accordion__icon {
+      transform: rotate(180deg);
+    }
+    .lp-accordion__body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.4s ease;
+      padding: 0 var(--lp-sp-6);
+      color: var(--lp-neutral-500);
+      line-height: 1.8;
+    }
+    .lp-accordion__item.is-open .lp-accordion__body {
+      max-height: 400px;
+      padding-bottom: var(--lp-sp-6);
+    }
+
+    /* Pricing Section */
+    .lp-pricing__card {
+      max-width: 450px;
+      margin: 0 auto;
+      background: var(--lp-white);
+      border-radius: var(--lp-rad-lg);
+      padding: var(--lp-sp-12) var(--lp-sp-10);
+      border: 2px solid var(--lp-primary-600);
+      box-shadow: var(--lp-shad-xl);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .lp-pricing__badge {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: var(--lp-accent-500);
+      color: var(--lp-white);
+      padding: var(--lp-sp-1) var(--lp-sp-10);
+      font-size: 0.75rem;
+      font-weight: 800;
+      transform: rotate(-45deg) translate(-35px, -10px);
+    }
+    .lp-pricing__title {
+      font-size: 1.5rem;
+      margin-bottom: var(--lp-sp-2);
+      font-weight: 800;
+    }
+    .lp-pricing__desc {
+      color: var(--lp-neutral-500);
+      font-size: 0.95rem;
+    }
+    .lp-pricing__price {
+      font-size: 4rem;
+      font-weight: 800;
+      color: var(--lp-primary-600);
+      line-height: 1;
+      margin: var(--lp-sp-6) 0;
+      font-family: var(--lp-font-en);
+    }
+    .lp-pricing__price span {
+      font-size: 1rem;
+      color: var(--lp-neutral-500);
+      font-weight: 400;
+      font-family: var(--lp-font-ar);
+    }
+    .lp-pricing__features {
+      text-align: right;
+      margin-bottom: var(--lp-sp-8);
+    }
+    .lp-pricing__feature {
+      display: flex;
+      align-items: center;
+      gap: var(--lp-sp-3);
+      padding: var(--lp-sp-3) 0;
+      color: var(--lp-neutral-700);
+      border-bottom: 1px solid var(--lp-neutral-100);
+      font-weight: 600;
+    }
+    .lp-pricing__feature:last-child {
+      border-bottom: none;
+    }
+    .lp-pricing__feature i {
+      color: var(--lp-accent-500);
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    /* Testimonials Section */
+    .lp-testimonials__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--lp-sp-6);
+    }
+    .lp-testimonial {
+      background: var(--lp-white);
+      padding: var(--lp-sp-8);
+      border-radius: var(--lp-rad-lg);
+      border: 1px solid var(--lp-neutral-200);
+      position: relative;
+      transition: var(--lp-trans);
+    }
+    .lp-testimonial:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--lp-shad);
+      border-color: transparent;
+    }
+    .lp-testimonial__stars {
+      color: #fbbf24;
+      margin-bottom: var(--lp-sp-3);
+      font-size: 0.875rem;
+    }
+    .lp-testimonial__quote {
+      color: var(--lp-neutral-600);
+      margin-bottom: var(--lp-sp-6);
+      font-style: italic;
+      line-height: 1.8;
+    }
+    .lp-testimonial__author {
+      display: flex;
+      align-items: center;
+      gap: var(--lp-sp-3);
+    }
+    .lp-testimonial__avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .lp-testimonial__name {
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+    .lp-testimonial__role {
+      font-size: 0.875rem;
+      color: var(--lp-neutral-500);
+    }
+
+    /* CTA Section */
+    .lp-cta {
+      position: relative;
+      padding: var(--lp-sp-24) 0;
+      background: linear-gradient(135deg, var(--lp-primary-700), var(--lp-primary-600));
+      overflow: hidden;
+    }
+    .lp-cta__pattern {
+      position: absolute;
+      inset: 0;
+      opacity: 0.08;
+      background-image: radial-gradient(circle, #fff 1.5px, transparent 1.5px);
+      background-size: 32px 32px;
+    }
+    .lp-cta__content {
+      position: relative;
+      text-align: center;
+      color: var(--lp-white);
+    }
+    .lp-cta__title {
+      font-size: 2.75rem;
+      margin-bottom: var(--lp-sp-4);
+      font-weight: 800;
+    }
+    .lp-cta__desc {
+      font-size: 1.25rem;
+      opacity: 0.9;
+      margin-bottom: var(--lp-sp-8);
+      max-width: 640px;
+      margin-inline: auto;
+    }
+
+    /* Footer Section */
+    .lp-footer {
+      background: var(--lp-neutral-900);
+      color: var(--lp-neutral-200);
+      padding: var(--lp-sp-16) 0 var(--lp-sp-8);
+    }
+    .lp-footer__grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: var(--lp-sp-12);
+      margin-bottom: var(--lp-sp-12);
+    }
+    .lp-footer__brand {
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin-bottom: var(--lp-sp-4);
+      color: var(--lp-white);
+    }
+    .lp-footer__text {
+      color: var(--lp-neutral-500);
+      line-height: 1.8;
+      max-width: 300px;
+    }
+    .lp-footer__title {
+      color: var(--lp-white);
+      font-size: 1.125rem;
+      margin-bottom: var(--lp-sp-4);
+      font-weight: 700;
+    }
+    .lp-footer__links li {
+      margin-bottom: var(--lp-sp-2);
+    }
+    .lp-footer__links a {
+      color: var(--lp-neutral-500);
+      transition: var(--lp-trans);
+      display: inline-block;
+    }
+    .lp-footer__links a:hover {
+      color: var(--lp-white);
+      transform: translateX(-4px);
+    }
+    .lp-footer__bottom {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: var(--lp-sp-6);
+      text-align: center;
+      color: var(--lp-neutral-500);
+      font-size: 0.875rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .lp-hero__container {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .lp-hero__desc {
+        max-width: 100%;
+      }
+      .lp-hero__cta-group {
+        justify-content: center;
+      }
+      .lp-hero__stats {
+        justify-content: center;
+      }
+      .lp-hero__image-wrap {
+        order: -1;
+        max-width: 500px;
+        margin: 0 auto;
+      }
+      .lp-features__grid,
+      .lp-testimonials__grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .lp-footer__grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .lp-header__nav {
+        display: none;
+      }
+      .lp-header__menu-btn {
+        display: block;
+      }
+      .lp-hero__title {
+        font-size: 2.25rem;
+      }
+      .lp-section {
+        padding: var(--lp-sp-16) 0;
+      }
+      .lp-section__title {
+        font-size: 1.75rem;
+      }
+      .lp-features__grid,
+      .lp-testimonials__grid {
+        grid-template-columns: 1fr;
+      }
+      .lp-footer__grid {
+        grid-template-columns: 1fr;
+        gap: var(--lp-sp-8);
+      }
+      .lp-hero__float {
+        display: none;
+      }
+      .lp-cta__title {
+        font-size: 2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .lp-hero__title {
+        font-size: 1.85rem;
+      }
+      .lp-hero__stat-number {
+        font-size: 1.75rem;
+      }
+      .lp-pricing__price {
+        font-size: 3rem;
+      }
+      .lp-button--large {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="lp-header" id="header">
+    <div class="lp-container lp-header__container">
+      <div class="lp-header__logo">MailPro</div>
+      <nav class="lp-header__nav">
+        <a href="#features" class="lp-header__link">المميزات</a>
+        <a href="#curriculum" class="lp-header__link">محتوى الكورس</a>
+        <a href="#pricing" class="lp-header__link">السعر</a>
+        <a href="#testimonials" class="lp-header__link">الآراء</a>
+        <a href="#pricing" class="lp-button lp-button--primary">احجز مقعدك</a>
+      </nav>
+      <button class="lp-header__menu-btn" aria-label="القائمة">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="lp-hero">
+    <div class="lp-hero__bg">
+      <div class="lp-hero__blob lp-hero__blob--1"></div>
+      <div class="lp-hero__blob lp-hero__blob--2"></div>
+    </div>
+    <div class="lp-container lp-hero__container">
+      <div class="lp-hero__content lp-reveal">
+        <div class="lp-hero__badge">
+          <i class="fas fa-fire"></i>
+          الكورس الأكثر مبيعاً لعام 2024
+        </div>
+        <h1 class="lp-hero__title">
+          تعلّم فن <span>الإيميل ماركتنج</span> وارفع مبيعاتك 300%
+        </h1>
+        <p class="lp-hero__desc">
+          اكتشف استراتيجيات متقدمة لبناء قوائم بريدية ضخمة، كتابة إيميلات لا تقاوم، وتحويل كل رسالة إلى آلة لطباعة الأرباح.
+        </p>
+        <div class="lp-hero__cta-group">
+          <a href="#pricing" class="lp-button lp-button--accent lp-button--large">
+            <i class="fas fa-rocket"></i>
+            سجّل الآن بـ 299$
+          </a>
+          <a href="#curriculum" class="lp-button lp-button--large" style="background: var(--lp-white); border: 2px solid var(--lp-neutral-200); color: var(--lp-neutral-700);">
+            <i class="fas fa-play-circle"></i>
+            شاهد المحتوى
+          </a>
+        </div>
+        <div class="lp-hero__stats">
+          <div class="lp-hero__stat">
+            <span class="lp-hero__stat-number">+1,200</span>
+            <span class="lp-hero__stat-label">متدرب ناجح</span>
+          </div>
+          <div class="lp-hero__stat">
+            <span class="lp-hero__stat-number">4.9</span>
+            <span class="lp-hero__stat-label">متوسط التقييم</span>
+          </div>
+          <div class="lp-hero__stat">
+            <span class="lp-hero__stat-number">45</span>
+            <span class="lp-hero__stat-label">درس عملي</span>
+          </div>
+        </div>
+      </div>
+      <div class="lp-hero__image-wrap lp-reveal">
+        <img src="https://images.unsplash.com/photo-1557200134-90327ee9fafa?auto=format&fit=crop&w=800&q=80" alt="إيميل ماركتنج" class="lp-hero__image">
+        <div class="lp-hero__float lp-hero__float--1">
+          <div class="lp-hero__float-icon"><i class="fas fa-envelope-open-text"></i></div>
+          <div>معدل فتح 65%</div>
+        </div>
+        <div class="lp-hero__float lp-hero__float--2">
+          <div class="lp-hero__float-icon"><i class="fas fa-chart-line"></i></div>
+          <div>زيادة مبيعاتك</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="lp-section" id="features">
+    <div class="lp-container">
+      <div class="lp-section__header lp-reveal">
+        <span class="lp-section__label">لماذا هذا الكورس؟</span>
+        <h2 class="lp-section__title">كل ما تحتاجه لإتقان الإيميل ماركتنج</h2>
+        <p class="lp-section__subtitle">منهجية عملية تركز على النتائج، لا على النظرية الجافة.</p>
+      </div>
+      <div class="lp-features__grid">
+        <div class="lp-feature lp-reveal">
+          <div class="lp-feature__icon"><i class="fas fa-chess-knight"></i></div>
+          <h3 class="lp-feature__title">استراتيجيات متقدمة</h3>
+          <p class="lp-feature__text">تعلّم بناء حملات متكاملة تعتمد على التجزئة السلوكية والمحتوى الذكي.</p>
+        </div>
+        <div class="lp-feature lp-reveal">
+          <div class="lp-feature__icon"><i class="fas fa-pen-nib"></i></div>
+          <h3 class="lp-feature__title">قوالب جاهزة</h3>
+          <p class="lp-feature__text">احصل على 20+ قالب إيميل احترافي جاهز للتخصيص والإرسال الفوري.</p>
+        </div>
+        <div class="lp-feature lp-reveal">
+          <div class="lp-feature__icon"><i class="fas fa-chart-pie"></i></div>
+          <h3 class="lp-feature__title">تحليل الأداء</h3>
+          <p class="lp-feature__text">افهم مؤشرات click rate و open rate وكيف تحسنها بأدوات بسيطة.</p>
+        </div>
+        <div class="lp-feature lp-reveal">
+          <div class="lp-feature__icon"><i class="fas fa-robot"></i></div>
+          <h3 class="lp-feature__title">أتمتة الحملات</h3>
+          <p class="lp-feature__text">ابني سلاسل إيميلات آلية تعمل لك وأنت نائم لتغذية العميل تلقائياً.</p>
+        </div>
+        <div class="lp-feature lp-reveal">
+          <div class="lp-feature__icon"><i class="fas fa-users"></i></div>
+          <h3 class="lp-feature__title">تجزئة الجمهور</h3>
+          <p class="lp-feature__text">تعلّم كيف تقسم قائمتك إلى شرائح دقيقة لإرسال الرسالة الصحيحة لكل شخص.</p>
+        </div>
+        <div class="lp-feature lp-reveal">
+          <div class="lp-feature__icon"><i class="fas fa-shield-alt"></i></div>
+          <h3 class="lp-feature__title">تجنب السبام</h3>
+          <p class="lp-feature__text">تقنيات متقدمة لضمان وصول إيميلاتك للـ Inbox وليس مجلد السبام.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Curriculum Section -->
+  <section class="lp-section lp-section--alt" id="curriculum">
+    <div class="lp-container">
+      <div class="lp-section__header lp-reveal">
+        <span class="lp-section__label">المنهجية</span>
+        <h2 class="lp-section__title">محتوى الكورس خطوة بخطوة</h2>
+        <p class="lp-section__subtitle">5 وحدات عملية تأخذك من الصفر حتى الاحتراف.</p>
+      </div>
+      <div class="lp-curriculum__list">
+        <div class="lp-accordion__item is-open lp-reveal">
+          <button class="lp-accordion__header">
+            <span>الوحدة الأولى: الأساسيات والبيئة التقنية</span>
+            <i class="fas fa-chevron-down lp-accordion__icon"></i>
+          </button>
+          <div class="lp-accordion__body">
+            فهم آلية عمل البريد الإلكتروني التسويقي، اختيار المنصة المناسبة (Mailchimp, ConvertKit, Brevo)، إعداد حسابك الأول، وفهم لوحة التحكم بشكل احترافي.
+          </div>
+        </div>
+        <div class="lp-accordion__item lp-reveal">
+          <button class="lp-accordion__header">
+            <span>الوحدة الثانية: فن كتابة الإيميلات المبيعة</span>
+            <i class="fas fa-chevron-down lp-accordion__icon"></i>
+          </button>
+          <div class="lp-accordion__body">
+            صياغة عناوين جاذبة (Subject Lines)، هيكلية الرسالة الناجحة، استخدام القصص في البيع، والـ Call to Action الذي يجعل القارئ يضغط بدون تردد.
+          </div>
+        </div>
+        <div class="lp-accordion__item lp-reveal">
+          <button class="lp-accordion__header">
+            <span>الوحدة الثالثة: بناء وإدارة القوائم البريدية</span>
+            <i class="fas fa-chevron-down lp-accordion__icon"></i>
+          </button>
+          <div class="lp-accordion__body">
+            استراتيجيات جذب المشتركين، إنشLead Magnets احترافية، تصميم صفحات الهبوط للاشتراك، وإدارة القائمة لتجنب فقدان المشتركين.
+          </div>
+        </div>
+        <div class="lp-accordion__item lp-reveal">
+          <button class="lp-accordion__header">
+            <span>الوحدة الرابعة: التحليلات وتحسين الأداء</span>
+            <i class="fas fa-chevron-down lp-accordion__icon"></i>
+          </button>
+          <div class="lp-accordion__body">
+            قراءة التقارير بشكل صحيح، A/B Testing للعناوين والمحتوى، تحسين معدل الفتح والنقر، وفهم متى ترسل ومتى تتوقف.
+          </div>
+        </div>
+        <div class="lp-accordion__item lp-reveal">
+          <button class="lp-accordion__header">
+            <span>الوحدة الخامسة: الأتمتة والتسويق بالسلاسل</span>
+            <i class="fas fa-chevron-down lp-accordion__icon"></i>
+          </button>
+          <div class="lp-accordion__body">
+            بناء Sequences ترحيبية، سلاسل المبيعات الطويلة، إعادة استهداف العملاء المترددين، وربط الإيميل بأدوات التسويق الأخرى.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section class="lp-section" id="pricing">
+    <div class="lp-container">
+      <div class="lp-section__header lp-reveal">
+        <span class="lp-section__label">الاستثمار</span>
+        <h2 class="lp-section__title">اشتراك واحد مدى الحياة</h2>
+        <p class="lp-section__subtitle">ادفع مرة واحدة واحصل على كل التحديثات المستقبلية مجاناً.</p>
+      </div>
+      <div class="lp-pricing__card lp-reveal">
+        <div class="lp-pricing__badge">الأكثر مبيعاً</div>
+        <h3 class="lp-pricing__title">الباقة الاحترافية الكاملة</h3>
+        <p class="lp-pricing__desc">كل ما تحتاجه لتصبح خبير إيميل ماركتنج</p>
+        <div class="lp-pricing__price">299<span>دولار أمريكي</span></div>
+        <ul class="lp-pricing__features">
+          <li class="lp-pricing__feature"><i class="fas fa-check-circle"></i> 45 درس فيديو عالي الجودة</li>
+          <li class="lp-pricing__feature"><i class="fas fa-check-circle"></i> 20+ قالب إيميل احترافي</li>
+          <li class="lp-pricing__feature"><i class="fas fa-check-circle"></i> ملفات العمل والتمارين</li>
+          <li class="lp-pricing__feature"><i class="fas fa-check-circle"></i> شهادة إتمام معتمدة</li>
+          <li class="lp-pricing__feature"><i class="fas fa-check-circle"></i> دخول مجموعة الدعم الخاصة</li>
+          <li class="lp-pricing__feature"><i class="fas fa-check-circle"></i> تحديثات مجانية مدى الحياة</li>
+        </ul>
+        <a href="#" class="lp-button lp-button--accent lp-button--large" style="width: 100%;">
+          <i class="fas fa-lock"></i>
+          ادفع واحصل على الوصول الفوري
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="lp-section lp-section--alt" id="testimonials">
+    <div class="lp-container">
+      <div class="lp-section__header lp-reveal">
+        <span class="lp-section__label">قصص النجاح</span>
+        <h2 class="lp-section__title">ماذا يقول المتدربون؟</h2>
+        <p class="lp-section__subtitle">انضم لآلاف المسوّقين الذين غيّروا نتائجهم معنا.</p>
+      </div>
+      <div class="lp-testimonials__grid">
+        <div class="lp-testimonial lp-reveal">
+          <div class="lp-testimonial__stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="lp-testimonial__quote">"خلال شهر واحد فقط من تطبيق استراتيجيات الكورس، ارتفعت مبيعات متجري الإلكتروني 40% بفضل سلاسل الإيميل الآلية. الأكثر من رائع!"</p>
+          <div class="lp-testimonial__author">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80" alt="أحمد" class="lp-testimonial__avatar">
+            <div>
+              <div class="lp-testimonial__name">أحمد الشمري</div>
+              <div class="lp-testimonial__role">صاحب متجر إلكتروني</div>
+            </div>
+          </div>
+        </div>
+        <div class="lp-testimonial lp-reveal">
+          <div class="lp-testimonial__stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="lp-testimonial__quote">"أخيراً فهمت لماذا كانت إيميلاتي تذهب للسبام. الكورس عملي جداً والقوالب وفرت عليّ ساعات طويلة من التصميم والكتابة."</p>
+          <div class="lp-testimonial__author">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&q=80" alt="سارة" class="lp-testimonial__avatar">
+            <div>
+              <div class="lp-testimonial__name">سارة القحطاني</div>
+              <div class="lp-testimonial__role">مسوقة رقمية مستقلة</div>
+            </div>
+          </div>
+        </div>
+        <div class="lp-testimonial lp-reveal">
+          <div class="lp-testimonial__stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+          </div>
+          <p class="lp-testimonial__quote">"استثنائي! شرح المدرب واضح ومباشر. الوحدات منظمة بشكل يجعلك تنفذ وأنت تتعلم. أنصح به بشدة لكل من يريد جدية في التسويق."</p>
+          <div class="lp-testimonial__author">
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=100&q=80" alt="خالد" class="lp-testimonial__avatar">
+            <div>
+              <div class="lp-testimonial__name">خالد العنزي</div>
+              <div class="lp-testimonial__role">مدير تسويق في شركة ناشئة</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="lp-cta">
+    <div class="lp-cta__pattern"></div>
+    <div class="lp-container lp-cta__content lp-reveal">
+      <h2 class="lp-cta__title">جاهز لتتحكم في مصدر دخل حقيقي؟</h2>
+      <p class="lp-cta__desc">لا تدع منافسيك يسبقونك. انضم الآن وابدأ رحلة الإيميل ماركتنج الاحترافية معنا.</p>
+      <a href="#pricing" class="lp-button lp-button--white lp-button--large">
+        <i class="fas fa-arrow-left"></i>
+        سجّل في الكورس الآن
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer class="lp-footer">
+    <div class="lp-container">
+      <div class="lp-footer__grid">
+        <div>
+          <div class="lp-footer__brand">MailPro</div>
+          <p class="lp-footer__text">منصتك الأولى لتعلم الإيميل ماركتنج بالعربية بشكل احترافي وعملي يعتمد على النتائج.</p>
+        </div>
+        <div>
+          <h4 class="lp-footer__title">الكورس</h4>
+          <ul class="lp-footer__links">
+            <li><a href="#features">المميزات</a></li>
+            <li><a href="#curriculum">المحتوى</a></li>
+            <li><a href="#pricing">الأسعار</a></li>
+            <li><a href="#testimonials">الآراء</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="lp-footer__title">الدعم</h4>
+          <ul class="lp-footer__links">
+            <li><a href="#">الأسئلة الشائعة</a></li>
+            <li><a href="#">سياسة الاسترجاع</a></li>
+            <li><a href="#">تواصل معنا</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="lp-footer__bottom">
+        © 2024 MailPro. جميع الحقوق محفوظة.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Header scroll effect
+      const header = document.querySelector('.lp-header');
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 50) {
+          header.classList.add('lp-header--scrolled');
+        } else {
+          header.classList.remove('lp-header--scrolled');
+        }
+      });
+
+      // Accordion functionality
+      const accordions = document.querySelectorAll('.lp-accordion__header');
+      accordions.forEach(function(acc) {
+        acc.addEventListener('click', function() {
+          const item = this.parentElement;
+          const isOpen = item.classList.contains('is-open');
+          document.querySelectorAll('.lp-accordion__item').forEach(function(i) {
+            i.classList.remove('is-open');
+          });
+          if (!isOpen) {
+            item.classList.add('is-open');
+          }
+        });
+      });
+
+      // Scroll reveal using IntersectionObserver
+      const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+      const revealObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll('.lp-reveal').forEach(function(el) {
+        revealObserver.observe(el);
+      });
+    });
+  </script>
+
+</body>
+</html>
