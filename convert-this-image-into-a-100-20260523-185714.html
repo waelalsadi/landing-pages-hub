@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Genical - Mental Health & Psychology</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --lp-color-primary: #1b2d3f;
+      --lp-color-primary-dark: #152330;
+      --lp-color-primary-light: #2a3f54;
+      --lp-color-accent: #d4a24c;
+      --lp-color-accent-hover: #b88d3e;
+      --lp-color-bg: #f4f6f8;
+      --lp-color-white: #ffffff;
+      --lp-color-text: #555555;
+      --lp-color-text-dark: #1b2d3f;
+      --lp-color-text-light: #94a3b8;
+      --lp-color-border: #e2e8f0;
+
+      --lp-font-heading: 'Poppins', sans-serif;
+      --lp-font-body: 'Inter', sans-serif;
+
+      --lp-space-xs: 0.5rem;
+      --lp-space-sm: 1rem;
+      --lp-space-md: 2rem;
+      --lp-space-lg: 3rem;
+      --lp-space-xl: 5rem;
+
+      --lp-radius-sm: 6px;
+      --lp-radius-md: 12px;
+      --lp-radius-lg: 20px;
+      --lp-radius-xl: 30px;
+      --lp-radius-full: 9999px;
+
+      --lp-shadow-sm: 0 2px 10px rgba(27, 45, 63, 0.06);
+      --lp-shadow-md: 0 10px 30px rgba(27, 45, 63, 0.1);
+      --lp-shadow-lg: 0 20px 50px rgba(27, 45, 63, 0.15);
+
+      --lp-transition: all 0.3s ease;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--lp-font-body); color: var(--lp-color-text); line-height: 1.7; background-color: var(--lp-color-white); overflow-x: hidden; }
+
+    h1, h2, h3, h4, h5, h6 { font-family: var(--lp-font-heading); color: var(--lp-color-text-dark); font-weight: 600; line-height: 1.3; }
+    p { margin-bottom: var(--lp-space-sm); }
+    a { text-decoration: none; color: inherit; transition: var(--lp-transition); }
+    img { max-width: 100%; height: auto; display: block; }
+    ul { list-style: none; }
+    button { border: none; background: none; cursor: pointer; font-family: inherit; }
+
+    .lp-container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 var(--lp-space-sm); }
+    @media (min-width: 768px) { .lp-container { padding: 0 var(--lp-space-md); } }
+
+    .lp-btn { display: inline-flex; align-items: center; justify-content: center; padding: 0.875rem 2.5rem; background: var(--lp-color-accent); color: var(--lp-color-white); border-radius: var(--lp-radius-full); font-weight: 600; font-size: 0.95rem; transition: var(--lp-transition); box-shadow: 0 4px 15px rgba(212, 162, 76, 0.3); }
+    .lp-btn:hover { background: var(--lp-color-accent-hover); transform: translateY(-3px); box-shadow: 0 8px 25px rgba(212, 162, 76, 0.4); }
+    .lp-btn--outline { background: transparent; border: 2px solid var(--lp-color-accent); color: var(--lp-color-accent); box-shadow: none; }
+    .lp-btn--outline:hover { background: var(--lp-color-accent); color: var(--lp-color-white); }
+
+    .lp-reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .lp-reveal--active { opacity: 1; transform: translateY(0); }
+
+    .lp-topbar { background: var(--lp-color-primary-dark); padding: 0.5rem 0; font-size: 0.85rem; color: var(--lp-color-text-light); border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .lp-topbar__inner { display: flex; justify-content: space-between; align-items: center; }
+    .lp-topbar__email { color: var(--lp-color-text-light); display: flex; align-items: center; gap: 0.5rem; }
+    .lp-topbar__email:hover { color: var(--lp-color-accent); }
+    .lp-topbar__social { display: flex; gap: var(--lp-space-sm); }
+    .lp-topbar__social a { color: var(--lp-color-text-light); width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: var(--lp-transition); }
+    .lp-topbar__social a:hover { color: var(--lp-color-white); background: var(--lp-color-accent); }
+
+    .lp-header { background: var(--lp-color-primary); position: sticky; top: 0; z-index: 1000; transition: var(--lp-transition); }
+    .lp-header--scrolled { box-shadow: var(--lp-shadow-md); }
+    .lp-header__inner { display: flex; align-items: center; justify-content: space-between; height: 80px; }
+    .lp-header__logo { display: flex; align-items: center; gap: 0.5rem; font-family: var(--lp-font-heading); font-size: 1.5rem; font-weight: 700; color: var(--lp-color-white); }
+    .lp-header__logo-icon { width: 36px; height: 36px; background: var(--lp-color-accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--lp-color-white); font-size: 1rem; }
+    .lp-header__toggle { color: var(--lp-color-white); font-size: 1.5rem; display: flex; }
+    .lp-header__nav { position: absolute; top: 100%; left: 0; width: 100%; background: var(--lp-color-primary); max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+    .lp-header__nav--active { max-height: 400px; border-top: 1px solid rgba(255,255,255,0.1); }
+    .lp-header__menu { display: flex; flex-direction: column; padding: var(--lp-space-sm); gap: var(--lp-space-sm); }
+    .lp-header__menu a { color: var(--lp-color-white); font-size: 0.95rem; font-weight: 500; padding: 0.5rem; display: block; border-radius: var(--lp-radius-sm); }
+    .lp-header__menu a:hover, .lp-header__menu a.active { color: var(--lp-color-accent); }
+    .lp-header__contact { display: none; align-items: center; gap: var(--lp-space-sm); color: var(--lp-color-white); }
+    .lp-header__contact-icon { width: 45px; height: 45px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--lp-color-accent); font-size: 1.1rem; }
+    .lp-header__contact-text { display: flex; flex-direction: column; line-height: 1.2; }
+    .lp-header__contact-text span { font-size: 0.8rem; color: var(--lp-color-text-light); }
+    .lp-header__contact-text strong { font-size: 0.95rem; font-weight: 600; }
+
+    @media (min-width: 1024px) {
+      .lp-header__toggle { display: none; }
+      .lp-header__nav { position: static; max-height: none; overflow: visible; width: auto; background: transparent; border: none; }
+      .lp-header__menu { flex-direction: row; align-items: center; padding: 0; gap: 1.5rem; }
+      .lp-header__contact { display: flex; }
+    }
+
+    .lp-hero { position: relative; padding: 120px 0; display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden; }
+    .lp-hero__bg { position: absolute; inset: 0; background: url('https://images.unsplash.com/photo-1573497019236-17f8177b81e8?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat; }
+    .lp-hero__overlay { position: absolute; inset: 0; background: rgba(27, 45, 63, 0.75); }
+    .lp-hero__content { position: relative; z-index: 2; }
+    .lp-hero__title { color: var(--lp-color-white); font-size: 2.5rem; margin-bottom: var(--lp-space-xs); }
+    .lp-hero__breadcrumb { color: var(--lp-color-text-light); font-size: 0.9rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem; }
+    .lp-hero__breadcrumb a { color: var(--lp-color-white); }
+    .lp-hero__breadcrumb a:hover { color: var(--lp-color-accent); }
+    .lp-hero__breadcrumb span { color: var(--lp-color-accent); }
+
+    @media (min-width: 768px) {
+      .lp-hero { padding: 160px 0; }
+      .lp-hero__title { font-size: 3rem; }
+    }
+
+    .lp-about { padding: var(--lp-space-xl) 0; background: var(--lp-color-bg); }
+    .lp-about__grid { display: grid; gap: var(--lp-space-lg); }
+    .lp-about__label { display: inline-block; color: var(--lp-color-accent); font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: var(--lp-space-xs); }
+    .lp-about__title { font-size: 2rem; margin-bottom: var(--lp-space-md); }
+    .lp-about__text { margin-bottom: var(--lp-space-md); color: var(--lp-color-text); }
+    .lp-about__features { display: grid; gap: var(--lp-space-md); margin-bottom: var(--lp-space-md); }
+    .lp-about__feature { display: flex; gap: var(--lp-space-sm); align-items: flex-start; }
+    .lp-about__feature-icon { flex-shrink: 0; width: 50px; height: 50px; background: rgba(212, 162, 76, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--lp-color-accent); font-size: 1.25rem; }
+    .lp-about__feature-text h4 { font-size: 1.1rem; margin-bottom: 0.25rem; }
+    .lp-about__feature-text p { font-size: 0.9rem; color: var(--lp-color-text); margin: 0; }
+    .lp-about__quote { border-left: 3px solid var(--lp-color-accent); padding-left: var(--lp-space-md); font-style: italic; color: var(--lp-color-text); }
+    .lp-about__media { position: relative; }
+    .lp-about__image-wrapper { position: relative; border-radius: var(--lp-radius-lg); overflow: visible; }
+    .lp-about__image { border-radius: var(--lp-radius-lg); width: 100%; height: 100%; object-fit: cover; box-shadow: var(--lp-shadow-lg); }
+    .lp-about__badge { position: absolute; bottom: 20px; left: 10px; background: var(--lp-color-accent); color: var(--lp-color-white); padding: 1.25rem 1.75rem; border-radius: var(--lp-radius-md); text-align: center; box-shadow: var(--lp-shadow-md); }
+    .lp-about__badge-number { display: block; font-family: var(--lp-font-heading); font-size: 1.75rem; font-weight: 700; line-height: 1; }
+    .lp-about__badge-text { display: block; font-size: 0.85rem; opacity: 0.95; }
+
+    @media (min-width: 768px) {
+      .lp-about__features { grid-template-columns: 1fr 1fr; }
+      .lp-about__badge { left: -20px; bottom: 20px; }
+    }
+    @media (min-width: 1024px) {
+      .lp-about__grid { grid-template-columns: 1.1fr 0.9fr; align-items: center; }
+      .lp-about__title { font-size: 2.5rem; }
+    }
+
+    .lp-stats { position: relative; padding: var(--lp-space-xl) 0; color: var(--lp-color-white); overflow: hidden; }
+    .lp-stats__bg { position: absolute; inset: 0; background: url('https://images.unsplash.com/photo-1573497019236-17f8177b81e8?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat fixed; }
+    .lp-stats__overlay { position: absolute; inset: 0; background: rgba(27, 45, 63, 0.9); }
+    .lp-stats__grid { position: relative; display: grid; gap: var(--lp-space-lg); text-align: center; }
+    .lp-stats__item { display: flex; flex-direction: column; align-items: center; }
+    .lp-stats__icon { width: 70px; height: 70px; background: rgba(212, 162, 76, 0.2); border: 2px solid var(--lp-color-accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--lp-color-accent); font-size: 1.5rem; margin-bottom: var(--lp-space-sm); transition: var(--lp-transition); }
+    .lp-stats__item:hover .lp-stats__icon { background: var(--lp-color-accent); color: var(--lp-color-white); transform: rotateY(180deg); }
+    .lp-stats__number { font-family: var(--lp-font-heading); font-size: 2rem; font-weight: 700; margin-bottom: 0.25rem; }
+    .lp-stats__label { font-size: 0.95rem; opacity: 0.9; }
+
+    @media (min-width: 768px) { .lp-stats__grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1024px) { .lp-stats__grid { grid-template-columns: repeat(4, 1fr); } }
+
+    .lp-mental-health { padding: var(--lp-space-xl) 0; background: var(--lp-color-white); }
+    .lp-mental-health__grid { display: grid; gap: var(--lp-space-lg); align-items: center; }
+    .lp-mental-health__media { position: relative; max-width: 500px; margin: 0 auto; padding-bottom: 40px; }
+    .lp-mental-health__image-main { border-radius: var(--lp-radius-lg); overflow: hidden; box-shadow: var(--lp-shadow-lg); }
+    .lp-mental-health__image-main img { width: 100%; height: auto; object-fit: cover; }
+    .lp-mental-health__image-sub { position: absolute; bottom: 0; right: -10px; width: 180px; border: 5px solid var(--lp-color-white); border-radius: var(--lp-radius-md); overflow: hidden; box-shadow: var(--lp-shadow-md); }
+    .lp-mental-health__image-sub img { width: 100%; height: auto; }
+    .lp-mental-health__label { color: var(--lp-color-accent); font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: var(--lp-space-xs); }
+    .lp-mental-health__title { font-size: 1.8rem; margin-bottom: var(--lp-space-md); }
+    .lp-mental-health__text { margin-bottom: var(--lp-space-md); }
+    .lp-mental-health__lists { display: grid; gap: var(--lp-space-md); margin-bottom: var(--lp-space-md); }
+    .lp-mental-health__list h4 { font-size: 1.1rem; margin-bottom: var(--lp-space-sm); }
+    .lp-mental-health__list ul { display: flex; flex-direction: column; gap: 0.5rem; }
+    .lp-mental-health__list li { display: flex; align-items: center; gap: 0.5rem; font-size: 0.95rem; }
+    .lp-mental-health__list li i { color: var(--lp-color-accent); font-size: 1rem; }
+    .lp-mental-health__progress-list { display: flex; flex-direction: column; gap: var(--lp-space-sm); }
+    .lp-mental-health__progress-item { display: flex; flex-direction: column; gap: 0.5rem; }
+    .lp-mental-health__progress-header { display: flex; justify-content: space-between; font-size: 0.95rem; font-weight: 600; color: var(--lp-color-text-dark); }
+    .lp-mental-health__progress-track { width: 100%; height: 8px; background: var(--lp-color-border); border-radius: var(--lp-radius-full); overflow: hidden; }
+    .lp-mental-health__progress-fill { height: 100%; background: var(--lp-color-accent); border-radius: var(--lp-radius-full); width: 0; transition: width 1.2s ease-out; }
+    .lp-mental-health__progress-fill.is-animated[data-width="90"] { width: 90%; }
+    .lp-mental-health__progress-fill.is-animated[data-width="95"] { width: 95%; }
+    .lp-mental-health__progress-fill.is-animated[data-width="92"] { width: 92%; }
+
+    @media (min-width: 768px) {
+      .lp-mental-health__lists { grid-template-columns: 1fr 1fr; }
+      .lp-mental-health__media { margin: 0; }
+    }
+    @media (min-width: 1024px) {
+      .lp-mental-health__grid { grid-template-columns: 1fr 1fr; gap: var(--lp-space-xl); }
+      .lp-mental-health__title { font-size: 2.25rem; }
+      .lp-mental-health__image-sub { width: 220px; right: -30px; }
+    }
+
+    .lp-testimonials { padding: var(--lp-space-xl) 0; background: var(--lp-color-bg); }
+    .lp-testimonials__grid { display: grid; gap: var(--lp-space-md); }
+    .lp-testimonials__card { background: var(--lp-color-primary); padding: var(--lp-space-lg); border-radius: var(--lp-radius-md); color: var(--lp-color-white); position: relative; box-shadow: var(--lp-shadow-md); transition: var(--lp-transition); }
+    .lp-testimonials__card:hover { transform: translateY(-5px); box-shadow: var(--lp-shadow-lg); }
+    .lp-testimonials__icon { color: var(--lp-color-accent); font-size: 2.5rem; margin-bottom: var(--lp-space-sm); opacity: 0.8; }
+    .lp-testimonials__text { font-size: 0.95rem; line-height: 1.8; margin-bottom: var(--lp-space-md); opacity: 0.9; }
+    .lp-testimonials__author { display: flex; align-items: center; gap: var(--lp-space-sm); }
+    .lp-testimonials__author img { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 2px solid var(--lp-color-accent); }
+    .lp-testimonials__author span { font-weight: 600; font-size: 1rem; }
+
+    @media (min-width: 768px) { .lp-testimonials__grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1024px) { .lp-testimonials__grid { grid-template-columns: repeat(3, 1fr); } }
+
+    .lp-partners { padding: var(--lp-space-xl) 0; background: var(--lp-color-primary); color: var(--lp-color-white); }
+    .lp-partners__grid { display: grid; gap: var(--lp-space-lg); align-items: center; }
+    .lp-partners__label { color: var(--lp-color-accent); font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: var(--lp-space-xs); }
+    .lp-partners__title { font-size: 1.8rem; color: var(--lp-color-white); margin-bottom: var(--lp-space-sm); }
+    .lp-partners__text { opacity: 0.8; font-size: 0.95rem; max-width: 400px; }
+    .lp-partners__logos { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--lp-space-md); align-items: center; }
+    .lp-partners__logo { display: flex; align-items: center; justify-content: center; padding: var(--lp-space-sm); background: rgba(255,255,255,0.05); border-radius: var(--lp-radius-sm); height: 60px; font-weight: 700; font-size: 1rem; color: rgba(255,255,255,0.7); transition: var(--lp-transition); border: 1px solid rgba(255,255,255,0.1); }
+    .lp-partners__logo:hover { background: rgba(255,255,255,0.1); color: var(--lp-color-white); border-color: var(--lp-color-accent); }
+
+    @media (min-width: 768px) { .lp-partners__logos { grid-template-columns: repeat(3, 1fr); } }
+    @media (min-width: 1024px) { .lp-partners__grid { grid-template-columns: 0.8fr 1fr; } .lp-partners__title { font-size: 2.25rem; } }
+
+    .lp-team { padding: var(--lp-space-xl) 0; background: var(--lp-color-white); }
+    .lp-team__header { text-align: center; max-width: 600px; margin: 0 auto var(--lp-space-lg); }
+    .lp-team__label { color: var(--lp-color-accent); font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: var(--lp-space-xs); }
+    .lp-team__title { font-size: 2rem; margin-bottom: var(--lp-space-sm); }
+    .lp-team__subtitle { color: var(--lp-color-text); font-size: 0.95rem; }
+    .lp-team__grid { display: grid; gap: var(--lp-space-md); margin-bottom: var(--lp-space-lg); }
+    .lp-team__card { background: var(--lp-color-white); border-radius: var(--lp-radius-lg); overflow: hidden; box-shadow: var(--lp-shadow-sm); transition: var(--lp-transition); }
+    .lp-team__card:hover { transform: translateY(-8px); box-shadow: var(--lp-shadow-lg); }
+    .lp-team__image { height: 280px; overflow: hidden; }
+    .lp-team__image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+    .lp-team__card:hover .lp-team__image img { transform: scale(1.05); }
+    .lp-team__info { background: var(--lp-color-primary); padding: var(--lp-space-md); text-align: center; color: var(--lp-color-white); }
+    .lp-team__info h4 { color: var(--lp-color-white); font-size: 1.2rem; margin-bottom: 0.25rem; }
+    .lp-team__info span { font-size: 0.9rem; opacity: 0.8; }
+    .lp-team__footer { text-align: center; }
+
+    @media (min-width: 768px) { .lp-team__grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1024px) { .lp-team__grid { grid-template-columns: repeat(4, 1fr); } .lp-team__title { font-size: 2.5rem; } }
+
+    .lp-footer { background: var(--lp-color-primary-dark); color: var(--lp-color-text-light); padding-top: var(--lp-space-xl); }
+    .lp-footer__grid { display: grid; gap: var(--lp-space-lg); margin-bottom: var(--lp-space-lg); }
+    .lp-footer__brand .lp-footer__logo { display: flex; align-items: center; gap: 0.5rem; font-family: var(--lp-font-heading); font-size: 1.5rem; font-weight: 700; color: var(--lp-color-white); margin-bottom: var(--lp-space-sm); }
+    .lp-footer__brand p { font-size: 0.9rem; line-height: 1.8; margin-bottom: var(--lp-space-md); max-width: 300px; }
+    .lp-footer__social { display: flex; gap: var(--lp-space-sm); }
+    .lp-footer__social a { width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.1); color: var(--lp-color-white); display: flex; align-items: center; justify-content: center; transition: var(--lp-transition); }
+    .lp-footer__social a:hover { background: var(--lp-color-accent); transform: translateY(-3px); }
+    .lp-footer__column h4 { color: var(--lp-color-white); font-size: 1.1rem; margin-bottom: var(--lp-space-md); position: relative; padding-bottom: var(--lp-space-xs); }
+    .lp-footer__column h4::after { content: ''; position: absolute; bottom: 0; left: 0; width: 40px; height: 2px; background: var(--lp-color-accent); }
+    .lp-footer__column ul { display: flex; flex-direction: column; gap: 0.75rem; }
+    .lp-footer__column a { font-size: 0.9rem; transition: var(--lp-transition); display: inline-flex; align-items: center; gap: 0.5rem; }
+    .lp-footer__column a:hover { color: var(--lp-color-accent); padding-left: 5px; }
+    .lp-footer__column a i { font-size: 0.7rem; color: var(--lp-color-accent); }
+    .lp-footer__column li { display: flex; align-items: flex-start; gap: 0.75rem; font-size: 0.9rem; }
+    .lp-footer__column li i { color: var(--lp-color-accent); margin-top: 0.3rem; font-size: 0.9rem; }
+    .lp-footer__bottom { border-top: 1px solid rgba(255,255,255,0.1); padding: var(--lp-space-md) 0; text-align: center; font-size: 0.85rem; color: rgba(255,255,255,0.5); }
+
+    @media (min-width: 768px) { .lp-footer__grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1024px) { .lp-footer__grid { grid-template-columns: 2fr 1fr 1fr 1.5fr; } }
+  </style>
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <div class="lp-topbar">
+    <div class="lp-container">
+      <div class="lp-topbar__inner">
+        <a href="mailto:info@genical.com" class="lp-topbar__email">
+          <i class="fas fa-envelope"></i>
+          <span>info@genical.com</span>
+        </a>
+        <div class="lp-topbar__social">
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="lp-header">
+    <div class="lp-container">
+      <div class="lp-header__inner">
+        <a href="#" class="lp-header__logo">
+          <span class="lp-header__logo-icon"><i class="fas fa-brain"></i></span>
+          Genical
+        </a>
+        <button class="lp-header__toggle" aria-label="Toggle Menu">
+          <i class="fas fa-bars"></i>
+        </button>
+        <nav class="lp-header__nav">
+          <ul class="lp-header__menu">
+            <li><a href="#">Home</a></li>
+            <li><a href="#" class="active">About Us</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Pages</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </nav>
+        <div class="lp-header__contact">
+          <div class="lp-header__contact-icon"><i class="fas fa-phone-alt"></i></div>
+          <div class="lp-header__contact-text">
+            <span>Call Us</span>
+            <strong>+1 234 567 890</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="lp-hero">
+      <div class="lp-hero__bg"></div>
+      <div class="lp-hero__overlay"></div>
+      <div class="lp-container">
+        <div class="lp-hero__content lp-reveal">
+          <h1 class="lp-hero__title">About Genical</h1>
+          <nav class="lp-hero__breadcrumb">
+            <a href="#">Home</a>
+            <span>/</span>
+            <span>About Us</span>
+          </nav>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="lp-about">
+      <div class="lp-container">
+        <div class="lp-about__grid">
+          <div class="lp-about__content lp-reveal">
+            <span class="lp-about__label">About Genical</span>
+            <h2 class="lp-about__title">We Are Here for You</h2>
+            <p class="lp-about__text">When it comes to choosing a mental health provider, we know you have options. Our team of experienced psychiatrists, psychologists, and therapists are dedicated to providing compassionate, personalized care. We believe everyone deserves access to high-quality mental health services.</p>
+            <div class="lp-about__features">
+              <div class="lp-about__feature">
+                <div class="lp-about__feature-icon"><i class="fas fa-brain"></i></div>
+                <div class="lp-about__feature-text">
+                  <h4>Expert Psychologist</h4>
+                  <p>Our team includes board-certified psychiatrists and licensed clinical psychologists.</p>
+                </div>
+              </div>
+              <div class="lp-about__feature">
+                <div class="lp-about__feature-icon"><i class="fas fa-shield-alt"></i></div>
+                <div class="lp-about__feature-text">
+                  <h4>Confidentiality</h4>
+                  <p>Your privacy is our priority. All sessions are strictly confidential.</p>
+                </div>
+              </div>
+            </div>
+            <blockquote class="lp-about__quote">
+              <p>"Professional, empathetic, and incredibly helpful. The team at Genical truly listens and provides meaningful guidance that has made a real difference in my life."</p>
+            </blockquote>
+          </div>
+          <div class="lp-about__media lp-reveal">
+            <div class="lp-about__image-wrapper">
+              <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=800&q=80" alt="Therapy Session" class="lp-about__image">
+              <div class="lp-about__badge">
+                <span class="lp-about__badge-number">13 Th</span>
+                <span class="lp-about__badge-text">Years Experience</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="lp-stats">
+      <div class="lp-stats__bg"></div>
+      <div class="lp-stats__overlay"></div>
+      <div class="lp-container">
+        <div class="lp-stats__grid">
+          <div class="lp-stats__item lp-reveal">
+            <div class="lp-stats__icon"><i class="fas fa-award"></i></div>
+            <div class="lp-stats__number">13 Th</div>
+            <div class="lp-stats__label">Years Experience</div>
+          </div>
+          <div class="lp-stats__item lp-reveal">
+            <div class="lp-stats__icon"><i class="fas fa-users"></i></div>
+            <div class="lp-stats__number">750+</div>
+            <div class="lp-stats__label">Happy Client</div>
+          </div>
+          <div class="lp-stats__item lp-reveal">
+            <div class="lp-stats__icon"><i class="fas fa-check-circle"></i></div>
+            <div class="lp-stats__number">96%</div>
+            <div class="lp-stats__label">Problem Solved</div>
+          </div>
+          <div class="lp-stats__item lp-reveal">
+            <div class="lp-stats__icon"><i class="fas fa-user-md"></i></div>
+            <div class="lp-stats__number">120+</div>
+            <div class="lp-stats__label">Psychologist</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mental Health Section -->
+    <section class="lp-mental-health">
+      <div class="lp-container">
+        <div class="lp-mental-health__grid">
+          <div class="lp-mental-health__media lp-reveal">
+            <div class="lp-mental-health__image-main">
+              <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=800&q=80" alt="Happy couple">
+            </div>
+            <div class="lp-mental-health__image-sub">
+              <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=400&q=80" alt="Team hands">
+            </div>
+          </div>
+          <div class="lp-mental-health__content lp-reveal">
+            <span class="lp-mental-health__label">Why Choose Genical</span>
+            <h2 class="lp-mental-health__title">Taking Care of Your Mental Health</h2>
+            <p class="lp-mental-health__text">We provide a full range of mental health services to help you overcome life's challenges. Our team works collaboratively to create personalized treatment plans that address your unique needs and goals.</p>
+            <div class="lp-mental-health__lists">
+              <div class="lp-mental-health__list">
+                <h4>Our Vision</h4>
+                <ul>
+                  <li><i class="fas fa-check-circle"></i> To be the leading mental health provider.</li>
+                  <li><i class="fas fa-check-circle"></i> Promote mental wellness in our community.</li>
+                  <li><i class="fas fa-check-circle"></i> Provide accessible care for all.</li>
+                </ul>
+              </div>
+              <div class="lp-mental-health__list">
+                <h4>Our Mission</h4>
+                <ul>
+                  <li><i class="fas fa-check-circle"></i> Deliver compassionate, comprehensive care.</li>
+                  <li><i class="fas fa-check-circle"></i> Empower individuals through education.</li>
+                  <li><i class="fas fa-check-circle"></i> Remove stigma associated with mental health.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="lp-mental-health__progress-list">
+              <div class="lp-mental-health__progress-item">
+                <div class="lp-mental-health__progress-header">
+                  <span>Confidentiality</span>
+                  <span>90%</span>
+                </div>
+                <div class="lp-mental-health__progress-track">
+                  <div class="lp-mental-health__progress-fill" data-width="90"></div>
+                </div>
+              </div>
+              <div class="lp-mental-health__progress-item">
+                <div class="lp-mental-health__progress-header">
+                  <span>Therapy</span>
+                  <span>95%</span>
+                </div>
+                <div class="lp-mental-health__progress-track">
+                  <div class="lp-mental-health__progress-fill" data-width="95"></div>
+                </div>
+              </div>
+              <div class="lp-mental-health__progress-item">
+                <div class="lp-mental-health__progress-header">
+                  <span>Counseling</span>
+                  <span>92%</span>
+                </div>
+                <div class="lp-mental-health__progress-track">
+                  <div class="lp-mental-health__progress-fill" data-width="92"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="lp-testimonials">
+      <div class="lp-container">
+        <div class="lp-testimonials__grid">
+          <div class="lp-testimonials__card lp-reveal">
+            <div class="lp-testimonials__icon"><i class="fas fa-quote-left"></i></div>
+            <p class="lp-testimonials__text">Genical provides exceptional care. The therapists are knowledgeable, kind, and truly invested in their clients' well-being. I highly recommend their services to anyone seeking support.</p>
+            <div class="lp-testimonials__author">
+              <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=100&q=80" alt="Matthew King">
+              <span>Matthew King</span>
+            </div>
+          </div>
+          <div class="lp-testimonials__card lp-reveal">
+            <div class="lp-testimonials__icon"><i class="fas fa-quote-left"></i></div>
+            <p class="lp-testimonials__text">A wonderful experience from start to finish. The staff made me feel comfortable and understood. Their approach to mental health is modern, effective, and deeply compassionate.</p>
+            <div class="lp-testimonials__author">
+              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&q=80" alt="Amy Clara">
+              <span>Amy Clara</span>
+            </div>
+          </div>
+          <div class="lp-testimonials__card lp-reveal">
+            <div class="lp-testimonials__icon"><i class="fas fa-quote-left"></i></div>
+            <p class="lp-testimonials__text">I have seen tremendous improvement in my mental health since I started sessions here. The psychologists are professional and the environment is warm and welcoming.</p>
+            <div class="lp-testimonials__author">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80" alt="Eddie Gordo">
+              <span>Eddie Gordo</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="lp-partners">
+      <div class="lp-container">
+        <div class="lp-partners__grid">
+          <div class="lp-partners__content lp-reveal">
+            <span class="lp-partners__label">Our Partner</span>
+            <h2 class="lp-partners__title">In Collaboration With</h2>
+            <p class="lp-partners__text">We are proud to collaborate with leading organizations in the mental health and education sectors to bring you the best care possible.</p>
+          </div>
+          <div class="lp-partners__logos lp-reveal">
+            <div class="lp-partners__logo">Artdemy</div>
+            <div class="lp-partners__logo">Learnpress</div>
+            <div class="lp-partners__logo">The7 Media</div>
+            <div class="lp-partners__logo">Mobily Group</div>
+            <div class="lp-partners__logo">Strong Deal</div>
+            <div class="lp-partners__logo">The7 Seo</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="lp-team">
+      <div class="lp-container">
+        <div class="lp-team__header lp-reveal">
+          <span class="lp-team__label">Our Psychologist</span>
+          <h2 class="lp-team__title">The Experienced Psychologists</h2>
+          <p class="lp-team__subtitle">Our team of certified professionals is dedicated to helping you navigate life's challenges with expert guidance and genuine care.</p>
+        </div>
+        <div class="lp-team__grid">
+          <div class="lp-team__card lp-reveal">
+            <div class="lp-team__image">
+              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80" alt="Emily Spector">
+            </div>
+            <div class="lp-team__info">
+              <h4>Emily Spector</h4>
+              <span>Psychologist</span>
+            </div>
+          </div>
+          <div class="lp-team__card lp-reveal">
+            <div class="lp-team__image">
+              <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&q=80" alt="Chris Hemmer">
+            </div>
+            <div class="lp-team__info">
+              <h4>Chris Hemmer</h4>
+              <span>Founder</span>
+            </div>
+          </div>
+          <div class="lp-team__card lp-reveal">
+            <div class="lp-team__image">
+              <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=400&q=80" alt="Amy Clara">
+            </div>
+            <div class="lp-team__info">
+              <h4>Amy Clara</h4>
+              <span>Psychologist</span>
+            </div>
+          </div>
+          <div class="lp-team__card lp-reveal">
+            <div class="lp-team__image">
+              <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=400&q=80" alt="Beatriz Kiddo">
+            </div>
+            <div class="lp-team__info">
+              <h4>Beatriz Kiddo</h4>
+              <span>Therapist</span>
+            </div>
+          </div>
+        </div>
+        <div class="lp-team__footer lp-reveal">
+          <a href="#" class="lp-btn lp-btn--outline">View All Team</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="lp-footer">
+    <div class="lp-container">
+      <div class="lp-footer__grid">
+        <div class="lp-footer__brand">
+          <a href="#" class="lp-footer__logo">
+            <span class="lp-header__logo-icon"><i class="fas fa-brain"></i></span>
+            Genical
+          </a>
+          <p>Genical is a leading mental health clinic committed to providing compassionate, professional care. Our team of experts is here to support your journey to wellness.</p>
+          <div class="lp-footer__social">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="lp-footer__column">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Home</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> About</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Services</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Psychologist</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Appointment</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> FAQ</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Contact us</a></li>
+          </ul>
+        </div>
+        <div class="lp-footer__column">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Individual Therapy</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Family Therapy</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Couple Therapy</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Children Therapy</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Group Therapy</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Career Counseling</a></li>
+          </ul>
+        </div>
+        <div class="lp-footer__column">
+          <h4>Information</h4>
+          <ul>
+            <li><i class="fas fa-phone"></i> +1 234 567 890</li>
+            <li><i class="fas fa-envelope"></i> info@genical.com</li>
+            <li><i class="fas fa-map-marker-alt"></i> 123 Health St, Medical City</li>
+            <li><i class="fas fa-clock"></i> Mon - Fri : 9:00 - 20:00</li>
+            <li><i class="fas fa-clock"></i> Saturday : 10:00 - 18:00</li>
+            <li><i class="fas fa-clock"></i> Sunday : Closed</li>
+          </ul>
+        </div>
+      </div>
+      <div class="lp-footer__bottom">
+        <p>Copyright 2023 All Right Reserved Design by ThemeBoss</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const toggle = document.querySelector('.lp-header__toggle');
+      const nav = document.querySelector('.lp-header__nav');
+      if (toggle && nav) {
+        toggle.addEventListener('click', function() {
+          nav.classList.toggle('lp-header__nav--active');
+          const icon = toggle.querySelector('i');
+          if (icon) {
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+          }
+        });
+      }
+
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('lp-reveal--active');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.lp-reveal').forEach(el => revealObserver.observe(el));
+
+      const progressObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-animated');
+            progressObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.5 });
+
+      document.querySelectorAll('.lp-mental-health__progress-fill').forEach(el => progressObserver.observe(el));
+
+      const header = document.querySelector('.lp-header');
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 50) {
+          header.classList.add('lp-header--scrolled');
+        } else {
+          header.classList.remove('lp-header--scrolled');
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
