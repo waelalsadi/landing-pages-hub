@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Robert - Your Legal Solutions Partner</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --lp-primary: #0b0d12;
+      --lp-secondary: #161920;
+      --lp-accent: #d4af37;
+      --lp-accent-hover: #b5952f;
+      --lp-accent-light: #f3e5ab;
+      --lp-bg-light: #f3f4f6;
+      --lp-bg-white: #ffffff;
+      --lp-text-primary: #111827;
+      --lp-text-secondary: #6b7280;
+      --lp-text-muted: #9ca3af;
+      --lp-text-light: #ffffff;
+      --lp-border-radius: 16px;
+      --lp-border-radius-lg: 24px;
+      --lp-border-radius-xl: 40px;
+      --lp-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --lp-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --lp-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --lp-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      --lp-transition: all 0.3s ease;
+      --lp-font-body: 'Inter', sans-serif;
+      --lp-font-heading: 'Poppins', sans-serif;
+      --lp-container-padding: 1.5rem;
+      --lp-section-padding: 4rem 0;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--lp-font-body);
+      background-color: #e5e7eb;
+      color: var(--lp-text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    button {
+      border: none;
+      background: none;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .lp-page-wrapper {
+      max-width: 1400px;
+      margin: 0 auto;
+      background-color: var(--lp-bg-light);
+      overflow: hidden;
+      position: relative;
+    }
+
+    @media (min-width: 1024px) {
+      .lp-page-wrapper {
+        margin: 20px auto;
+        border-radius: var(--lp-border-radius-xl);
+        box-shadow: 0 25px 80px rgba(0, 0, 0, 0.12);
+      }
+    }
+
+    .lp-container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--lp-container-padding);
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--lp-font-heading);
+      font-weight: 600;
+      line-height: 1.2;
+    }
+
+    .lp-reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .lp-reveal--visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .lp-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: var(--lp-transition);
+    }
+
+    .lp-btn--primary {
+      background-color: var(--lp-accent);
+      color: var(--lp-primary);
+    }
+
+    .lp-btn--primary:hover {
+      background-color: var(--lp-accent-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(212, 175, 55, 0.25);
+    }
+
+    .lp-btn--outline {
+      background-color: transparent;
+      color: var(--lp-text-light);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .lp-btn--outline:hover {
+      border-color: var(--lp-accent);
+      color: var(--lp-accent);
+    }
+
+    .lp-btn--light {
+      background-color: var(--lp-bg-white);
+      color: var(--lp-text-primary);
+      border: 1px solid #e5e7eb;
+    }
+
+    .lp-btn--light:hover {
+      background-color: var(--lp-accent);
+      color: var(--lp-primary);
+      border-color: var(--lp-accent);
+    }
+
+    .lp-btn--icon {
+      width: 40px;
+      height: 40px;
+      padding: 0;
+      justify-content: center;
+      border-radius: 50%;
+    }
+
+    /* Navbar */
+    .lp-navbar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 1.5rem 0;
+    }
+
+    .lp-navbar__container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .lp-navbar__logo {
+      font-family: var(--lp-font-heading);
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--lp-text-light);
+    }
+
+    .lp-navbar__menu {
+      display: none;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .lp-navbar__menu a {
+      color: var(--lp-text-muted);
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: var(--lp-transition);
+    }
+
+    .lp-navbar__menu a:hover {
+      color: var(--lp-text-light);
+    }
+
+    .lp-navbar__actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .lp-navbar__toggle {
+      color: var(--lp-text-light);
+      font-size: 1.5rem;
+      display: block;
+    }
+
+    @media (min-width: 1024px) {
+      .lp-navbar__menu {
+        display: flex;
+        background-color: rgba(255, 255, 255, 0.05);
+        padding: 0.75rem 2rem;
+        border-radius: 50px;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .lp-navbar__toggle {
+        display: none;
+      }
+    }
+
+    /* Hero Section */
+    .lp-hero {
+      position: relative;
+      background-color: var(--lp-primary);
+      color: var(--lp-text-light);
+      padding-top: 8rem;
+      padding-bottom: 0;
+      overflow: hidden;
+    }
+
+    .lp-hero__bg {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .lp-hero__bg-icon {
+      position: absolute;
+      top: 45%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 20rem;
+      color: rgba(255, 255, 255, 0.04);
+      z-index: 1;
+    }
+
+    .lp-hero__bg-glow {
+      position: absolute;
+      bottom: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 700px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(212, 175, 55, 0.12) 0%, transparent 70%);
+      z-index: 1;
+    }
+
+    .lp-hero__container {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      align-items: end;
+    }
+
+    .lp-hero__content {
+      padding-bottom: 2rem;
+      position: relative;
+      z-index: 3;
+    }
+
+    .lp-hero__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 1rem;
+      background-color: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 50px;
+      font-size: 0.75rem;
+      color: var(--lp-text-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .lp-hero__badge i {
+      color: var(--lp-accent);
+    }
+
+    .lp-hero__title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      max-width: 400px;
+    }
+
+    .lp-hero__title-accent {
+      color: var(--lp-accent);
+      display: block;
+    }
+
+    .lp-hero__image-area {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      height: 350px;
+      order: -1;
+    }
+
+    .lp-hero__image {
+      height: 100%;
+      width: auto;
+      object-fit: cover;
+      object-position: top;
+      mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
+    }
+
+    .lp-hero__review {
+      position: absolute;
+      top: 10%;
+      right: 0;
+      background-color: rgba(22, 25, 32, 0.85);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: var(--lp-border-radius);
+      padding: 1rem;
+      max-width: 200px;
+      z-index: 5;
+    }
+
+    .lp-hero__review-header {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .lp-review-icons {
+      display: flex;
+      gap: 4px;
+    }
+
+    .lp-hero__review-icon {
+      width: 24px;
+      height: 24px;
+      background: conic-gradient(from 0deg, #4285F4, #34A853, #FBBC05, #EA4335, #4285F4);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      color: white;
+    }
+
+    .lp-hero__review-icon--fb {
+      background: #1877F2;
+    }
+
+    .lp-hero__review-stars {
+      color: var(--lp-accent);
+      font-size: 0.7rem;
+    }
+
+    .lp-review-meta {
+      font-size: 0.65rem;
+      color: var(--lp-text-muted);
+    }
+
+    .lp-hero__review-text {
+      font-size: 0.75rem;
+      color: var(--lp-text-muted);
+      line-height: 1.4;
+    }
+
+    .lp-hero__cta {
+      margin-top: 1.5rem;
+    }
+
+    .lp-hero__stats {
+      position: relative;
+      z-index: 10;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      padding: 2rem 0 3rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      margin-top: -2rem;
+    }
+
+    .lp-hero__stat {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .lp-hero__stat-icon {
+      font-size: 1.5rem;
+      color: var(--lp-accent);
+      opacity: 0.8;
+    }
+
+    .lp-hero__stat-info h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--lp-text-light);
+    }
+
+    .lp-hero__stat-info p {
+      font-size: 0.8rem;
+      color: var(--lp-text-muted);
+    }
+
+    @media (min-width: 768px) {
+      .lp-hero__stats {
+        grid-template-columns: repeat(4, 1fr);
+        margin-top: 0;
+      }
+
+      .lp-hero__title {
+        font-size: 3.5rem;
+      }
+
+      .lp-hero__image-area {
+        height: 450px;
+        order: 0;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .lp-hero__container {
+        grid-template-columns: 1fr 1fr;
+        min-height: 650px;
+      }
+
+      .lp-hero__image-area {
+        height: 600px;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 500px;
+        pointer-events: none;
+      }
+
+      .lp-hero__content {
+        padding-bottom: 6rem;
+      }
+
+      .lp-hero__review {
+        right: -40px;
+        top: 25%;
+      }
+    }
+
+    /* About Section */
+    .lp-about {
+      background-color: var(--lp-bg-light);
+      padding: var(--lp-section-padding);
+    }
+
+    .lp-about__container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .lp-about__label {
+      display: inline-block;
+      padding: 0.4rem 1rem;
+      border: 1px solid #d1d5db;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--lp-text-secondary);
+      margin-bottom: 1rem;
+    }
+
+    .lp-about__title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--lp-text-primary);
+      max-width: 300px;
+    }
+
+    .lp-about__body {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .lp-about__text {
+      color: var(--lp-text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    @media (min-width: 768px) {
+      .lp-about__container {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .lp-about__title {
+        font-size: 2.5rem;
+      }
+    }
+
+    /* Services Section */
+    .lp-services {
+      position: relative;
+      background-color: var(--lp-primary);
+      color: var(--lp-text-light);
+      padding: var(--lp-section-padding);
+      overflow: hidden;
+    }
+
+    .lp-services__bg {
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(rgba(11, 13, 18, 0.85), rgba(11, 13, 18, 0.95)), url('https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1200&q=80');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.5;
+      z-index: 1;
+    }
+
+    .lp-services__container {
+      position: relative;
+      z-index: 2;
+    }
+
+    .lp-services__header {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .lp-services__title-area {
+      max-width: 400px;
+    }
+
+    .lp-services__label {
+      display: inline-block;
+      padding: 0.4rem 1rem;
+      background-color: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--lp-text-muted);
+      margin-bottom: 1rem;
+    }
+
+    .lp-services__title {
+      font-size: 2rem;
+      font-weight: 700;
+    }
+
+    .lp-services__title-accent {
+      color: var(--lp-accent);
+    }
+
+    .lp-services__nav {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .lp-services__nav-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: var(--lp-text-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--lp-transition);
+    }
+
+    .lp-services__nav-btn:hover {
+      background-color: var(--lp-accent);
+      border-color: var(--lp-accent);
+      color: var(--lp-primary);
+    }
+
+    .lp-services-intro-text {
+      color: var(--lp-text-muted);
+      font-size: 0.9rem;
+      max-width: 300px;
+    }
+
+    .lp-services__track-wrapper {
+      position: relative;
+    }
+
+    .lp-services__track {
+      display: flex;
+      gap: 1.5rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      padding-bottom: 2rem;
+    }
+
+    .lp-services__track::-webkit-scrollbar {
+      display: none;
+    }
+
+    .lp-services__card {
+      flex: 0 0 85%;
+      max-width: 320px;
+      background-color: var(--lp-bg-white);
+      color: var(--lp-text-primary);
+      border-radius: var(--lp-border-radius-lg);
+      padding: 1.5rem;
+      scroll-snap-align: start;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      transition: var(--lp-transition);
+    }
+
+    .lp-services__card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--lp-shadow-xl);
+    }
+
+    .lp-services__card-tag {
+      display: inline-block;
+      padding: 0.3rem 0.8rem;
+      background-color: #f3f4f6;
+      border-radius: 50px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--lp-text-secondary);
+      align-self: flex-start;
+    }
+
+    .lp-services__card-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+
+    .lp-services__card-image {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: var(--lp-border-radius);
+    }
+
+    .lp-services__card-text {
+      font-size: 0.85rem;
+      color: var(--lp-text-secondary);
+      line-height: 1.6;
+    }
+
+    .lp-services__card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: auto;
+    }
+
+    .lp-card-footer-text {
+      font-size: 0.8rem;
+      color: var(--lp-text-secondary);
+    }
+
+    .lp-services__card-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background-color: #f3f4f6;
+      color: var(--lp-text-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--lp-transition);
+    }
+
+    .lp-services__card-btn:hover {
+      background-color: var(--lp-accent);
+      color: var(--lp-primary);
+    }
+
+    .lp-services__drag-btn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 60px;
+      height: 60px;
+      background-color: var(--lp-bg-white);
+      color: var(--lp-text-primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+      box-shadow: var(--lp-shadow-lg);
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    @media (min-width: 768px) {
+      .lp-services__card {
+        flex: 0 0 45%;
+      }
+
+      .lp-services__header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-end;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .lp-services__card {
+        flex: 0 0 300px;
+      }
+    }
+
+    /* Works Section */
+    .lp-works {
+      background-color: var(--lp-bg-light);
+      padding: var(--lp-section-padding);
+    }
+
+    .lp-works__header {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .lp-works__label {
+      display: inline-block;
+      padding: 0.4rem 1rem;
+      border: 1px solid #d1d5db;
+      border-radius: 50px;
+      font-size: 0.65rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--lp-text-secondary);
+      margin-bottom: 1rem;
+    }
+
+    .lp-works__title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--lp-text-primary);
+      max-width: 300px;
+    }
+
+    .lp-works__intro {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      align-items: flex-start;
+    }
+
+    .lp-works__intro-text {
+      color: var(--lp-text-secondary);
+      font-size: 0.9rem;
+      max-width: 400px;
+    }
+
+    .lp-works__table-header {
+      display: none;
+      grid-template-columns: 2fr 1fr 1fr auto;
+      padding: 1rem 0;
+      border-bottom: 1px solid #e5e7eb;
+      font-size: 0.85rem;
+      color: var(--lp-text-secondary);
+      font-weight: 500;
+    }
+
+    .lp-works__item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1rem;
+      align-items: center;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid #e5e7eb;
+      transition: var(--lp-transition);
+    }
+
+    .lp-works__item:hover {
+      background-color: rgba(255, 255, 255, 0.5);
+      margin: 0 -1rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      border-radius: var(--lp-border-radius);
+    }
+
+    .lp-works__item-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--lp-text-primary);
+      grid-column: 1 / -1;
+    }
+
+    .lp-works__item-tag {
+      display: inline-block;
+      padding: 0.2rem 0.8rem;
+      background-color: #f3f4f6;
+      border-radius: 50px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: var(--lp-text-secondary);
+    }
+
+    .lp-works__item-date {
+      font-size: 0.9rem;
+      color: var(--lp-text-primary);
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .lp-works__item-arrow {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background-color: var(--lp-bg-white);
+      border: 1px solid #e5e7eb;
+      color: var(--lp-text-secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--lp-transition);
+    }
+
+    .lp-works__item:hover .lp-works__item-arrow {
+      background-color: var(--lp-accent);
+      color: var(--lp-primary);
+      border-color: var(--lp-accent);
+    }
+
+    @media (min-width: 768px) {
+      .lp-works__header {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .lp-works__table-header {
+        display: grid;
+      }
+
+      .lp-works__item {
+        grid-template-columns: 2fr 1fr 1fr auto;
+      }
+
+      .lp-works__item-title {
+        grid-column: auto;
+      }
+    }
+
+    /* Footer */
+    .lp-footer {
+      background-color: var(--lp-primary);
+      color: var(--lp-text-muted);
+      text-align: center;
+      padding: 2rem 0;
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+
+<div class="lp-page-wrapper">
+
+  <!-- Navbar -->
+  <header class="lp-navbar">
+    <div class="lp-container lp-navbar__container">
+      <a href="#" class="lp-navbar__logo">Robert</a>
+      <nav>
+        <ul class="lp-navbar__menu" id="navbarMenu">
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#works">Projects</a></li>
+          <li><a href="#">Process</a></li>
+          <li><a href="#">Testimonials</a></li>
+          <li><a href="#">FAQs</a></li>
+        </ul>
+      </nav>
+      <div class="lp-navbar__actions">
+        <a href="#" class="lp-btn lp-btn--primary">Get a free quote <i class="fa-solid fa-arrow-right"></i></a>
+        <button class="lp-navbar__toggle" id="navbarToggle"><i class="fa-solid fa-bars"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="lp-hero">
+    <div class="lp-hero__bg">
+      <i class="fa-solid fa-scale-balanced lp-hero__bg-icon"></i>
+      <div class="lp-hero__bg-glow"></div>
+    </div>
+    <div class="lp-container lp-hero__container">
+      <div class="lp-hero__content lp-reveal">
+        <div class="lp-hero__badge">
+          <i class="fa-solid fa-star"></i>
+          <span>SRA Regulated | 9079660</span>
+        </div>
+        <h1 class="lp-hero__title">
+          Your Legal Solutions <span class="lp-hero__title-accent">Partner</span>
+        </h1>
+        <div class="lp-hero__cta">
+          <a href="#" class="lp-btn lp-btn--primary">Start your case <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="lp-hero__image-area lp-reveal">
+        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80" alt="Robert - Legal Partner" class="lp-hero__image">
+        <div class="lp-hero__review">
+          <div class="lp-hero__review-header">
+            <div class="lp-review-icons">
+              <div class="lp-hero__review-icon"><i class="fa-brands fa-google"></i></div>
+              <div class="lp-hero__review-icon lp-hero__review-icon--fb"><i class="fa-brands fa-facebook-f"></i></div>
+            </div>
+            <div>
+              <div class="lp-hero__review-stars"><i class="fa-solid fa-star"></i> 4.9</div>
+              <div class="lp-review-meta">2k+ Reviews</div>
+            </div>
+          </div>
+          <p class="lp-hero__review-text">Strategic legal guidance for your personal and business needs.</p>
+        </div>
+      </div>
+    </div>
+    <div class="lp-container">
+      <div class="lp-hero__stats">
+        <div class="lp-hero__stat">
+          <div class="lp-hero__stat-icon"><i class="fa-solid fa-award"></i></div>
+          <div class="lp-hero__stat-info">
+            <h3>10+</h3>
+            <p>Years of Experience</p>
+          </div>
+        </div>
+        <div class="lp-hero__stat">
+          <div class="lp-hero__stat-icon"><i class="fa-solid fa-chart-line"></i></div>
+          <div class="lp-hero__stat-info">
+            <h3>95%</h3>
+            <p>Success rate</p>
+          </div>
+        </div>
+        <div class="lp-hero__stat">
+          <div class="lp-hero__stat-icon"><i class="fa-solid fa-file-contract"></i></div>
+          <div class="lp-hero__stat-info">
+            <h3>250+</h3>
+            <p>Cases completed</p>
+          </div>
+        </div>
+        <div class="lp-hero__stat">
+          <div class="lp-hero__stat-icon"><i class="fa-solid fa-shield-halved"></i></div>
+          <div class="lp-hero__stat-info">
+            <h3>100%</h3>
+            <p>SRA Regulated</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="lp-about" id="about">
+    <div class="lp-container lp-about__container">
+      <div class="lp-about__left lp-reveal">
+        <span class="lp-about__label">About Me</span>
+        <h2 class="lp-about__title">Built On Integrity, Driven By Justice</h2>
+      </div>
+      <div class="lp-about__right lp-reveal">
+        <p class="lp-about__text">
+          We are a client-focused law practice dedicated to protecting your rights and delivering clear, results-driven legal solutions.
+        </p>
+        <p class="lp-about__text">
+          With experience across a wide range of legal matters, we combine strategic thinking with precise execution to guide clients through complex situations with confidence. Our approach is grounded in professionalism, discretion, and a deep commitment to achieving the best possible outcomes—because your case deserves more than advice, it deserves advocacy.
+        </p>
+        <a href="#" class="lp-btn lp-btn--primary">Get a free quote <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="lp-services" id="services">
+    <div class="lp-services__bg"></div>
+    <div class="lp-container lp-services__container">
+      <div class="lp-services__header lp-reveal">
+        <div class="lp-services__title-area">
+          <span class="lp-services__label">My Services</span>
+          <h2 class="lp-services__title">Trusted <span class="lp-services__title-accent">Expertise</span></h2>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:1rem; align-items:flex-start;">
+          <p class="lp-services-intro-text">I deliver trusted legal services with proven experience and a results-driven focus.</p>
+          <div class="lp-services__nav">
+            <button class="lp-services__nav-btn" id="prevService"><i class="fa-solid fa-chevron-left"></i></button>
+            <button class="lp-services__nav-btn" id="nextService"><i class="fa-solid fa-chevron-right"></i></button>
+          </div>
+        </div>
+      </div>
+      <div class="lp-services__track-wrapper lp-reveal">
+        <div class="lp-services__track" id="servicesTrack">
+          <article class="lp-services__card">
+            <span class="lp-services__card-tag">Corporate</span>
+            <h3 class="lp-services__card-title">Corporate & Business Law</h3>
+            <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=400&q=80" alt="Corporate Law" class="lp-services__card-image">
+            <p class="lp-services__card-text">Legal support for startups, SMEs, and established businesses. From company formation to contracts...</p>
+            <div class="lp-services__card-footer">
+              <span class="lp-card-footer-text">Learn more</span>
+              <a href="#" class="lp-services__card-btn"><i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </article>
+          <article class="lp-services__card">
+            <span class="lp-services__card-tag">Litigation</span>
+            <h3 class="lp-services__card-title">Civil Litigation</h3>
+            <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&w=400&q=80" alt="Litigation" class="lp-services__card-image">
+            <p class="lp-services__card-text">Strong representation in civil disputes, ensuring your rights and interests are protected at every stage, negotiation...</p>
+            <div class="lp-services__card-footer">
+              <span class="lp-card-footer-text">Learn more</span>
+              <a href="#" class="lp-services__card-btn"><i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </article>
+          <article class="lp-services__card">
+            <span class="lp-services__card-tag">Defense</span>
+            <h3 class="lp-services__card-title">Criminal Defense</h3>
+            <img src="https://images.unsplash.com/photo-1589391886645-d51941baf7fb?auto=format&fit=crop&w=400&q=80" alt="Criminal Defense" class="lp-services__card-image">
+            <p class="lp-services__card-text">Dedicated legal defense for individuals facing criminal charges. We focus on protecting your rights...</p>
+            <div class="lp-services__card-footer">
+              <span class="lp-card-footer-text">Learn more</span>
+              <a href="#" class="lp-services__card-btn"><i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </article>
+          <article class="lp-services__card">
+            <span class="lp-services__card-tag">Family</span>
+            <h3 class="lp-services__card-title">Family & Divorce</h3>
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80" alt="Family Law" class="lp-services__card-image">
+            <p class="lp-services__card-text">Compassionate confidential legal support for divorce, child custody, maintenance, and...</p>
+            <div class="lp-services__card-footer">
+              <span class="lp-card-footer-text">Learn more</span>
+              <a href="#" class="lp-services__card-btn"><i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </article>
+        </div>
+        <div class="lp-services__drag-btn">
+          <i class="fa-solid fa-arrows-left-right" style="font-size:1.2rem;"></i>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Works Section -->
+  <section class="lp-works" id="works">
+    <div class="lp-container">
+      <div class="lp-works__header lp-reveal">
+        <div>
+          <span class="lp-works__label">The Works I Am Proud Of</span>
+          <h2 class="lp-works__title">Some Of My Legal Works</h2>
+        </div>
+        <div class="lp-works__intro">
+          <p class="lp-works__intro-text">Explore a selection of cases and legal matters we've successfully handled across different practice areas.</p>
+          <a href="#" class="lp-btn lp-btn--primary">See All Works <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="lp-works__table-header">
+        <span>Titles</span>
+        <span>Categories</span>
+        <span>Date</span>
+        <span></span>
+      </div>
+      <div class="lp-works__list">
+        <div class="lp-works__item lp-reveal">
+          <div class="lp-works__item-title">Corporate Advisory</div>
+          <div><span class="lp-works__item-tag">Corporate Law</span></div>
+          <div class="lp-works__item-date">NOV 2025</div>
+          <button class="lp-works__item-arrow"><i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+        <div class="lp-works__item lp-reveal">
+          <div class="lp-works__item-title">Merger & Acquisition</div>
+          <div><span class="lp-works__item-tag">Business Law</span></div>
+          <div class="lp-works__item-date">OCT 2025</div>
+          <button class="lp-works__item-arrow"><i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+        <div class="lp-works__item lp-reveal">
+          <div class="lp-works__item-title">Civil Rights Litigation</div>
+          <div><span class="lp-works__item-tag">Litigation</span></div>
+          <div class="lp-works__item-date">SEP 2025</div>
+          <button class="lp-works__item-arrow"><i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="lp-footer">
+    <div class="lp-container">
+      <p>2025 Robert Legal. All rights reserved.</p>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1
+  };
+
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('lp-reveal--visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.lp-reveal').forEach(el => {
+    observer.observe(el);
+  });
+
+  const track = document.getElementById('servicesTrack');
+  const prevBtn = document.getElementById('prevService');
+  const nextBtn = document.getElementById('nextService');
+
+  if (track && prevBtn && nextBtn) {
+    prevBtn.addEventListener('click', () => {
+      track.scrollBy({ left: -340, behavior: 'smooth' });
+    });
+    nextBtn.addEventListener('click', () => {
+      track.scrollBy({ left: 340, behavior: 'smooth' });
+    });
+  }
+
+  const toggleBtn = document.getElementById('navbarToggle');
+  const menu = document.getElementById('navbarMenu');
+
+  if (toggleBtn && menu) {
+    toggleBtn.addEventListener('click', () => {
+      if (menu.style.display === 'flex') {
+        menu.style.display = 'none';
+      } else {
+        menu.style.display = 'flex';
+        menu.style.flexDirection = 'column';
+        menu.style.position = 'absolute';
+        menu.style.top = '100%';
+        menu.style.left = '0';
+        menu.style.right = '0';
+        menu.style.backgroundColor = 'var(--lp-secondary)';
+        menu.style.padding = '1.5rem';
+        menu.style.borderRadius = '1rem';
+        menu.style.marginTop = '1rem';
+        menu.style.zIndex = '200';
+        menu.style.backdropFilter = 'blur(10px)';
+      }
+    });
+  }
+</script>
+
+</body>
+</html>
