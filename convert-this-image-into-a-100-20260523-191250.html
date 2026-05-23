@@ -1,0 +1,1479 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>rendr. - Versatile Solution For Your Everyday Needs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --lp-color-bg: #f0f0eb;
+      --lp-color-bg-alt: #ffffff;
+      --lp-color-primary: #d4f542;
+      --lp-color-primary-hover: #c2e63a;
+      --lp-color-dark: #1c1c1e;
+      --lp-color-dark-card: #2c2c2e;
+      --lp-color-text: #111111;
+      --lp-color-text-muted: #8a8a8a;
+      --lp-color-border: #e8e8e3;
+      --lp-color-white: #ffffff;
+
+      --lp-font-family: 'Inter', sans-serif;
+
+      --lp-radius-sm: 12px;
+      --lp-radius-md: 16px;
+      --lp-radius-lg: 24px;
+      --lp-radius-xl: 40px;
+      --lp-radius-pill: 100px;
+
+      --lp-shadow-sm: 0 4px 20px rgba(0,0,0,0.04);
+      --lp-shadow-md: 0 8px 30px rgba(0,0,0,0.06);
+      --lp-shadow-lg: 0 20px 50px rgba(0,0,0,0.12);
+      --lp-shadow-xl: 0 25px 80px rgba(0,0,0,0.18);
+
+      --lp-transition: all 0.3s ease;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--lp-font-family);
+      background-color: var(--lp-color-bg);
+      color: var(--lp-color-text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    img { max-width: 100%; display: block; }
+
+    a { text-decoration: none; color: inherit; transition: var(--lp-transition); }
+
+    button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+    .lp-container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    @media (min-width: 768px) {
+      .lp-container { padding: 0 40px; }
+    }
+
+    /* Utility */
+    .lp-reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .lp-reveal.lp-reveal--active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Buttons */
+    .lp-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: var(--lp-radius-pill);
+      font-weight: 600;
+      font-size: 0.9rem;
+      border: none;
+      transition: var(--lp-transition);
+    }
+
+    .lp-btn--primary {
+      background-color: var(--lp-color-primary);
+      color: var(--lp-color-dark);
+    }
+
+    .lp-btn--primary:hover {
+      background-color: var(--lp-color-primary-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(212,245,66,0.3);
+    }
+
+    .lp-btn--ghost {
+      background-color: transparent;
+      color: var(--lp-color-white);
+      border: 1px solid rgba(255,255,255,0.25);
+    }
+
+    .lp-btn--ghost:hover {
+      background-color: rgba(255,255,255,0.1);
+      border-color: rgba(255,255,255,0.4);
+    }
+
+    .lp-btn--outline {
+      background-color: transparent;
+      color: var(--lp-color-dark);
+      border: 1px solid var(--lp-color-border);
+      padding: 10px 20px;
+      font-size: 0.85rem;
+    }
+
+    .lp-btn--outline:hover {
+      border-color: var(--lp-color-dark);
+      background-color: var(--lp-color-white);
+    }
+
+    .lp-btn--dark {
+      background-color: var(--lp-color-dark);
+      color: var(--lp-color-white);
+      width: 100%;
+    }
+
+    .lp-btn--dark:hover {
+      background-color: #333;
+    }
+
+    .lp-btn--small {
+      padding: 8px 16px;
+      font-size: 0.8rem;
+      gap: 6px;
+    }
+
+    .lp-btn__play {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--lp-color-white);
+      color: var(--lp-color-dark);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+    }
+
+    /* Header */
+    .lp-header {
+      padding: 20px 0;
+      position: relative;
+      z-index: 100;
+    }
+
+    .lp-header__wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .lp-header__logo {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--lp-color-dark);
+      letter-spacing: -0.5px;
+    }
+
+    .lp-header__logo-dot {
+      color: var(--lp-color-primary);
+    }
+
+    .lp-header__menu-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: var(--lp-radius-sm);
+      background: var(--lp-color-white);
+      border: 1px solid var(--lp-color-border);
+      font-size: 1.1rem;
+      color: var(--lp-color-dark);
+    }
+
+    .lp-nav {
+      display: none;
+      position: absolute;
+      top: 70px;
+      left: 20px;
+      right: 20px;
+      background: var(--lp-color-white);
+      border-radius: var(--lp-radius-lg);
+      padding: 20px;
+      box-shadow: var(--lp-shadow-lg);
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .lp-nav--open { display: flex; }
+
+    .lp-nav__list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .lp-nav__link {
+      color: var(--lp-color-text-muted);
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    .lp-nav__link:hover { color: var(--lp-color-dark); }
+
+    .lp-header__cta {
+      display: none;
+    }
+
+    @media (min-width: 1024px) {
+      .lp-header__menu-btn { display: none; }
+      .lp-nav {
+        display: flex;
+        position: static;
+        flex-direction: row;
+        background: transparent;
+        box-shadow: none;
+        padding: 0;
+        left: auto;
+        right: auto;
+        top: auto;
+      }
+      .lp-nav__list {
+        flex-direction: row;
+        gap: 28px;
+      }
+      .lp-header__cta { display: inline-flex; }
+    }
+
+    /* Hero Section */
+    .lp-hero {
+      padding: 10px 0 60px;
+    }
+
+    .lp-hero__card {
+      background-color: var(--lp-color-dark);
+      border-radius: var(--lp-radius-xl);
+      padding: 40px 24px;
+      position: relative;
+      overflow: visible;
+    }
+
+    .lp-hero__content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .lp-hero__label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,0.55);
+      font-size: 0.8rem;
+      margin-bottom: 16px;
+    }
+
+    .lp-hero__title {
+      color: var(--lp-color-white);
+      font-size: 2rem;
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 16px;
+      max-width: 500px;
+    }
+
+    .lp-hero__text {
+      color: rgba(255,255,255,0.5);
+      font-size: 0.95rem;
+      margin-bottom: 32px;
+      max-width: 400px;
+      line-height: 1.6;
+    }
+
+    .lp-hero__actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .lp-hero__mockups {
+      position: relative;
+      margin-top: 40px;
+      height: 420px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .lp-mockup {
+      border-radius: var(--lp-radius-md);
+      box-shadow: var(--lp-shadow-xl);
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .lp-mockup--lime {
+      width: 150px;
+      height: 280px;
+      background-color: var(--lp-color-primary);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      z-index: 2;
+    }
+
+    .lp-mockup__header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--lp-color-dark);
+    }
+
+    .lp-mockup__avatar {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--lp-color-dark);
+    }
+
+    .lp-mockup__card-inner {
+      background: var(--lp-color-dark);
+      border-radius: var(--lp-radius-sm);
+      padding: 12px;
+      margin-top: auto;
+      color: var(--lp-color-white);
+    }
+
+    .lp-mockup__card-num {
+      font-size: 0.7rem;
+      opacity: 0.7;
+      margin-top: 8px;
+    }
+
+    .lp-mockup--dark-sm {
+      width: 130px;
+      height: 80px;
+      background-color: var(--lp-color-dark-card);
+      padding: 12px;
+      color: var(--lp-color-white);
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      z-index: 3;
+    }
+
+    .lp-mockup--chart {
+      width: 140px;
+      height: 100px;
+      background-color: var(--lp-color-white);
+      padding: 12px;
+      display: none;
+      flex-direction: column;
+      justify-content: flex-end;
+      z-index: 1;
+    }
+
+    .lp-mockup--list {
+      width: 150px;
+      height: 110px;
+      background-color: var(--lp-color-dark-card);
+      padding: 12px;
+      color: var(--lp-color-white);
+      display: none;
+      flex-direction: column;
+      gap: 8px;
+      z-index: 2;
+    }
+
+    .lp-mockup__row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.7rem;
+      opacity: 0.9;
+    }
+
+    .lp-mockup__amount {
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .lp-mockup__badge {
+      font-size: 0.7rem;
+      color: var(--lp-color-primary);
+    }
+
+    .lp-mockup__chart-line {
+      width: 100%;
+      height: 40px;
+    }
+
+    @media (min-width: 768px) {
+      .lp-hero__title { font-size: 2.4rem; }
+      .lp-mockup--dark-sm,
+      .lp-mockup--chart,
+      .lp-mockup--list { display: flex; }
+    }
+
+    @media (min-width: 1024px) {
+      .lp-hero__card {
+        padding: 70px 60px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        align-items: center;
+      }
+      .lp-hero__title { font-size: 3rem; }
+      .lp-hero__mockups {
+        margin-top: 0;
+        height: 380px;
+        display: block;
+      }
+      .lp-mockup { position: absolute; }
+      .lp-mockup--lime {
+        width: 170px;
+        height: 300px;
+        right: 60px;
+        top: 20px;
+      }
+      .lp-mockup--dark-sm {
+        display: flex;
+        right: 220px;
+        top: 10px;
+        width: 150px;
+        height: 90px;
+      }
+      .lp-mockup--chart {
+        display: flex;
+        right: 200px;
+        top: 220px;
+        width: 160px;
+        height: 110px;
+      }
+      .lp-mockup--list {
+        display: flex;
+        right: 20px;
+        top: 260px;
+        width: 170px;
+        height: 120px;
+      }
+    }
+
+    /* Recognition Section */
+    .lp-recognition {
+      padding: 40px 0 60px;
+    }
+
+    .lp-recognition__wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      align-items: flex-start;
+    }
+
+    .lp-recognition__label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      color: var(--lp-color-text-muted);
+      margin-bottom: 8px;
+    }
+
+    .lp-recognition__title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      line-height: 1.3;
+      max-width: 600px;
+    }
+
+    @media (min-width: 768px) {
+      .lp-recognition__wrapper {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .lp-recognition__title { font-size: 1.5rem; }
+    }
+
+    /* Dashboard Section */
+    .lp-dashboard {
+      padding: 60px 0;
+      position: relative;
+    }
+
+    .lp-dashboard__wrapper {
+      display: grid;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .lp-dashboard__visual {
+      position: relative;
+      height: 420px;
+      order: 2;
+    }
+
+    .lp-dashboard__content {
+      order: 1;
+    }
+
+    .lp-dash-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      color: var(--lp-color-text-muted);
+      margin-bottom: 12px;
+    }
+
+    .lp-dashboard__title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 24px;
+    }
+
+    .lp-dashboard__list {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 32px;
+    }
+
+    .lp-dashboard__item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--lp-color-border);
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--lp-color-text);
+    }
+
+    .lp-dashboard__item i {
+      color: var(--lp-color-text-muted);
+      font-size: 0.8rem;
+    }
+
+    .lp-dash-card {
+      position: absolute;
+      border-radius: var(--lp-radius-md);
+      background: var(--lp-color-white);
+      box-shadow: var(--lp-shadow-md);
+      padding: 20px;
+    }
+
+    .lp-dash-card--main {
+      background: var(--lp-color-dark-card);
+      color: var(--lp-color-white);
+      width: 240px;
+      z-index: 3;
+      left: 0;
+      top: 30px;
+    }
+
+    .lp-dash-card__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.75rem;
+      opacity: 0.6;
+      margin-bottom: 12px;
+    }
+
+    .lp-dash-card__amount {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--lp-color-primary);
+      margin-bottom: 16px;
+    }
+
+    .lp-dash-card__meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.75rem;
+      opacity: 0.8;
+    }
+
+    .lp-dash-card__chip {
+      width: 24px;
+      height: 16px;
+      background: var(--lp-color-primary);
+      border-radius: 4px;
+      margin-left: auto;
+    }
+
+    .lp-dash-card--line {
+      width: 180px;
+      height: 110px;
+      left: 100px;
+      top: 0;
+      z-index: 2;
+      padding: 16px;
+    }
+
+    .lp-dash-card--pie {
+      width: 130px;
+      height: 130px;
+      left: 20px;
+      top: 160px;
+      z-index: 4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lp-pie {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background: conic-gradient(var(--lp-color-primary) 0% 70%, var(--lp-color-border) 70% 100%);
+      position: relative;
+    }
+
+    .lp-pie::after {
+      content: '';
+      position: absolute;
+      inset: 10px;
+      background: var(--lp-color-white);
+      border-radius: 50%;
+    }
+
+    .lp-dash-card--bar {
+      width: 200px;
+      height: 130px;
+      left: 80px;
+      top: 240px;
+      z-index: 1;
+      padding: 16px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .lp-bar {
+      width: 20px;
+      border-radius: 4px;
+    }
+
+    .lp-bar:nth-child(1) { height: 40%; background: var(--lp-color-primary); }
+    .lp-bar:nth-child(2) { height: 70%; background: var(--lp-color-dark); }
+    .lp-bar:nth-child(3) { height: 55%; background: var(--lp-color-primary); }
+    .lp-bar:nth-child(4) { height: 85%; background: var(--lp-color-dark); }
+    .lp-bar:nth-child(5) { height: 60%; background: var(--lp-color-primary); }
+
+    .lp-deco {
+      position: absolute;
+      width: 44px;
+      height: 44px;
+      background: var(--lp-color-white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--lp-shadow-sm);
+      color: var(--lp-color-text-muted);
+      font-size: 0.9rem;
+      z-index: 10;
+    }
+
+    .lp-deco--tr { top: 20px; right: 20px; }
+    .lp-deco--br { bottom: 40px; right: 10px; }
+
+    @media (min-width: 768px) {
+      .lp-dashboard__wrapper { grid-template-columns: 1fr 1fr; }
+      .lp-dashboard__visual { order: 1; }
+      .lp-dashboard__content { order: 2; }
+      .lp-dashboard__title { font-size: 1.8rem; }
+      .lp-dash-card--main { width: 260px; }
+      .lp-dash-card--line { width: 200px; left: 140px; }
+      .lp-dash-card--pie { left: 40px; }
+      .lp-dash-card--bar { width: 220px; left: 120px; }
+    }
+
+    @media (min-width: 1024px) {
+      .lp-dashboard__title { font-size: 2rem; }
+      .lp-deco--tr { top: 40px; right: 60px; }
+      .lp-deco--br { bottom: 80px; right: 40px; }
+    }
+
+    /* Builder Section */
+    .lp-builder {
+      padding: 60px 0;
+      position: relative;
+    }
+
+    .lp-builder__wrapper {
+      display: grid;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .lp-builder__content {
+      order: 2;
+    }
+
+    .lp-builder__visual {
+      order: 1;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .lp-builder__label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      color: var(--lp-color-text-muted);
+      margin-bottom: 12px;
+    }
+
+    .lp-builder__title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .lp-builder__text {
+      color: var(--lp-color-text-muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: 32px;
+      max-width: 480px;
+    }
+
+    .lp-build-card {
+      background: var(--lp-color-white);
+      border-radius: var(--lp-radius-lg);
+      padding: 28px;
+      box-shadow: var(--lp-shadow-lg);
+      width: 280px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .lp-build-card__top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .lp-build-card__number {
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+
+    .lp-progress-ring svg {
+      transform: rotate(-90deg);
+    }
+
+    .lp-build-card__tags {
+      display: flex;
+      gap: 8px;
+    }
+
+    .lp-tag {
+      padding: 6px 12px;
+      border-radius: var(--lp-radius-pill);
+      background: var(--lp-color-primary);
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--lp-color-dark);
+    }
+
+    .lp-build-card__link {
+      font-size: 0.85rem;
+      color: var(--lp-color-primary);
+      font-weight: 600;
+      text-align: center;
+      display: block;
+    }
+
+    .lp-avatars {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lp-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 2px solid var(--lp-color-white);
+      margin-left: -10px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+
+    .lp-avatar:first-child { margin-left: 0; }
+    .lp-avatar:nth-child(2) { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+    .lp-avatar:nth-child(3) { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+    .lp-avatar:nth-child(4) { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
+    .lp-avatar--more {
+      background: var(--lp-color-dark) !important;
+      color: var(--lp-color-white);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 700;
+    }
+
+    @media (min-width: 768px) {
+      .lp-builder__wrapper { grid-template-columns: 1fr 1fr; }
+      .lp-builder__content { order: 1; }
+      .lp-builder__visual { order: 2; }
+      .lp-builder__title { font-size: 1.8rem; }
+    }
+
+    @media (min-width: 1024px) {
+      .lp-builder__title { font-size: 2rem; }
+    }
+
+    /* Savings Section */
+    .lp-savings {
+      padding: 60px 0;
+    }
+
+    .lp-savings__header {
+      margin-bottom: 40px;
+    }
+
+    .lp-savings__title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .lp-savings__grid {
+      display: grid;
+      gap: 20px;
+    }
+
+    .lp-savings-card {
+      border-radius: var(--lp-radius-lg);
+      padding: 32px;
+      transition: var(--lp-transition);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .lp-savings-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--lp-shadow-md);
+    }
+
+    .lp-savings-card--lime {
+      background-color: var(--lp-color-primary);
+      color: var(--lp-color-dark);
+    }
+
+    .lp-savings-card--lime .lp-btn--small {
+      background: var(--lp-color-dark);
+      color: var(--lp-color-white);
+    }
+
+    .lp-savings-card--white {
+      background-color: var(--lp-color-white);
+      border: 1px solid var(--lp-color-border);
+    }
+
+    .lp-savings-card--white .lp-btn--small {
+      background: var(--lp-color-dark);
+      color: var(--lp-color-white);
+    }
+
+    .lp-savings-card--dark {
+      background-color: var(--lp-color-dark);
+      color: var(--lp-color-white);
+    }
+
+    .lp-savings-card--dark .lp-btn--small {
+      background: var(--lp-color-dark-card);
+      color: var(--lp-color-white);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .lp-savings-card__title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      line-height: 1.3;
+    }
+
+    .lp-savings-card__text {
+      font-size: 0.9rem;
+      opacity: 0.8;
+      line-height: 1.6;
+      flex-grow: 1;
+    }
+
+    @media (min-width: 768px) {
+      .lp-savings__grid { grid-template-columns: repeat(3, 1fr); }
+      .lp-savings__title { font-size: 1.8rem; }
+    }
+
+    /* Newsletter Section */
+    .lp-newsletter {
+      padding: 80px 0;
+      text-align: center;
+    }
+
+    .lp-newsletter__label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      color: var(--lp-color-text-muted);
+      margin-bottom: 16px;
+    }
+
+    .lp-newsletter__title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      line-height: 1.3;
+      max-width: 600px;
+      margin: 0 auto 32px;
+    }
+
+    .lp-newsletter__form {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+
+    .lp-newsletter__input {
+      padding: 14px 24px;
+      border-radius: var(--lp-radius-pill);
+      border: 1px solid var(--lp-color-border);
+      background: var(--lp-color-white);
+      font-family: inherit;
+      font-size: 0.95rem;
+      min-width: 260px;
+      outline: none;
+      transition: var(--lp-transition);
+    }
+
+    .lp-newsletter__input:focus {
+      border-color: var(--lp-color-dark);
+    }
+
+    .lp-newsletter__url {
+      font-size: 0.9rem;
+      color: var(--lp-color-text-muted);
+      font-weight: 500;
+    }
+
+    @media (min-width: 768px) {
+      .lp-newsletter__title { font-size: 1.6rem; }
+      .lp-newsletter__input { min-width: 320px; }
+    }
+
+    /* Footer */
+    .lp-footer {
+      background-color: var(--lp-color-white);
+      border-top: 1px solid var(--lp-color-border);
+      padding: 60px 0 20px;
+    }
+
+    .lp-footer__grid {
+      display: grid;
+      gap: 40px;
+      margin-bottom: 50px;
+    }
+
+    .lp-footer__brand {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .lp-footer__logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .lp-footer__tagline {
+      font-size: 0.9rem;
+      color: var(--lp-color-text-muted);
+      line-height: 1.6;
+      max-width: 280px;
+    }
+
+    .lp-footer__socials {
+      display: flex;
+      gap: 12px;
+    }
+
+    .lp-footer__social {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--lp-color-bg);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--lp-color-dark);
+      font-size: 0.9rem;
+      transition: var(--lp-transition);
+    }
+
+    .lp-footer__social:hover {
+      background: var(--lp-color-primary);
+    }
+
+    .lp-footer__column h4 {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .lp-footer__links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .lp-footer__links a {
+      font-size: 0.9rem;
+      color: var(--lp-color-text-muted);
+    }
+
+    .lp-footer__links a:hover {
+      color: var(--lp-color-dark);
+    }
+
+    .lp-footer__newsletter {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .lp-footer__newsletter-form {
+      display: flex;
+      gap: 8px;
+    }
+
+    .lp-footer__newsletter-form input {
+      flex: 1;
+      padding: 10px 16px;
+      border-radius: var(--lp-radius-pill);
+      border: 1px solid var(--lp-color-border);
+      font-family: inherit;
+      font-size: 0.85rem;
+      outline: none;
+    }
+
+    .lp-footer__contact {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 0.85rem;
+      color: var(--lp-color-text-muted);
+    }
+
+    .lp-footer__contact a:hover {
+      color: var(--lp-color-dark);
+    }
+
+    .lp-footer__bottom {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+      padding-top: 20px;
+      border-top: 1px solid var(--lp-color-border);
+      font-size: 0.8rem;
+      color: var(--lp-color-text-muted);
+    }
+
+    .lp-footer__bottom-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .lp-footer__bottom-links a:hover {
+      color: var(--lp-color-dark);
+    }
+
+    .lp-footer__buy-btn {
+      background: var(--lp-color-dark);
+      color: var(--lp-color-white);
+      padding: 10px 24px;
+      border-radius: var(--lp-radius-pill);
+      font-weight: 600;
+      font-size: 0.85rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: var(--lp-transition);
+    }
+
+    .lp-footer__buy-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--lp-shadow-md);
+    }
+
+    @media (min-width: 768px) {
+      .lp-footer__grid { grid-template-columns: repeat(2, 1fr); }
+      .lp-footer__bottom {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .lp-footer__grid { grid-template-columns: 2fr 1fr 1fr 2fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="lp-header">
+    <div class="lp-container">
+      <div class="lp-header__wrapper">
+        <a href="#" class="lp-header__logo">rendr<span class="lp-header__logo-dot">.</span></a>
+        <button class="lp-header__menu-btn" aria-label="Menu" onclick="document.querySelector('.lp-nav').classList.toggle('lp-nav--open')">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        <nav class="lp-nav">
+          <ul class="lp-nav__list">
+            <li><a href="#" class="lp-nav__link">Services</a></li>
+            <li><a href="#" class="lp-nav__link">Blog</a></li>
+            <li><a href="#" class="lp-nav__link">Works</a></li>
+            <li><a href="#" class="lp-nav__link">Elements</a></li>
+            <li><a href="#" class="lp-nav__link">Features</a></li>
+            <li><a href="#" class="lp-nav__link">Shop</a></li>
+          </ul>
+        </nav>
+        <a href="#" class="lp-btn lp-btn--primary lp-header__cta">Get App</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="lp-hero">
+      <div class="lp-container">
+        <div class="lp-hero__card lp-reveal">
+          <div class="lp-hero__content">
+            <span class="lp-hero__label">
+              <i class="fa-solid fa-layer-group"></i>
+              Online banking made easy
+            </span>
+            <h1 class="lp-hero__title">Payments have never been easier 👌</h1>
+            <p class="lp-hero__text">Create lets you create unique selling website in no time without any coding knowledge.</p>
+            <div class="lp-hero__actions">
+              <a href="#" class="lp-btn lp-btn--primary">Get Started <i class="fa-solid fa-arrow-right"></i></a>
+              <button class="lp-btn lp-btn--ghost">
+                <span class="lp-btn__play"><i class="fa-solid fa-play"></i></span>
+                Watch Video
+              </button>
+            </div>
+          </div>
+          <div class="lp-hero__mockups">
+            <div class="lp-mockup lp-mockup--lime">
+              <div class="lp-mockup__header">
+                <div class="lp-mockup__avatar"></div>
+                <span>Linkbank</span>
+              </div>
+              <div class="lp-mockup__card-inner">
+                <div style="font-size: 0.75rem; opacity: 0.7;">Balance</div>
+                <div style="font-size: 1.1rem; font-weight: 700; margin-top: 4px;">$14,230.00</div>
+                <div class="lp-mockup__card-num">**** 4829</div>
+              </div>
+            </div>
+            <div class="lp-mockup lp-mockup--dark-sm">
+              <div style="font-size: 0.7rem; opacity: 0.6;">Total Balance</div>
+              <div class="lp-mockup__amount">$1,245</div>
+              <div class="lp-mockup__badge"><i class="fa-solid fa-arrow-trend-up"></i> +14%</div>
+            </div>
+            <div class="lp-mockup lp-mockup--chart">
+              <svg class="lp-mockup__chart-line" viewBox="0 0 200 60" preserveAspectRatio="none">
+                <polyline points="0,50 40,35 80,45 120,20 160,30 200,10" fill="none" stroke="#d4f542" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="120" cy="20" r="4" fill="#d4f542"/>
+              </svg>
+              <div style="font-size: 0.7rem; color: var(--lp-color-text-muted); margin-top: 8px;">Weekly expenses</div>
+            </div>
+            <div class="lp-mockup lp-mockup--list">
+              <div class="lp-mockup__row">
+                <span>Netflix</span>
+                <span>-$12.00</span>
+              </div>
+              <div class="lp-mockup__row">
+                <span>Apple</span>
+                <span>-$249.00</span>
+              </div>
+              <div class="lp-mockup__row">
+                <span>Upwork</span>
+                <span>+$1,200.00</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Recognition Section -->
+    <section class="lp-recognition">
+      <div class="lp-container">
+        <div class="lp-recognition__wrapper lp-reveal">
+          <div>
+            <div class="lp-recognition__label">
+              <i class="fa-solid fa-globe"></i>
+              Internationally recognized
+            </div>
+            <h2 class="lp-recognition__title">We are proud to be the fastest mobile banking application according to surveys. 🏆</h2>
+          </div>
+          <a href="#" class="lp-btn lp-btn--outline">Read Full Survey <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dashboard Section -->
+    <section class="lp-dashboard">
+      <div class="lp-container">
+        <div class="lp-dashboard__wrapper">
+          <div class="lp-dashboard__visual lp-reveal">
+            <div class="lp-deco lp-deco--tr"><i class="fa-solid fa-xmark"></i></div>
+            <div class="lp-deco lp-deco--br"><i class="fa-solid fa-xmark"></i></div>
+            <div class="lp-dash-card lp-dash-card--main">
+              <div class="lp-dash-card__header">
+                <span>Main Balance</span>
+                <i class="fa-solid fa-ellipsis"></i>
+              </div>
+              <div class="lp-dash-card__amount">$984,556.34</div>
+              <div class="lp-dash-card__meta">
+                <span>08/21</span>
+                <span>Robert Karlos</span>
+                <span class="lp-dash-card__chip"></span>
+              </div>
+            </div>
+            <div class="lp-dash-card lp-dash-card--line">
+              <svg viewBox="0 0 200 80" width="100%" height="100%" preserveAspectRatio="none">
+                <polyline points="0,60 30,40 60,50 90,30 120,45 150,20 180,35 200,15" fill="none" stroke="#d4f542" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="150" cy="20" r="4" fill="#d4f542"/>
+              </svg>
+            </div>
+            <div class="lp-dash-card lp-dash-card--pie">
+              <div class="lp-pie"></div>
+            </div>
+            <div class="lp-dash-card lp-dash-card--bar">
+              <div class="lp-bar"></div>
+              <div class="lp-bar"></div>
+              <div class="lp-bar"></div>
+              <div class="lp-bar"></div>
+              <div class="lp-bar"></div>
+            </div>
+          </div>
+          <div class="lp-dashboard__content lp-reveal">
+            <span class="lp-dash-label">
+              <i class="fa-solid fa-bolt"></i>
+              Outstanding speed
+            </span>
+            <h2 class="lp-dashboard__title">Powerful Dashboard And High-Performance Framework</h2>
+            <div class="lp-dashboard__list">
+              <div class="lp-dashboard__item">
+                <span>Unique modern design</span>
+                <i class="fa-solid fa-chevron-down"></i>
+              </div>
+              <div class="lp-dashboard__item">
+                <span>Drag & Drop page builder</span>
+                <i class="fa-solid fa-chevron-down"></i>
+              </div>
+              <div class="lp-dashboard__item">
+                <span>Fully customisable</span>
+                <i class="fa-solid fa-chevron-down"></i>
+              </div>
+            </div>
+            <a href="#" class="lp-btn lp-btn--primary lp-btn--small">Download App <i class="fa-solid fa-download"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Builder Section -->
+    <section class="lp-builder">
+      <div class="lp-container">
+        <div class="lp-builder__wrapper">
+          <div class="lp-builder__content lp-reveal">
+            <span class="lp-builder__label">
+              <i class="fa-solid fa-code"></i>
+              No coding required
+            </span>
+            <h2 class="lp-builder__title">Visual Drag & Drop Page Builder With Hundreds Of Templates</h2>
+            <p class="lp-builder__text">Competently benchmark ubiquitous core competencies vis-a-vis bricks-and-clicks portals. Distinctively pontificate quality technologies via compelling web-readiness. Rapidiously syndicate cross-unit leadership.</p>
+            <a href="#" class="lp-btn lp-btn--primary lp-btn--small">Download App <i class="fa-solid fa-download"></i></a>
+          </div>
+          <div class="lp-builder__visual lp-reveal">
+            <div class="lp-deco" style="top: -20px; right: 20px;"><i class="fa-solid fa-xmark"></i></div>
+            <div class="lp-deco" style="bottom: 0; right: 0;"><i class="fa-solid fa-xmark"></i></div>
+            <div class="lp-build-card">
+              <div class="lp-build-card__top">
+                <span class="lp-build-card__number">400.0</span>
+                <div class="lp-progress-ring">
+                  <svg width="50" height="50" viewBox="0 0 50 50">
+                    <circle cx="25" cy="25" r="20" fill="none" stroke="#eee" stroke-width="4"/>
+                    <circle cx="25" cy="25" r="20" fill="none" stroke="#d4f542" stroke-width="4" stroke-dasharray="125.6" stroke-dashoffset="31.4" stroke-linecap="round" transform="rotate(-90 25 25)"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="lp-build-card__tags">
+                <span class="lp-tag">All</span>
+                <span class="lp-tag">New</span>
+                <span class="lp-tag">Live</span>
+              </div>
+              <button class="lp-btn lp-btn--dark">Transfer now</button>
+              <a href="#" class="lp-build-card__link">I want to receive</a>
+              <div class="lp-avatars">
+                <div class="lp-avatar"></div>
+                <div class="lp-avatar"></div>
+                <div class="lp-avatar"></div>
+                <div class="lp-avatar lp-avatar--more">+4</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Savings Section -->
+    <section class="lp-savings">
+      <div class="lp-container">
+        <div class="lp-savings__header lp-reveal">
+          <h2 class="lp-savings__title">Get the Most Out of Your<br>Digital Savings 💰</h2>
+        </div>
+        <div class="lp-savings__grid">
+          <div class="lp-savings-card lp-savings-card--lime lp-reveal">
+            <h3 class="lp-savings-card__title">Easily Cross-border Payments Without Underlying Partner Fees</h3>
+            <p class="lp-savings-card__text">Professionally morph focused data before magnetic e-talent. Continually myocardinate compelling functionalities for technology.</p>
+            <a href="#" class="lp-btn lp-btn--small">Read more <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+          <div class="lp-savings-card lp-savings-card--white lp-reveal">
+            <h3 class="lp-savings-card__title">Unlimited Virtual Cards</h3>
+            <p class="lp-savings-card__text">Quickly formulate cost effective niches for technically sound.</p>
+            <a href="#" class="lp-btn lp-btn--small">Read more <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+          <div class="lp-savings-card lp-savings-card--dark lp-reveal">
+            <h3 class="lp-savings-card__title">Advanced Analytics</h3>
+            <p class="lp-savings-card__text">Globally evolve parallel information before cost effective.</p>
+            <a href="#" class="lp-btn lp-btn--small">Read more <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="lp-newsletter">
+      <div class="lp-container">
+        <div class="lp-reveal">
+          <div class="lp-newsletter__label">
+            <i class="fa-regular fa-bell"></i>
+            Instant notifications
+          </div>
+          <h2 class="lp-newsletter__title">Subscribe To Our Newsletter To Always Be In The Loop With Our New Awesome Features</h2>
+          <form class="lp-newsletter__form" onsubmit="event.preventDefault();">
+            <input type="email" class="lp-newsletter__input" placeholder="Enter your email" required>
+            <button type="submit" class="lp-btn lp-btn--primary">Subscribe</button>
+          </form>
+          <div class="lp-newsletter__url">www.DownloadNewThemes.com</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="lp-footer">
+    <div class="lp-container">
+      <div class="lp-footer__grid">
+        <div class="lp-footer__brand">
+          <a href="#" class="lp-footer__logo">rendr<span style="color: var(--lp-color-primary);">.</span></a>
+          <p class="lp-footer__tagline">Compellingly build value-added opportunities rather than performance.</p>
+          <div class="lp-footer__socials">
+            <a href="#" class="lp-footer__social"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="lp-footer__social"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#" class="lp-footer__social"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+        </div>
+        <div class="lp-footer__column">
+          <h4>Company</h4>
+          <ul class="lp-footer__links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About us</a></li>
+            <li><a href="#">Career</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="lp-footer__column">
+          <h4>Information</h4>
+          <ul class="lp-footer__links">
+            <li><a href="#">My account</a></li>
+            <li><a href="#">Login</a></li>
+            <li><a href="#">Help</a></li>
+            <li><a href="#">Into The Unknown</a></li>
+            <li><a href="#">Transitions</a></li>
+          </ul>
+        </div>
+        <div class="lp-footer__column">
+          <h4>Subscribe to newsletter</h4>
+          <div class="lp-footer__newsletter">
+            <form class="lp-footer__newsletter-form" onsubmit="event.preventDefault();">
+              <input type="email" placeholder="Enter your email" required>
+              <button type="submit" class="lp-btn lp-btn--primary lp-btn--small">Subscribe</button>
+            </form>
+            <div class="lp-footer__contact">
+              <span>Full Worldwide Support</span>
+              <a href="tel:+01234567890">+(0) 123 456 7890</a>
+              <a href="mailto:sales@theme.com">sales@theme.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="lp-footer__bottom">
+        <div class="lp-footer__bottom-links">
+          <a href="#">Home</a>
+          <a href="#">About us</a>
+          <a href="#">Contact Us</a>
+        </div>
+        <a href="#" class="lp-footer__buy-btn">Buy Now! click for just $19 <i class="fa-solid fa-cart-shopping"></i></a>
+        <span>© 2022 Brand Theme by @thibautstudio</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const revealElements = document.querySelectorAll('.lp-reveal');
+      const revealObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('lp-reveal--active');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+
+      revealElements.forEach(function(el) {
+        revealObserver.observe(el);
+      });
+    });
+  </script>
+</body>
+</html>
