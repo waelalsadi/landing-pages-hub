@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>صفحة الروابط</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    :root {
+      --lp-color-primary: #6366f1;
+      --lp-color-secondary: #a855f7;
+      --lp-color-accent: #ec4899;
+      --lp-color-bg: #f8fafc;
+      --lp-color-surface: rgba(255, 255, 255, 0.75);
+      --lp-color-text: #1e293b;
+      --lp-color-text-muted: #64748b;
+      --lp-color-border: rgba(255, 255, 255, 0.5);
+      --lp-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+      --lp-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --lp-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --lp-radius-sm: 0.75rem;
+      --lp-radius-md: 1rem;
+      --lp-radius-lg: 1.5rem;
+      --lp-radius-full: 9999px;
+      --lp-space-xs: 0.5rem;
+      --lp-space-sm: 1rem;
+      --lp-space-md: 1.5rem;
+      --lp-space-lg: 2rem;
+      --lp-space-xl: 3rem;
+      --lp-transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --lp-font-ar: 'Cairo', sans-serif;
+      --lp-font-en: 'Poppins', sans-serif;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--lp-font-ar);
+      background: linear-gradient(135deg, #e0e7ff 0%, #f3e8ff 50%, #fce7f3 100%);
+      color: var(--lp-color-text);
+      min-height: 100vh;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* Background Shapes */
+    .lp-bg-shapes {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .lp-bg-shapes__blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.6;
+    }
+
+    .lp-bg-shapes__blob--1 {
+      width: 400px;
+      height: 400px;
+      background: linear-gradient(135deg, #818cf8, #c084fc);
+      top: -100px;
+      right: -100px;
+      animation: lp-float 8s ease-in-out infinite;
+    }
+
+    .lp-bg-shapes__blob--2 {
+      width: 300px;
+      height: 300px;
+      background: linear-gradient(135deg, #f472b6, #fb7185);
+      bottom: -50px;
+      left: -50px;
+      animation: lp-float 10s ease-in-out infinite reverse;
+    }
+
+    .lp-bg-shapes__blob--3 {
+      width: 200px;
+      height: 200px;
+      background: linear-gradient(135deg, #34d399, #22d3ee);
+      top: 40%;
+      left: 20%;
+      opacity: 0.4;
+      animation: lp-float 12s ease-in-out infinite;
+    }
+
+    @keyframes lp-float {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(30px, -30px) scale(1.05); }
+      66% { transform: translate(-20px, 20px) scale(0.95); }
+    }
+
+    /* Container */
+    .lp-container {
+      width: 100%;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: var(--lp-space-lg) var(--lp-space-md);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    /* Profile Section */
+    .lp-profile {
+      text-align: center;
+      margin-bottom: var(--lp-space-xl);
+      position: relative;
+    }
+
+    .lp-profile__avatar-wrapper {
+      position: relative;
+      width: 140px;
+      height: 140px;
+      margin: 0 auto var(--lp-space-md);
+    }
+
+    .lp-profile__avatar {
+      width: 100%;
+      height: 100%;
+      border-radius: var(--lp-radius-full);
+      object-fit: cover;
+      border: 4px solid var(--lp-color-border);
+      box-shadow: var(--lp-shadow-lg);
+      position: relative;
+      z-index: 2;
+      background: linear-gradient(135deg, var(--lp-color-primary), var(--lp-color-secondary));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      color: white;
+    }
+
+    .lp-profile__avatar-ring {
+      position: absolute;
+      inset: -10px;
+      border-radius: var(--lp-radius-full);
+      border: 2px solid transparent;
+      background: linear-gradient(135deg, var(--lp-color-primary), var(--lp-color-accent), var(--lp-color-secondary)) border-box;
+      -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      animation: lp-spin-slow 10s linear infinite;
+    }
+
+    @keyframes lp-spin-slow {
+      to { transform: rotate(360deg); }
+    }
+
+    .lp-profile__name {
+      font-size: 1.875rem;
+      font-weight: 700;
+      margin-bottom: var(--lp-space-xs);
+      color: var(--lp-color-text);
+    }
+
+    .lp-profile__handle {
+      font-family: var(--lp-font-en);
+      font-size: 1rem;
+      color: var(--lp-color-text-muted);
+      margin-bottom: var(--lp-space-sm);
+      display: block;
+    }
+
+    .lp-profile__bio {
+      font-size: 1rem;
+      color: var(--lp-color-text-muted);
+      max-width: 400px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* Social Icons Row */
+    .lp-socials {
+      display: flex;
+      gap: var(--lp-space-sm);
+      justify-content: center;
+      margin-bottom: var(--lp-space-xl);
+    }
+
+    .lp-socials__link {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--lp-radius-full);
+      background: var(--lp-color-surface);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--lp-color-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--lp-color-text);
+      font-size: 1.25rem;
+      text-decoration: none;
+      box-shadow: var(--lp-shadow-sm);
+      transition: all var(--lp-transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .lp-socials__link::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--lp-color-primary), var(--lp-color-secondary));
+      opacity: 0;
+      transition: opacity var(--lp-transition);
+      border-radius: inherit;
+    }
+
+    .lp-socials__link i {
+      position: relative;
+      z-index: 1;
+      transition: color var(--lp-transition);
+    }
+
+    .lp-socials__link:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--lp-shadow-md);
+    }
+
+    .lp-socials__link:hover::before {
+      opacity: 1;
+    }
+
+    .lp-socials__link:hover i {
+      color: white;
+    }
+
+    /* Links Section */
+    .lp-links {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: var(--lp-space-sm);
+      margin-bottom: var(--lp-space-xl);
+    }
+
+    .lp-link-card {
+      display: flex;
+      align-items: center;
+      gap: var(--lp-space-md);
+      padding: var(--lp-space-md);
+      background: var(--lp-color-surface);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--lp-color-border);
+      border-radius: var(--lp-radius-md);
+      text-decoration: none;
+      color: var(--lp-color-text);
+      box-shadow: var(--lp-shadow-sm);
+      transition: all var(--lp-transition);
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .lp-link-card.lp-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .lp-link-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+      transform: translateX(-100%);
+      transition: transform 0.6s;
+    }
+
+    .lp-link-card:hover {
+      transform: translateY(-3px) scale(1.01);
+      box-shadow: var(--lp-shadow-lg);
+      border-color: rgba(99, 102, 241, 0.3);
+    }
+
+    .lp-link-card:hover::after {
+      transform: translateX(100%);
+    }
+
+    .lp-link-card__icon {
+      width: 48px;
+      height: 48px;
+      min-width: 48px;
+      border-radius: var(--lp-radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      color: white;
+      position: relative;
+      z-index: 1;
+    }
+
+    .lp-link-card__icon--gradient-1 { background: linear-gradient(135deg, #6366f1, #8b5cf6); }
+    .lp-link-card__icon--gradient-2 { background: linear-gradient(135deg, #ec4899, #f43f5e); }
+    .lp-link-card__icon--gradient-3 { background: linear-gradient(135deg, #10b981, #06b6d4); }
+    .lp-link-card__icon--gradient-4 { background: linear-gradient(135deg, #f59e0b, #f97316); }
+    .lp-link-card__icon--gradient-5 { background: linear-gradient(135deg, #3b82f6, #06b6d4); }
+    .lp-link-card__icon--gradient-6 { background: linear-gradient(135deg, #8b5cf6, #d946ef); }
+
+    .lp-link-card__content {
+      flex: 1;
+      position: relative;
+      z-index: 1;
+    }
+
+    .lp-link-card__title {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+
+    .lp-link-card__desc {
+      font-size: 0.875rem;
+      color: var(--lp-color-text-muted);
+    }
+
+    .lp-link-card__arrow {
+      color: var(--lp-color-text-muted);
+      transition: transform var(--lp-transition), color var(--lp-transition);
+      position: relative;
+      z-index: 1;
+    }
+
+    .lp-link-card:hover .lp-link-card__arrow {
+      transform: translateX(-4px);
+      color: var(--lp-color-primary);
+    }
+
+    /* Footer */
+    .lp-footer {
+      margin-top: auto;
+      padding-top: var(--lp-space-lg);
+      text-align: center;
+    }
+
+    .lp-footer__text {
+      font-size: 0.875rem;
+      color: var(--lp-color-text-muted);
+      font-family: var(--lp-font-en);
+    }
+
+    /* Ripple Effect */
+    .lp-ripple {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.4);
+      transform: scale(0);
+      animation: lp-ripple-anim 0.6s linear;
+      pointer-events: none;
+    }
+
+    @keyframes lp-ripple-anim {
+      to {
+        transform: scale(4);
+        opacity: 0;
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 480px) {
+      :root {
+        --lp-space-lg: 1.5rem;
+        --lp-space-xl: 2rem;
+      }
+
+      .lp-profile__name {
+        font-size: 1.5rem;
+      }
+
+      .lp-link-card {
+        padding: var(--lp-space-sm);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Shapes -->
+  <div class="lp-bg-shapes" aria-hidden="true">
+    <div class="lp-bg-shapes__blob lp-bg-shapes__blob--1"></div>
+    <div class="lp-bg-shapes__blob lp-bg-shapes__blob--2"></div>
+    <div class="lp-bg-shapes__blob lp-bg-shapes__blob--3"></div>
+  </div>
+
+  <div class="lp-container">
+
+    <!-- Profile Section -->
+    <header class="lp-profile">
+      <div class="lp-profile__avatar-wrapper">
+        <div class="lp-profile__avatar-ring"></div>
+        <div class="lp-profile__avatar">
+          <i class="fa-solid fa-user"></i>
+        </div>
+      </div>
+      <h1 class="lp-profile__name">أحمد الشمري</h1>
+      <span class="lp-profile__handle">@ahmed_aldesign</span>
+      <p class="lp-profile__bio">مصمم واجهات مستخدم ومطور واجهات أمامية، أشارك ما أتعلمه في عالم التصميم والتقنية.</p>
+    </header>
+
+    <!-- Social Icons -->
+    <nav class="lp-socials" aria-label="روابط التواصل الاجتماعي">
+      <a href="#" class="lp-socials__link" aria-label="إنستقرام">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+      <a href="#" class="lp-socials__link" aria-label="تويتر">
+        <i class="fa-brands fa-x-twitter"></i>
+      </a>
+      <a href="#" class="lp-socials__link" aria-label="تيك توك">
+        <i class="fa-brands fa-tiktok"></i>
+      </a>
+      <a href="#" class="lp-socials__link" aria-label="يوتيوب">
+        <i class="fa-brands fa-youtube"></i>
+      </a>
+      <a href="#" class="lp-socials__link" aria-label="بيهانس">
+        <i class="fa-brands fa-behance"></i>
+      </a>
+    </nav>
+
+    <!-- Links Section -->
+    <main class="lp-links" aria-label="الروابط الرئيسية">
+      <a href="#" class="lp-link-card">
+        <div class="lp-link-card__icon lp-link-card__icon--gradient-1">
+          <i class="fa-solid fa-globe"></i>
+        </div>
+        <div class="lp-link-card__content">
+          <div class="lp-link-card__title">الموقع الشخصي</div>
+          <div class="lp-link-card__desc">تصفح أعمالي ومشاريعي السابقة</div>
+        </div>
+        <i class="fa-solid fa-arrow-left lp-link-card__arrow"></i>
+      </a>
+
+      <a href="#" class="lp-link-card">
+        <div class="lp-link-card__icon lp-link-card__icon--gradient-2">
+          <i class="fa-brands fa-instagram"></i>
+        </div>
+        <div class="lp-link-card__content">
+          <div class="lp-link-card__title">حساب الإنستقرام</div>
+          <div class="lp-link-card__desc">يومياتي في التصميم والإلهام البصري</div>
+        </div>
+        <i class="fa-solid fa-arrow-left lp-link-card__arrow"></i>
+      </a>
+
+      <a href="#" class="lp-link-card">
+        <div class="lp-link-card__icon lp-link-card__icon--gradient-3">
+          <i class="fa-brands fa-whatsapp"></i>
+        </div>
+        <div class="lp-link-card__content">
+          <div class="lp-link-card__title">تواصل عبر واتساب</div>
+          <div class="lp-link-card__desc">للاستفسارات والتعاون والمشاريع</div>
+        </div>
+        <i class="fa-solid fa-arrow-left lp-link-card__arrow"></i>
+      </a>
+
+      <a href="#" class="lp-link-card">
+        <div class="lp-link-card__icon lp-link-card__icon--gradient-4">
+          <i class="fa-solid fa-cart-shopping"></i>
+        </div>
+        <div class="lp-link-card__content">
+          <div class="lp-link-card__title">متجر القوالب</div>
+          <div class="lp-link-card__desc">قوالب فيجما وملفات جاهزة للتصميم</div>
+        </div>
+        <i class="fa-solid fa-arrow-left lp-link-card__arrow"></i>
+      </a>
+
+      <a href="#" class="lp-link-card">
+        <div class="lp-link-card__icon lp-link-card__icon--gradient-5">
+          <i class="fa-solid fa-envelope"></i>
+        </div>
+        <div class="lp-link-card__content">
+          <div class="lp-link-card__title">البريد الإلكتروني</div>
+          <div class="lp-link-card__desc">راسلني مباشرة على الإيميل</div>
+        </div>
+        <i class="fa-solid fa-arrow-left lp-link-card__arrow"></i>
+      </a>
+
+      <a href="#" class="lp-link-card">
+        <div class="lp-link-card__icon lp-link-card__icon--gradient-6">
+          <i class="fa-solid fa-heart"></i>
+        </div>
+        <div class="lp-link-card__content">
+          <div class="lp-link-card__title">ادعمني</div>
+          <div class="lp-link-card__desc">إذا أعجبك محتواي يمكنك دعمي هنا</div>
+        </div>
+        <i class="fa-solid fa-arrow-left lp-link-card__arrow"></i>
+      </a>
+    </main>
+
+    <!-- Footer -->
+    <footer class="lp-footer">
+      <p class="lp-footer__text">Made with <i class="fa-solid fa-heart" style="color: #ec4899;"></i> by Ahmed</p>
+    </footer>
+
+  </div>
+
+  <script>
+    // Scroll Reveal with IntersectionObserver
+    const lpObserverOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const lpObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('lp-visible');
+          }, index * 100);
+          lpObserver.unobserve(entry.target);
+        }
+      });
+    }, lpObserverOptions);
+
+    document.querySelectorAll('.lp-link-card').forEach(card => {
+      lpObserver.observe(card);
+    });
+
+    // Ripple Effect on Links
+    document.querySelectorAll('.lp-link-card, .lp-socials__link').forEach(button => {
+      button.addEventListener('click', function(e) {
+        const rect = this.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+        const x = e.clientX - rect.left - size / 2;
+        const y = e.clientY - rect.top - size / 2;
+        
+        const ripple = document.createElement('span');
+        ripple.classList.add('lp-ripple');
+        ripple.style.width = ripple.style.height = size + 'px';
+        ripple.style.left = x + 'px';
+        ripple.style.top = y + 'px';
+        
+        this.appendChild(ripple);
+        
+        setTimeout(() => ripple.remove(), 600);
+      });
+    });
+  </script>
+
+</body>
+</html>
