@@ -1,0 +1,1656 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>أكاديمية فايزة - منصتك نحو التميز</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    :root {
+      --lp-primary: #2563eb;
+      --lp-primary-dark: #1d4ed8;
+      --lp-secondary: #059669;
+      --lp-accent: #f59e0b;
+      --lp-dark: #0f172a;
+      --lp-gray-900: #1e293b;
+      --lp-gray-700: #334155;
+      --lp-gray-500: #64748b;
+      --lp-gray-300: #cbd5e1;
+      --lp-gray-100: #f1f5f9;
+      --lp-light: #ffffff;
+      --lp-bg: #f8fafc;
+      
+      --lp-font-main: 'Cairo', sans-serif;
+      
+      --lp-space-xs: 0.5rem;
+      --lp-space-sm: 1rem;
+      --lp-space-md: 2rem;
+      --lp-space-lg: 4rem;
+      --lp-space-xl: 6rem;
+      
+      --lp-radius-sm: 0.5rem;
+      --lp-radius-md: 1rem;
+      --lp-radius-lg: 1.5rem;
+      --lp-radius-full: 9999px;
+      
+      --lp-shadow-sm: 0 1px 2px 0 rgba(15, 23, 42, 0.05);
+      --lp-shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.1), 0 2px 4px -1px rgba(15, 23, 42, 0.06);
+      --lp-shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.1), 0 4px 6px -2px rgba(15, 23, 42, 0.05);
+      --lp-shadow-xl: 0 20px 25px -5px rgba(15, 23, 42, 0.1), 0 10px 10px -5px rgba(15, 23, 42, 0.04);
+      --lp-shadow-glow: 0 0 40px rgba(37, 99, 235, 0.15);
+      
+      --lp-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--lp-font-main);
+      background-color: var(--lp-bg);
+      color: var(--lp-gray-900);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    /* Utility */
+    .lp-container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .lp-section {
+      padding: var(--lp-space-xl) 0;
+    }
+
+    .lp-text-gradient {
+      background: linear-gradient(135deg, var(--lp-primary) 0%, var(--lp-secondary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Scroll Reveal */
+    .lp-reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
+    .lp-reveal.lp-reveal--visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Buttons */
+    .lp-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--lp-space-xs);
+      padding: 0.875rem 2rem;
+      border-radius: var(--lp-radius-full);
+      font-weight: 700;
+      font-size: 1rem;
+      transition: var(--lp-transition);
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .lp-btn--primary {
+      background: linear-gradient(135deg, var(--lp-primary) 0%, var(--lp-primary-dark) 100%);
+      color: var(--lp-light);
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4);
+    }
+
+    .lp-btn--primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(37, 99, 235, 0.5);
+    }
+
+    .lp-btn--secondary {
+      background: var(--lp-light);
+      color: var(--lp-primary);
+      border: 2px solid var(--lp-primary);
+    }
+
+    .lp-btn--secondary:hover {
+      background: var(--lp-primary);
+      color: var(--lp-light);
+      transform: translateY(-2px);
+    }
+
+    .lp-btn--accent {
+      background: linear-gradient(135deg, var(--lp-accent) 0%, #d97706 100%);
+      color: var(--lp-light);
+      box-shadow: 0 4px 14px rgba(245, 158, 11, 0.4);
+    }
+
+    .lp-btn--accent:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(245, 158, 11, 0.5);
+    }
+
+    /* Header */
+    .lp-header {
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(203, 213, 225, 0.3);
+      transition: var(--lp-transition);
+    }
+
+    .lp-header__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 80px;
+    }
+
+    .lp-header__logo {
+      display: flex;
+      align-items: center;
+      gap: var(--lp-space-xs);
+      font-weight: 800;
+      font-size: 1.5rem;
+      color: var(--lp-dark);
+    }
+
+    .lp-header__logo-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--lp-primary) 0%, var(--lp-secondary) 100%);
+      border-radius: var(--lp-radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--lp-light);
+      font-size: 1.25rem;
+    }
+
+    .lp-nav {
+      display: flex;
+      align-items: center;
+      gap: var(--lp-space-md);
+    }
+
+    .lp-nav__link {
+      font-weight: 600;
+      color: var(--lp-gray-700);
+      transition: var(--lp-transition);
+      position: relative;
+    }
+
+    .lp-nav__link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      right: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--lp-primary), var(--lp-secondary));
+      transition: width 0.3s ease;
+    }
+
+    .lp-nav__link:hover {
+      color: var(--lp-primary);
+    }
+
+    .lp-nav__link:hover::after {
+      width: 100%;
+    }
+
+    .lp-header__cta {
+      display: flex;
+      align-items: center;
+      gap: var(--lp-space-sm);
+    }
+
+    .lp-mobile-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--lp-gray-900);
+      cursor: pointer;
+    }
+
+    /* Mobile Menu */
+    .lp-mobile-menu {
+      display: none;
+      position: fixed;
+      top: 80px;
+      right: 0;
+      left: 0;
+      background: var(--lp-light);
+      padding: var(--lp-space-md);
+      box-shadow: var(--lp-shadow-lg);
+      z-index: 999;
+      flex-direction: column;
+      gap: var(--lp-space-sm);
+      border-top: 1px solid var(--lp-gray-100);
+    }
+
+    .lp-mobile-menu.is-open {
+      display: flex;
+    }
+
+    .lp-mobile-menu__link {
+      padding: var(--lp-space-sm);
+      font-weight: 600;
+      color: var(--lp-gray-700);
+      border-radius: var(--lp-radius-sm);
+      transition: var(--lp-transition);
+    }
+
+    .lp-mobile-menu__link:hover {
+      background: var(--lp-gray-100);
+      color: var(--lp-primary);
+    }
+
+    /* Hero Section */
+    .lp-hero {
+      position: relative;
+      padding-top: 160px;
+      padding-bottom: var(--lp-space-xl);
+      overflow: hidden;
+      background: linear-gradient(180deg, #eff6ff 0%, var(--lp-bg) 100%);
+    }
+
+    .lp-hero__bg-shape {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.4;
+      z-index: 0;
+    }
+
+    .lp-hero__bg-shape--1 {
+      width: 600px;
+      height: 600px;
+      background: linear-gradient(135deg, var(--lp-primary), var(--lp-secondary));
+      top: -200px;
+      left: -200px;
+    }
+
+    .lp-hero__bg-shape--2 {
+      width: 400px;
+      height: 400px;
+      background: linear-gradient(135deg, var(--lp-accent), #f97316);
+      bottom: -100px;
+      right: -100px;
+      opacity: 0.2;
+    }
+
+    .lp-hero__inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--lp-space-lg);
+      align-items: center;
+    }
+
+    .lp-hero__content {
+      max-width: 600px;
+    }
+
+    .lp-hero__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--lp-space-xs);
+      padding: 0.5rem 1rem;
+      background: rgba(37, 99, 235, 0.1);
+      color: var(--lp-primary);
+      border-radius: var(--lp-radius-full);
+      font-weight: 700;
+      font-size: 0.875rem;
+      margin-bottom: var(--lp-space-md);
+    }
+
+    .lp-hero__title {
+      font-size: 3.5rem;
+      font-weight: 800;
+      line-height: 1.2;
+      color: var(--lp-dark);
+      margin-bottom: var(--lp-space-md);
+    }
+
+    .lp-hero__desc {
+      font-size: 1.125rem;
+      color: var(--lp-gray-500);
+      margin-bottom: var(--lp-space-md);
+      line-height: 1.8;
+    }
+
+    .lp-hero__actions {
+      display: flex;
+      gap: var(--lp-space-sm);
+      flex-wrap: wrap;
+    }
+
+    .lp-hero__media {
+      position: relative;
+    }
+
+    .lp-hero__image-wrapper {
+      position: relative;
+      border-radius: var(--lp-radius-lg);
+      overflow: hidden;
+      box-shadow: var(--lp-shadow-xl);
+      background: linear-gradient(135deg, var(--lp-primary), var(--lp-secondary));
+      padding: 4px;
+    }
+
+    .lp-hero__image {
+      width: 100%;
+      height: 450px;
+      object-fit: cover;
+      border-radius: calc(var(--lp-radius-lg) - 4px);
+      background: var(--lp-gray-300);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--lp-gray-500);
+      font-size: 1.25rem;
+    }
+
+    .lp-hero__float-card {
+      position: absolute;
+      background: var(--lp-light);
+      padding: var(--lp-space-sm) var(--lp-space-md);
+      border-radius: var(--lp-radius-md);
+      box-shadow: var(--lp-shadow-lg);
+      display: flex;
+      align-items: center;
+      gap: var(--lp-space-sm);
+      animation: lp-float 3s ease-in-out infinite;
+    }
+
+    .lp-hero__float-card--1 {
+      top: 20px;
+      left: -30px;
+    }
+
+    .lp-hero__float-card--2 {
+      bottom: 40px;
+      right: -20px;
+      animation-delay: 1.5s;
+    }
+
+    .lp-hero__float-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--lp-primary), var(--lp-secondary));
+      color: var(--lp-light);
+      font-size: 1rem;
+    }
+
+    .lp-hero__float-text {
+      font-weight: 700;
+      color: var(--lp-gray-900);
+      font-size: 0.875rem;
+    }
+
+    .lp-hero__float-sub {
+      font-size: 0.75rem;
+      color: var(--lp-gray-500);
+    }
+
+    @keyframes lp-float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    /* Stats Section */
+    .lp-stats {
+      padding: var(--lp-space-lg) 0;
+      background: var(--lp-light);
+      position: relative;
+      z-index: 2;
+    }
+
+    .lp-stats__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--lp-space-md);
+    }
+
+    .lp-stat-card {
+      text-align: center;
+      padding: var(--lp-space-md);
+      border-radius: var(--lp-radius-md);
+      background: var(--lp-bg);
+      transition: var(--lp-transition);
+    }
+
+    .lp-stat-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--lp-shadow-md);
+    }
+
+    .lp-stat-card__number {
+      font-size: 2.5rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--lp-primary), var(--lp-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: var(--lp-space-xs);
+    }
+
+    .lp-stat-card__label {
+      color: var(--lp-gray-500);
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+
+    /* About Section */
+    .lp-about {
+      background: var(--lp-light);
+    }
+
+    .lp-about__inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--lp-space-lg);
+      align-items: center;
+    }
+
+    .lp-about__image-box {
+      position: relative;
+    }
+
+    .lp-about__image {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      border-radius: var(--lp-radius-lg);
+      box-shadow: var(--lp-shadow-xl);
+      background: linear-gradient(135deg, var(--lp-gray-300), var(--lp-gray-100));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--lp-gray-500);
+    }
+
+    .lp-about__experience {
+      position: absolute;
+      bottom: -20px;
+      left: -20px;
+      background: linear-gradient(135deg, var(--lp-primary), var(--lp-secondary));
+      color: var(--lp-light);
+      padding: var(--lp-space-md);
+      border-radius: var(--lp-radius-md);
+      text-align: center;
+      box-shadow: var(--lp-shadow-lg);
+    }
+
+    .lp-about__experience-num {
+      font-size: 2.5rem;
+      font-weight: 800;
+      display: block;
+      line-height: 1;
+    }
+
+    .lp-about__experience-text {
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+
+    .lp-about__title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--lp-dark);
+      margin-bottom: var(--lp-space-md);
+      line-height: 1.3;
+    }
+
+    .lp-about__desc {
+      color: var(--lp-gray-500);
+      margin-bottom: var(--lp-space-md);
+      font-size: 1.0625rem;
+    }
+
+    .lp-about__features {
+      display: flex;
+      flex-direction: column;
+      gap: var(--lp-space-sm);
+      margin-bottom: var(--lp-space-md);
+    }
+
+    .lp-about__feature {
+      display: flex;
+      align-items: center;
+      gap: var(--lp-space-sm);
+      font-weight: 600;
+      color: var(--lp-gray-700);
+    }
+
+    .lp-about__feature-icon {
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, var(--lp-primary), var(--lp-secondary));
+      color: var(--lp-light);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.875rem;
+      flex-shrink: 0;
+    }
+
+    /* Courses Section */
+    .lp-courses {
+      background: linear-gradient(180deg, var(--lp-bg) 0%, var(--lp-light) 100%);
+      position: relative;
+    }
+
+    .lp-courses__header {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto var(--lp-space-lg);
+    }
+
+    .lp-section-tag {
+      display: inline-block;
+      padding: 0.375rem 1rem;
+      background: rgba(37, 99, 235, 0.1);
+      color: var(--lp-primary);
+      border-radius: var(--lp-radius-full);
+      font-weight: 700;
+      font-size: 0.875rem;
+      margin-bottom: var(--lp-space-sm);
+    }
+
+    .lp-section-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--lp-dark);
+      margin-bottom: var(--lp-space-sm);
+      line-height: 1.3;
+    }
+
+    .lp-section-desc {
+      color: var(--lp-gray-500);
+      font-size: 1.0625rem;
+    }
+
+    .lp-courses__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--lp-space-md);
+    }
+
+    .lp-course-card {
+      background: var(--lp-light);
+      border-radius: var(--lp-radius-lg);
+      overflow: hidden;
+      box-shadow: var(--lp-shadow-md);
+      transition: var(--lp-transition);
+      border: 1px solid rgba(203, 213, 225, 0.3);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .lp-course-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--lp-shadow-xl);
+      border-color: rgba(37, 99, 235, 0.2);
+    }
+
+    .lp-course-card__image {
+      width: 100%;
+      height: 220px;
+      background: linear-gradient(135deg, var(--lp-gray-300), var(--lp-gray-100));
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--lp-gray-500);
+      font-size: 3rem;
+    }
+
+    .lp-course-card__badge {
+      position: absolute;
+      top: var(--lp-space-sm);
+      right: var(--lp-space-sm);
+      background: var(--lp-accent);
+      color: var(--lp-light);
+      padding: 0.25rem 0.75rem;
+      border-radius: var(--lp-radius-full);
+      font-weight: 700;
+      font-size: 0.75rem;
+    }
+
+    .lp-course-card__content {
+      padding: var(--lp-space-md);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .lp-course-card__meta {
+      display: flex;
+      align-items: center;
+      gap: var(--lp-space-xs);
+      color: var(--lp-gray-500);
+      font-size: 0.875rem;
+      margin-bottom: var(--lp-space-xs);
+    }
+
+    .lp-course-card__title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--lp-dark);
+      margin-bottom: var(--lp-space-xs);
+      line-height: 1.4;
+    }
+
+    .lp-course-card__desc {
+      color: var(--lp-gray-500);
+      font-size: 0.9375rem;
+      margin-bottom: var(--lp-space-md);
+      flex: 1;
+    }
+
+    .lp-course-card__footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: var(--lp-space-sm);
+      border-top: 1px solid var(--lp-gray-100);
+    }
+
+    .lp-course-card__price {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--lp-primary);
+    }
+
+    .lp-course-card__old-price {
+      font-size: 0.875rem;
+      color: var(--lp-gray-300);
+      text-decoration: line-through;
+      margin-right: var(--lp-space-xs);
+    }
+
+    .lp-course-card__enroll {
+      font-weight: 700;
+      color: var(--lp-primary);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      transition: var(--lp-transition);
+    }
+
+    .lp-course-card__enroll:hover {
+      gap: 8px;
+    }
+
+    /* Features Section */
+    .lp-features {
+      background: var(--lp-light);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .lp-features__bg {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(37, 99, 235, 0.05) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .lp-features__header {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto var(--lp-space-lg);
+    }
+
+    .lp-features__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--lp-space-md);
+      position: relative;
+      z-index: 1;
+    }
+
+    .lp-feature-card {
+      padding: var(--lp-space-lg) var(--lp-space-md);
+      border-radius: var(--lp-radius-lg);
+      background: var(--lp-bg);
+      text-align: center;
+      transition: var(--lp-transition);
+      border: 1px solid transparent;
+    }
+
+    .lp-feature-card:hover {
+      background: var(--lp-light);
+      border-color: var(--lp-gray-100);
+      box-shadow: var(--lp-shadow-xl);
+      transform: translateY(-5px);
+    }
+
+    .lp-feature-card__icon {
+      width: 70px;
+      height: 70px;
+      margin: 0 auto var(--lp-space-md);
+      background: linear-gradient(135deg, var(--lp-primary), var(--lp-secondary));
+      border-radius: var(--lp-radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--lp-light);
+      font-size: 1.75rem;
+      box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+      transition: var(--lp-transition);
+    }
+
+    .lp-feature-card:hover .lp-feature-card__icon {
+      transform: rotate(-5deg) scale(1.1);
+    }
+
+    .lp-feature-card__title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--lp-dark);
+      margin-bottom: var(--lp-space-xs);
+    }
+
+    .lp-feature-card__desc {
+      color: var(--lp-gray-500);
+      font-size: 0.9375rem;
+    }
+
+    /* Testimonials Section */
+    .lp-testimonials {
+      background: linear-gradient(180deg, var(--lp-light) 0%, var(--lp-bg) 100%);
+    }
+
+    .lp-testimonials__header {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto var(--lp-space-lg);
+    }
+
+    .lp-testimonials__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--lp-space-md);
+    }
+
+    .lp-testimonial-card {
+      background: var(--lp-light);
+      padding: var(--lp-space-lg);
+      border-radius: var(--lp-radius-lg);
+      box-shadow: var(--lp-shadow-md);
+      border: 1px solid rgba(203, 213, 225, 0.3);
+      transition: var(--lp-transition);
+    }
+
+    .lp-testimonial-card:hover {
+      box-shadow: var(--lp-shadow-xl);
+      transform: translateY(-3px);
+    }
+
+    .lp-testimonial-card__stars {
+      color: var(--lp-accent);
+      margin-bottom: var(--lp-space-sm);
+      font-size: 0.875rem;
+    }
+
+    .lp-testimonial-card__text {
+      color: var(--lp-gray-700);
+      font-size: 1rem;
+      line-height: 1.8;
+      margin-bottom: var(--lp-space-md);
+    }
+
+    .lp-testimonial-card__author {
+      display: flex;
+      align-items: center;
+      gap: var(--lp-space-sm);
+    }
+
+    .lp-testimonial-card__avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--lp-primary), var(--lp-secondary));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--lp-light);
+      font-weight: 700;
+      font-size: 1.125rem;
+      flex-shrink: 0;
+    }
+
+    .lp-testimonial-card__name {
+      font-weight: 800;
+      color: var(--lp-dark);
+      font-size: 0.9375rem;
+    }
+
+    .lp-testimonial-card__role {
+      font-size: 0.875rem;
+      color: var(--lp-gray-500);
+    }
+
+    /* CTA Section */
+    .lp-cta {
+      padding: var(--lp-space-xl) 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .lp-cta__inner {
+      background: linear-gradient(135deg, var(--lp-primary) 0%, var(--lp-secondary) 100%);
+      border-radius: var(--lp-radius-lg);
+      padding: var(--lp-space-xl) var(--lp-space-lg);
+      text-align: center;
+      color: var(--lp-light);
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--lp-shadow-glow);
+    }
+
+    .lp-cta__bg-shape {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .lp-cta__bg-shape--1 {
+      width: 300px;
+      height: 300px;
+      top: -100px;
+      right: -100px;
+    }
+
+    .lp-cta__bg-shape--2 {
+      width: 200px;
+      height: 200px;
+      bottom: -50px;
+      left: -50px;
+    }
+
+    .lp-cta__title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: var(--lp-space-sm);
+      position: relative;
+      z-index: 1;
+    }
+
+    .lp-cta__desc {
+      font-size: 1.125rem;
+      opacity: 0.9;
+      margin-bottom: var(--lp-space-md);
+      max-width: 600px;
+      margin-right: auto;
+      margin-left: auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .lp-cta__btn {
+      background: var(--lp-light);
+      color: var(--lp-primary);
+      position: relative;
+      z-index: 1;
+    }
+
+    .lp-cta__btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Footer */
+    .lp-footer {
+      background: var(--lp-dark);
+      color: var(--lp-gray-300);
+      padding-top: var(--lp-space-xl);
+    }
+
+    .lp-footer__grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: var(--lp-space-lg);
+      margin-bottom: var(--lp-space-lg);
+    }
+
+    .lp-footer__brand {
+      max-width: 300px;
+    }
+
+    .lp-footer__logo {
+      display: flex;
+      align-items: center;
+      gap: var(--lp-space-xs);
+      font-weight: 800;
+      font-size: 1.5rem;
+      color: var(--lp-light);
+      margin-bottom: var(--lp-space-sm);
+    }
+
+    .lp-footer__logo-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--lp-primary), var(--lp-secondary));
+      border-radius: var(--lp-radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--lp-light);
+    }
+
+    .lp-footer__desc {
+      line-height: 1.8;
+      font-size: 0.9375rem;
+      margin-bottom: var(--lp-space-md);
+    }
+
+    .lp-footer__social {
+      display: flex;
+      gap: var(--lp-space-sm);
+    }
+
+    .lp-footer__social-link {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--lp-light);
+      transition: var(--lp-transition);
+    }
+
+    .lp-footer__social-link:hover {
+      background: var(--lp-primary);
+      transform: translateY(-3px);
+    }
+
+    .lp-footer__title {
+      color: var(--lp-light);
+      font-weight: 800;
+      font-size: 1.125rem;
+      margin-bottom: var(--lp-space-md);
+    }
+
+    .lp-footer__links {
+      display: flex;
+      flex-direction: column;
+      gap: var(--lp-space-xs);
+    }
+
+    .lp-footer__link {
+      transition: var(--lp-transition);
+      font-size: 0.9375rem;
+    }
+
+    .lp-footer__link:hover {
+      color: var(--lp-primary);
+      padding-right: 5px;
+    }
+
+    .lp-footer__bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding: var(--lp-space-md) 0;
+      text-align: center;
+      font-size: 0.875rem;
+      color: var(--lp-gray-500);
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .lp-hero__inner,
+      .lp-about__inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: var(--lp-space-md);
+      }
+
+      .lp-hero__title {
+        font-size: 2.5rem;
+      }
+
+      .lp-hero__actions {
+        justify-content: center;
+      }
+
+      .lp-hero__media {
+        order: -1;
+      }
+
+      .lp-hero__float-card--1 {
+        left: 10px;
+      }
+
+      .lp-hero__float-card--2 {
+        right: 10px;
+      }
+
+      .lp-stats__grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .lp-courses__grid,
+      .lp-features__grid,
+      .lp-testimonials__grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .lp-footer__grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .lp-about__features {
+        align-items: center;
+      }
+
+      .lp-about__experience {
+        left: 20px;
+      }
+
+      .lp-nav,
+      .lp-header__cta {
+        display: none;
+      }
+
+      .lp-mobile-toggle {
+        display: block;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .lp-hero__title {
+        font-size: 2rem;
+      }
+
+      .lp-section-title,
+      .lp-about__title,
+      .lp-cta__title {
+        font-size: 1.75rem;
+      }
+
+      .lp-stats__grid,
+      .lp-courses__grid,
+      .lp-features__grid,
+      .lp-testimonials__grid,
+      .lp-footer__grid {
+        grid-template-columns: 1fr;
+      }
+
+      .lp-hero__image {
+        height: 300px;
+      }
+
+      .lp-about__image {
+        height: 350px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="lp-header">
+    <div class="lp-container lp-header__inner">
+      <a href="#" class="lp-header__logo">
+        <div class="lp-header__logo-icon">
+          <i class="fas fa-graduation-cap"></i>
+        </div>
+        أكاديمية فايزة
+      </a>
+      <nav class="lp-nav">
+        <a href="#hero" class="lp-nav__link">الرئيسية</a>
+        <a href="#about" class="lp-nav__link">عن الأكاديمية</a>
+        <a href="#courses" class="lp-nav__link">الدورات</a>
+        <a href="#features" class="lp-nav__link">المميزات</a>
+        <a href="#testimonials" class="lp-nav__link">آراء الطلاب</a>
+      </nav>
+      <div class="lp-header__cta">
+        <a href="#cta" class="lp-btn lp-btn--primary">سجل الآن</a>
+      </div>
+      <button class="lp-mobile-toggle" id="lpMobileToggle" aria-label="القائمة">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="lp-mobile-menu" id="lpMobileMenu">
+    <a href="#hero" class="lp-mobile-menu__link">الرئيسية</a>
+    <a href="#about" class="lp-mobile-menu__link">عن الأكاديمية</a>
+    <a href="#courses" class="lp-mobile-menu__link">الدورات</a>
+    <a href="#features" class="lp-mobile-menu__link">المميزات</a>
+    <a href="#testimonials" class="lp-mobile-menu__link">آراء الطلاب</a>
+    <a href="#cta" class="lp-mobile-menu__link" style="color: var(--lp-primary);">سجل الآن</a>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="lp-hero" id="hero">
+    <div class="lp-hero__bg-shape lp-hero__bg-shape--1"></div>
+    <div class="lp-hero__bg-shape lp-hero__bg-shape--2"></div>
+    <div class="lp-container lp-hero__inner">
+      <div class="lp-hero__content lp-reveal">
+        <div class="lp-hero__badge">
+          <i class="fas fa-star"></i>
+          منصة التعلم الأسرع نمواً في الوطن العربي
+        </div>
+        <h1 class="lp-hero__title">
+          طور مهاراتك مع <span class="lp-text-gradient">أكاديمية فايزة</span>
+        </h1>
+        <p class="lp-hero__desc">
+          انضم إلى آلاف المتعلمين وابدأ رحلتك نحو التميز بأحدث الدورات التدريبية في البرمجة والتصميم والتسويق الرقمي مع نخبة من أفضل المدربين.
+        </p>
+        <div class="lp-hero__actions">
+          <a href="#courses" class="lp-btn lp-btn--primary">
+            استكشف الدورات
+            <i class="fas fa-arrow-left"></i>
+          </a>
+          <a href="#about" class="lp-btn lp-btn--secondary">
+            تعرف علينا
+          </a>
+        </div>
+      </div>
+      <div class="lp-hero__media lp-reveal">
+        <div class="lp-hero__image-wrapper">
+          <div class="lp-hero__image">
+            <i class="fas fa-image" style="font-size: 4rem;"></i>
+          </div>
+        </div>
+        <div class="lp-hero__float-card lp-hero__float-card--1">
+          <div class="lp-hero__float-icon">
+            <i class="fas fa-users"></i>
+          </div>
+          <div>
+            <div class="lp-hero__float-text">+10,000 طالب</div>
+            <div class="lp-hero__float-sub">يثقون بنا</div>
+          </div>
+        </div>
+        <div class="lp-hero__float-card lp-hero__float-card--2">
+          <div class="lp-hero__float-icon">
+            <i class="fas fa-play-circle"></i>
+          </div>
+          <div>
+            <div class="lp-hero__float-text">500+ دورة</div>
+            <div class="lp-hero__float-sub">متاحة الآن</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="lp-stats">
+    <div class="lp-container">
+      <div class="lp-stats__grid lp-reveal">
+        <div class="lp-stat-card">
+          <div class="lp-stat-card__number">12K+</div>
+          <div class="lp-stat-card__label">طالب مسجل</div>
+        </div>
+        <div class="lp-stat-card">
+          <div class="lp-stat-card__number">500+</div>
+          <div class="lp-stat-card__label">دورة تدريبية</div>
+        </div>
+        <div class="lp-stat-card">
+          <div class="lp-stat-card__number">150+</div>
+          <div class="lp-stat-card__label">مدرب معتمد</div>
+        </div>
+        <div class="lp-stat-card">
+          <div class="lp-stat-card__number">98%</div>
+          <div class="lp-stat-card__label">نسبة الرضا</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="lp-section lp-about" id="about">
+    <div class="lp-container lp-about__inner">
+      <div class="lp-about__image-box lp-reveal">
+        <div class="lp-about__image">
+          <i class="fas fa-image" style="font-size: 4rem;"></i>
+        </div>
+        <div class="lp-about__experience">
+          <span class="lp-about__experience-num">10+</span>
+          <span class="lp-about__experience-text">سنوات خبرة</span>
+        </div>
+      </div>
+      <div class="lp-about__content lp-reveal">
+        <div class="lp-section-tag">عن الأكاديمية</div>
+        <h2 class="lp-about__title">
+          نُعدّ جيل المستقبل بأحدث <span class="lp-text-gradient">المهارات الرقمية</span>
+        </h2>
+        <p class="lp-about__desc">
+          أكاديمية فايزة هي منصة تعليمية رائدة تهدف إلى تمكين الأفراد من اكتساب المهارات العملية المطلوبة في سوق العمل. نؤمن بأن التعليم الجيد يجب أن يكون متاحاً للجميع.
+        </p>
+        <div class="lp-about__features">
+          <div class="lp-about__feature">
+            <div class="lp-about__feature-icon">
+              <i class="fas fa-check"></i>
+            </div>
+            شهادات معتمدة معترف بها عالمياً
+          </div>
+          <div class="lp-about__feature">
+            <div class="lp-about__feature-icon">
+              <i class="fas fa-check"></i>
+            </div>
+            محتوى تفاعلي ومشاريع عملية
+          </div>
+          <div class="lp-about__feature">
+            <div class="lp-about__feature-icon">
+              <i class="fas fa-check"></i>
+            </div>
+            دعم فني ومتابعة شخصية على مدار الساعة
+          </div>
+          <div class="lp-about__feature">
+            <div class="lp-about__feature-icon">
+              <i class="fas fa-check"></i>
+            </div>
+            ضمان استرداد الأموال خلال 14 يوماً
+          </div>
+        </div>
+        <a href="#courses" class="lp-btn lp-btn--primary">
+          ابدأ التعلم الآن
+          <i class="fas fa-arrow-left"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Courses Section -->
+  <section class="lp-section lp-courses" id="courses">
+    <div class="lp-container">
+      <div class="lp-courses__header lp-reveal">
+        <div class="lp-section-tag">الدورات التدريبية</div>
+        <h2 class="lp-section-title">أشهر الدورات <span class="lp-text-gradient">المتاحة الآن</span></h2>
+        <p class="lp-section-desc">اختر من بين مجموعة واسعة من الدورات المصممة لتناسب احتياجاتك وتطلعاتك المهنية</p>
+      </div>
+      <div class="lp-courses__grid">
+        <article class="lp-course-card lp-reveal">
+          <div class="lp-course-card__image">
+            <i class="fas fa-code"></i>
+            <span class="lp-course-card__badge">الأكثر مبيعاً</span>
+          </div>
+          <div class="lp-course-card__content">
+            <div class="lp-course-card__meta">
+              <i class="fas fa-book-open"></i>
+              45 درساً
+              <span style="margin: 0 4px;">•</span>
+              <i class="fas fa-clock"></i>
+              30 ساعة
+            </div>
+            <h3 class="lp-course-card__title">تطوير المواقع باستخدام React.js</h3>
+            <p class="lp-course-card__desc">تعلم بناء تطبيقات ويب تفاعلية واحترافية باستخدام أحدث إصدارات React وNext.js</p>
+            <div class="lp-course-card__footer">
+              <div>
+                <span class="lp-course-card__old-price">$150</span>
+                <span class="lp-course-card__price">$49</span>
+              </div>
+              <a href="#" class="lp-course-card__enroll">
+                سجل الآن
+                <i class="fas fa-arrow-left"></i>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="lp-course-card lp-reveal">
+          <div class="lp-course-card__image">
+            <i class="fas fa-palette"></i>
+            <span class="lp-course-card__badge" style="background: var(--lp-secondary);">جديد</span>
+          </div>
+          <div class="lp-course-card__content">
+            <div class="lp-course-card__meta">
+              <i class="fas fa-book-open"></i>
+              32 درساً
+              <span style="margin: 0 4px;">•</span>
+              <i class="fas fa-clock"></i>
+              22 ساعة
+            </div>
+            <h3 class="lp-course-card__title">تصميم واجهات المستخدم UI/UX</h3>
+            <p class="lp-course-card__desc">احترف أدوات Figma وتعلم مبادئ التصميم البصري وخبرة المستخدم من الصفر</p>
+            <div class="lp-course-card__footer">
+              <div>
+                <span class="lp-course-card__old-price">$120</span>
+                <span class="lp-course-card__price">$39</span>
+              </div>
+              <a href="#" class="lp-course-card__enroll">
+                سجل الآن
+                <i class="fas fa-arrow-left"></i>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="lp-course-card lp-reveal">
+          <div class="lp-course-card__image">
+            <i class="fas fa-bullhorn"></i>
+          </div>
+          <div class="lp-course-card__content">
+            <div class="lp-course-card__meta">
+              <i class="fas fa-book-open"></i>
+              50 درساً
+              <span style="margin: 0 4px;">•</span>
+              <i class="fas fa-clock"></i>
+              35 ساعة
+            </div>
+            <h3 class="lp-course-card__title">التسويق الرقمي وإدارة الحملات</h3>
+            <p class="lp-course-card__desc">تعلم استراتيجيات التسويق عبر وسائل التواصل وإعلانات Google وتحليل البيانات</p>
+            <div class="lp-course-card__footer">
+              <div>
+                <span class="lp-course-card__old-price">$130</span>
+                <span class="lp-course-card__price">$45</span>
+              </div>
+              <a href="#" class="lp-course-card__enroll">
+                سجل الآن
+                <i class="fas fa-arrow-left"></i>
+              </a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="lp-section lp-features" id="features">
+    <div class="lp-features__bg"></div>
+    <div class="lp-container">
+      <div class="lp-features__header lp-reveal">
+        <div class="lp-section-tag">لماذا نحن؟</div>
+        <h2 class="lp-section-title">مميزات <span class="lp-text-gradient">تعلّم فريدة</span></h2>
+        <p class="lp-section-desc">نوفر لك بيئة تعليمية متكاملة تضمن لك تجربة تعلم ممتعة وفعالة</p>
+      </div>
+      <div class="lp-features__grid">
+        <div class="lp-feature-card lp-reveal">
+          <div class="lp-feature-card__icon">
+            <i class="fas fa-chalkboard-teacher"></i>
+          </div>
+          <h3 class="lp-feature-card__title">مدربون خبراء</h3>
+          <p class="lp-feature-card__desc">تعلم مباشرة من نخبة المدربين المعتمدين ذوي الخبرة العملية في أكبر الشركات</p>
+        </div>
+        <div class="lp-feature-card lp-reveal">
+          <div class="lp-feature-card__icon">
+            <i class="fas fa-infinity"></i>
+          </div>
+          <h3 class="lp-feature-card__title">وصول مدى الحياة</h3>
+          <p class="lp-feature-card__desc">احصل على مدى الحياة لجميع المواد والتحديثات المستقبلية للدورات التي تملكها</p>
+        </div>
+        <div class="lp-feature-card lp-reveal">
+          <div class="lp-feature-card__icon">
+            <i class="fas fa-certificate"></i>
+          </div>
+          <h3 class="lp-feature-card__title">شهادات معتمدة</h3>
+          <p class="lp-feature-card__desc">احصل على شهادة إتمام معتمدة تضاف إلى سيرتك الذاتية وتعزز فرصك الوظيفية</p>
+        </div>
+        <div class="lp-feature-card lp-reveal">
+          <div class="lp-feature-card__icon">
+            <i class="fas fa-mobile-alt"></i>
+          </div>
+          <h3 class="lp-feature-card__title">تعلم في أي وقت</h3>
+          <p class="lp-feature-card__desc">صمم جدولك الخاص وتعلم من أي مكان عبر الكمبيوتر أو الجوال بدون قيود زمنية</p>
+        </div>
+        <div class="lp-feature-card lp-reveal">
+          <div class="lp-feature-card__icon">
+            <i class="fas fa-project-diagram"></i>
+          </div>
+          <h3 class="lp-feature-card__title">مشاريع عملية</h3>
+          <p class="lp-feature-card__desc">طبق ما تعلمته على مشاريع واقعية تُضاف إلى معرض أعمالك المهني</p>
+        </div>
+        <div class="lp-feature-card lp-reveal">
+          <div class="lp-feature-card__icon">
+            <i class="fas fa-headset"></i>
+          </div>
+          <h3 class="lp-feature-card__title">دعم مباشر</h3>
+          <p class="lp-feature-card__desc">فريق دعم متخصص جاهز للإجابة على استفساراتك ومساعدتك في رحلتك التعليمية</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="lp-section lp-testimonials" id="testimonials">
+    <div class="lp-container">
+      <div class="lp-testimonials__header lp-reveal">
+        <div class="lp-section-tag">آراء الطلاب</div>
+        <h2 class="lp-section-title">قصص <span class="lp-text-gradient">نجاح حقيقية</span></h2>
+        <p class="lp-section-desc">انضم إلى آلاف الطلاب الذين غيّروا مستقبلهم المهني مع أكاديمية فايزة</p>
+      </div>
+      <div class="lp-testimonials__grid">
+        <div class="lp-testimonial-card lp-reveal">
+          <div class="lp-testimonial-card__stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <p class="lp-testimonial-card__text">
+            "كانت تجربة رائعة! محتوى الدورة غني وعملي، والمدرب كان ممتازاً في توصيل المعلومة. تمكنت خلال شهرين فقط من الحصول على وظيفتي الأولى كمطور واجهات."
+          </p>
+          <div class="lp-testimonial-card__author">
+            <div class="lp-testimonial-card__avatar">أ</div>
+            <div>
+              <div class="lp-testimonial-card__name">أحمد محمد</div>
+              <div class="lp-testimonial-card__role">مطور واجهات أمامية</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lp-testimonial-card lp-reveal">
+          <div class="lp-testimonial-card__stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <p class="lp-testimonial-card__text">
+            "الدعم الفني والمتابعة الشخصية هي ما يميز هذه المنصة عن غيرها. لم أشعر يوماً أنني بمفردي في رحلة التعلم. أنصح الجميع بالانضمام فوراً."
+          </p>
+          <div class="lp-testimonial-card__author">
+            <div class="lp-testimonial-card__avatar">ن</div>
+            <div>
+              <div class="lp-testimonial-card__name">نورة السالم</div>
+              <div class="lp-testimonial-card__role">مصممة منتجات</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lp-testimonial-card lp-reveal">
+          <div class="lp-testimonial-card__stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+          </div>
+          <p class="lp-testimonial-card__text">
+            "الجودة مقابل السعر ممتازة جداً. شهادتي من الأكاديمية ساعدتني في الحصول على ترقية في عملي. شكراً لفريق فايزة على هذه الجهود المبذولة."
+          </p>
+          <div class="lp-testimonial-card__author">
+            <div class="lp-testimonial-card__avatar">خ</div>
+            <div>
+              <div class="lp-testimonial-card__name">خالد العبدالله</div>
+              <div class="lp-testimonial-card__role">مدير تسويق رقمي</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="lp-cta" id="cta">
+    <div class="lp-container">
+      <div class="lp-cta__inner lp-reveal">
+        <div class="lp-cta__bg-shape lp-cta__bg-shape--1"></div>
+        <div class="lp-cta__bg-shape lp-cta__bg-shape--2"></div>
+        <h2 class="lp-cta__title">ابدأ رحلتك التعليمية اليوم</h2>
+        <p class="lp-cta__desc">
+          سجّل الآن واحصل على خصم 50% على أول دورة لك. فرصتك للتميز تبدأ من هنا.
+        </p>
+        <a href="#" class="lp-btn lp-cta__btn">
+          ابدأ مجاناً
+          <i class="fas fa-arrow-left"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="lp-footer">
+    <div class="lp-container lp-footer__grid">
+      <div class="lp-footer__brand">
+        <div class="lp-footer__logo">
+          <div class="lp-footer__logo-icon">
+            <i class="fas fa-graduation-cap"></i>
+          </div>
+          أكاديمية فايزة
+        </div>
+        <p class="lp-footer__desc">
+          منصتك الأولى للتعلم الرقمي في الوطن العربي. نؤمن بقدرة كل فرد على التعلم والتطور مهما كانت بدايته.
+        </p>
+        <div class="lp-footer__social">
+          <a href="#" class="lp-footer__social-link" aria-label="تويتر"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="lp-footer__social-link" aria-label="لينكدإن"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="lp-footer__social-link" aria-label="إنستغرام"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="lp-footer__social-link" aria-label="يوتيوب"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4 class="lp-footer__title">أقسام الموقع</h4>
+        <div class="lp-footer__links">
+          <a href="#hero" class="lp-footer__link">الرئيسية</a>
+          <a href="#about" class="lp-footer__link">عن الأكاديمية</a>
+          <a href="#courses" class="lp-footer__link">الدورات</a>
+          <a href="#features" class="lp-footer__link">المميزات</a>
+        </div>
+      </div>
+      <div>
+        <h4 class="lp-footer__title">الدعم</h4>
+        <div class="lp-footer__links">
+          <a href="#" class="lp-footer__link">مركز المساعدة</a>
+          <a href="#" class="lp-footer__link">الأسئلة الشائعة</a>
+          <a href="#" class="lp-footer__link">سياسة الخصوصية</a>
+          <a href="#" class="lp-footer__link">شروط الاستخدام</a>
+        </div>
+      </div>
+      <div>
+        <h4 class="lp-footer__title">تواصل معنا</h4>
+        <div class="lp-footer__links">
+          <a href="#" class="lp-footer__link"><i class="fas fa-envelope" style="margin-left: 6px;"></i> info@faizaacademy.com</a>
+          <a href="#" class="lp-footer__link"><i class="fas fa-phone" style="margin-left: 6px;"></i> +966 50 123 4567</a>
+          <a href="#" class="lp-footer__link"><i class="fas fa-map-marker-alt" style="margin-left: 6px;"></i> الرياض، المملكة العربية السعودية</a>
+        </div>
+      </div>
+    </div>
+    <div class="lp-footer__bottom">
+      <div class="lp-container">
+        جميع الحقوق محفوظة © أكاديمية فايزة 2024
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile Menu Toggle
+    const mobileToggle = document.getElementById('lpMobileToggle');
+    const mobileMenu = document.getElementById('lpMobileMenu');
+    
+    mobileToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('is-open');
+      const icon = mobileToggle.querySelector('i');
+      icon.classList.toggle('fa-bars');
+      icon.classList.toggle('fa-times');
+    });
+
+    // Close mobile menu on link click
+    document.querySelectorAll('.lp-mobile-menu__link').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('is-open');
+        const icon = mobileToggle.querySelector('i');
+        icon.classList.add('fa-bars');
+        icon.classList.remove('fa-times');
+      });
+    });
+
+    // Scroll Reveal with IntersectionObserver
+    const revealElements = document.querySelectorAll('.lp-reveal');
+    
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('lp-reveal--visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    // Header shadow on scroll
+    const header = document.querySelector('.lp-header');
+    let lastScroll = 0;
+
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.pageYOffset;
+      
+      if (currentScroll > 50) {
+        header.style.boxShadow = '0 4px 20px rgba(15, 23, 42, 0.08)';
+      } else {
+        header.style.boxShadow = 'none';
+      }
+      
+      lastScroll = currentScroll;
+    });
+  </script>
+
+</body>
+</html>
