@@ -1,0 +1,1413 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Finpay - Get paid early</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --lp-color-primary: #0d7377;
+      --lp-color-primary-dark: #095c5f;
+      --lp-color-accent: #32e0c4;
+      --lp-color-bg: #f6f9fb;
+      --lp-color-surface: #ffffff;
+      --lp-color-dark: #0f2e2e;
+      --lp-color-dark-card: #1a3e3e;
+      --lp-color-text: #111827;
+      --lp-color-text-secondary: #6b7280;
+      --lp-color-text-muted: #9ca3af;
+      --lp-color-border: #e5e7eb;
+      --lp-color-blob: #e0f7fa;
+      --lp-color-blob-2: #b2ebf2;
+
+      --lp-font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+      --lp-radius-sm: 0.5rem;
+      --lp-radius-md: 0.75rem;
+      --lp-radius-lg: 1rem;
+      --lp-radius-xl: 1.25rem;
+      --lp-radius-full: 9999px;
+
+      --lp-shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
+      --lp-shadow-md: 0 4px 6px -1px rgba(0,0,0,0.06), 0 2px 4px -1px rgba(0,0,0,0.04);
+      --lp-shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.08), 0 4px 6px -2px rgba(0,0,0,0.03);
+      --lp-shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+
+      --lp-space-xs: 0.5rem;
+      --lp-space-sm: 1rem;
+      --lp-space-md: 1.5rem;
+      --lp-space-lg: 2rem;
+      --lp-space-xl: 3rem;
+      --lp-space-2xl: 4rem;
+      --lp-space-3xl: 5rem;
+
+      --lp-transition: all 0.3s ease;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--lp-font);
+      color: var(--lp-color-text);
+      background-color: var(--lp-color-surface);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+
+    .lp-container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--lp-space-md);
+    }
+
+    .lp-label {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--lp-color-text-muted);
+      margin-bottom: var(--lp-space-sm);
+    }
+
+    .lp-section-title {
+      font-size: 1.75rem;
+      font-weight: 700;
+      line-height: 1.25;
+      color: var(--lp-color-text);
+    }
+
+    @media (min-width: 768px) {
+      .lp-section-title { font-size: 2rem; }
+    }
+
+    @media (min-width: 1024px) {
+      .lp-section-title { font-size: 2.25rem; }
+    }
+
+    .lp-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      border-radius: var(--lp-radius-full);
+      border: 1px solid transparent;
+      cursor: pointer;
+      text-decoration: none;
+      transition: var(--lp-transition);
+    }
+
+    .lp-btn--primary {
+      background-color: var(--lp-color-primary);
+      color: #fff;
+      border-color: var(--lp-color-primary);
+    }
+
+    .lp-btn--primary:hover {
+      background-color: var(--lp-color-primary-dark);
+      border-color: var(--lp-color-primary-dark);
+      transform: translateY(-2px);
+      box-shadow: var(--lp-shadow-md);
+    }
+
+    .lp-btn--secondary {
+      background-color: #fff;
+      color: var(--lp-color-text);
+      border-color: var(--lp-color-border);
+    }
+
+    .lp-btn--secondary:hover {
+      border-color: var(--lp-color-text-secondary);
+      background-color: var(--lp-color-bg);
+    }
+
+    .lp-btn--ghost {
+      background-color: transparent;
+      color: #fff;
+      border-color: rgba(255,255,255,0.3);
+    }
+
+    .lp-btn--ghost:hover {
+      background-color: rgba(255,255,255,0.1);
+      border-color: rgba(255,255,255,0.6);
+    }
+
+    /* Header */
+    .lp-header {
+      background-color: var(--lp-color-surface);
+      border-bottom: 1px solid var(--lp-color-border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .lp-header__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      height: 64px;
+      position: relative;
+    }
+
+    .lp-logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--lp-color-text);
+      text-decoration: none;
+    }
+
+    .lp-logo__icon {
+      width: 28px;
+      height: 28px;
+      background-color: var(--lp-color-primary);
+      color: #fff;
+      border-radius: var(--lp-radius-sm);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.875rem;
+    }
+
+    .lp-nav__toggle {
+      display: none;
+    }
+
+    .lp-nav__hamburger {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      color: var(--lp-color-text);
+      order: 2;
+    }
+
+    .lp-nav {
+      display: none;
+      width: 100%;
+      flex-direction: column;
+      padding: var(--lp-space-md) 0;
+      gap: var(--lp-space-sm);
+      order: 4;
+    }
+
+    .lp-nav__toggle:checked ~ .lp-nav {
+      display: flex;
+    }
+
+    .lp-nav__link {
+      color: var(--lp-color-text-secondary);
+      text-decoration: none;
+      font-size: 0.9375rem;
+      font-weight: 500;
+      transition: var(--lp-transition);
+    }
+
+    .lp-nav__link:hover {
+      color: var(--lp-color-primary);
+    }
+
+    .lp-header__actions {
+      display: none;
+      align-items: center;
+      gap: var(--lp-space-sm);
+      order: 3;
+    }
+
+    .lp-header__actions .lp-btn {
+      padding: 0.5rem 1.25rem;
+      font-size: 0.875rem;
+    }
+
+    @media (min-width: 1024px) {
+      .lp-header__inner { flex-wrap: nowrap; }
+      .lp-nav__hamburger { display: none; }
+      .lp-nav {
+        display: flex;
+        position: static;
+        width: auto;
+        flex-direction: row;
+        padding: 0;
+        order: 2;
+        gap: var(--lp-space-lg);
+      }
+      .lp-header__actions { display: flex; order: 3; }
+      .lp-nav__toggle:checked ~ .lp-nav { display: flex; }
+    }
+
+    /* Hero Section */
+    .lp-hero {
+      position: relative;
+      overflow: hidden;
+      background-color: var(--lp-color-bg);
+      padding: var(--lp-space-3xl) 0;
+    }
+
+    .lp-hero__blobs {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .lp-blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.55;
+    }
+
+    .lp-blob--1 {
+      width: 600px;
+      height: 600px;
+      background: var(--lp-color-blob-2);
+      top: -180px;
+      right: -120px;
+    }
+
+    .lp-blob--2 {
+      width: 400px;
+      height: 400px;
+      background: var(--lp-color-blob);
+      bottom: -80px;
+      right: 15%;
+    }
+
+    .lp-hero__inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: var(--lp-space-2xl);
+      align-items: center;
+    }
+
+    .lp-hero__content {
+      max-width: 540px;
+    }
+
+    .lp-hero__title {
+      font-size: 2.25rem;
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: var(--lp-space-md);
+    }
+
+    .lp-hero__text {
+      color: var(--lp-color-text-secondary);
+      font-size: 1rem;
+      margin-bottom: var(--lp-space-lg);
+      max-width: 400px;
+    }
+
+    .lp-hero__buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--lp-space-sm);
+    }
+
+    .lp-hero__visual {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 400px;
+      justify-self: center;
+    }
+
+    @media (min-width: 768px) {
+      .lp-hero__title { font-size: 3rem; }
+    }
+
+    @media (min-width: 1024px) {
+      .lp-hero__inner { grid-template-columns: 1fr 1fr; gap: var(--lp-space-xl); }
+      .lp-hero__title { font-size: 3.5rem; }
+      .lp-hero__visual { justify-self: end; }
+    }
+
+    /* Hero Cards */
+    .lp-card {
+      background: var(--lp-color-surface);
+      border-radius: var(--lp-radius-xl);
+      box-shadow: var(--lp-shadow-xl);
+    }
+
+    .lp-card--back {
+      position: absolute;
+      top: 20px;
+      left: 5%;
+      background: linear-gradient(135deg, var(--lp-color-primary), var(--lp-color-accent));
+      color: #fff;
+      width: 180px;
+      height: 110px;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: var(--lp-space-sm);
+    }
+
+    .lp-card--back .lp-card__header {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+
+    .lp-card--front {
+      position: relative;
+      z-index: 2;
+      width: 300px;
+      padding: var(--lp-space-lg);
+      margin-top: var(--lp-space-xl);
+    }
+
+    .lp-card__top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: var(--lp-space-sm);
+    }
+
+    .lp-card__chip {
+      width: 36px;
+      height: 36px;
+      background: var(--lp-color-bg);
+      border-radius: var(--lp-radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--lp-color-primary);
+      font-size: 1rem;
+    }
+
+    .lp-card__brand {
+      display: flex;
+      align-items: center;
+      gap: var(--lp-space-xs);
+      font-weight: 700;
+      font-size: 1.125rem;
+      color: var(--lp-color-text-secondary);
+    }
+
+    .lp-card__brand i {
+      font-size: 1.25rem;
+      color: var(--lp-color-text-muted);
+    }
+
+    .lp-card__number {
+      font-size: 0.875rem;
+      color: var(--lp-color-text-muted);
+      margin-bottom: var(--lp-space-xs);
+    }
+
+    .lp-card__balance {
+      font-size: 1.875rem;
+      font-weight: 700;
+      color: var(--lp-color-text);
+      margin-bottom: var(--lp-space-md);
+    }
+
+    .lp-card__toggle {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: var(--lp-space-md);
+      font-size: 0.875rem;
+      color: var(--lp-color-text-secondary);
+    }
+
+    .lp-toggle {
+      position: relative;
+      display: inline-block;
+      width: 44px;
+      height: 24px;
+    }
+
+    .lp-toggle__input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .lp-toggle__slider {
+      position: absolute;
+      cursor: pointer;
+      inset: 0;
+      background-color: var(--lp-color-border);
+      border-radius: var(--lp-radius-full);
+      transition: var(--lp-transition);
+    }
+
+    .lp-toggle__slider::before {
+      content: '';
+      position: absolute;
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      border-radius: 50%;
+      transition: var(--lp-transition);
+      box-shadow: var(--lp-shadow-sm);
+    }
+
+    .lp-toggle__input:checked + .lp-toggle__slider {
+      background-color: var(--lp-color-primary);
+    }
+
+    .lp-toggle__input:checked + .lp-toggle__slider::before {
+      transform: translateX(20px);
+    }
+
+    .lp-card__btn {
+      width: 100%;
+      padding: 0.75rem;
+      background-color: var(--lp-color-primary);
+      color: #fff;
+      border: none;
+      border-radius: var(--lp-radius-md);
+      font-weight: 600;
+      font-size: 0.9375rem;
+      cursor: pointer;
+      transition: var(--lp-transition);
+    }
+
+    .lp-card__btn:hover {
+      background-color: var(--lp-color-primary-dark);
+    }
+
+    @media (min-width: 768px) {
+      .lp-card--front { width: 340px; }
+      .lp-card--back { left: 10%; width: 200px; height: 120px; }
+    }
+
+    /* Partners */
+    .lp-partners {
+      background-color: var(--lp-color-bg);
+      padding-bottom: var(--lp-space-2xl);
+    }
+
+    .lp-partners__inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: var(--lp-space-xl);
+      opacity: 0.55;
+    }
+
+    .lp-partner {
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: var(--lp-color-text-secondary);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .lp-partner--klarna { font-style: italic; font-weight: 800; }
+    .lp-partner--coinbase { letter-spacing: -0.02em; }
+    .lp-partner--instacart { color: var(--lp-color-primary); }
+
+    /* Features Section */
+    .lp-features {
+      background-color: var(--lp-color-surface);
+      padding: var(--lp-space-3xl) 0;
+    }
+
+    .lp-features__header {
+      display: grid;
+      gap: var(--lp-space-md);
+      margin-bottom: var(--lp-space-2xl);
+    }
+
+    .lp-features__grid {
+      display: grid;
+      gap: var(--lp-space-lg);
+    }
+
+    .lp-feature {
+      padding: var(--lp-space-md);
+    }
+
+    .lp-feature__icon {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--lp-radius-md);
+      background: var(--lp-color-bg);
+      color: var(--lp-color-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      margin-bottom: var(--lp-space-md);
+    }
+
+    .lp-feature__title {
+      font-size: 1.125rem;
+      font-weight: 600;
+      margin-bottom: var(--lp-space-xs);
+    }
+
+    .lp-feature__text {
+      font-size: 0.9375rem;
+      color: var(--lp-color-text-secondary);
+      line-height: 1.6;
+    }
+
+    @media (min-width: 768px) {
+      .lp-features__header { grid-template-columns: 1fr 1fr; align-items: end; }
+      .lp-features__grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    /* Why Prefer Section */
+    .lp-prefer {
+      background-color: var(--lp-color-surface);
+      padding: var(--lp-space-3xl) 0;
+    }
+
+    .lp-prefer__title {
+      text-align: center;
+      margin-bottom: var(--lp-space-2xl);
+    }
+
+    .lp-prefer__grid {
+      display: grid;
+      gap: var(--lp-space-lg);
+    }
+
+    .lp-stat-big {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: var(--lp-space-md);
+    }
+
+    .lp-stat-big__num {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--lp-color-primary);
+      line-height: 1;
+      margin-bottom: var(--lp-space-sm);
+    }
+
+    .lp-stat-big__label {
+      font-size: 1rem;
+      color: var(--lp-color-text);
+      font-weight: 500;
+    }
+
+    .lp-prefer__card {
+      background: var(--lp-color-surface);
+      border: 1px solid var(--lp-color-border);
+      border-radius: var(--lp-radius-lg);
+      padding: var(--lp-space-lg);
+    }
+
+    .lp-prefer__card--flex {
+      display: flex;
+      flex-direction: column;
+      gap: var(--lp-space-md);
+    }
+
+    .lp-prefer__icons {
+      display: flex;
+      gap: var(--lp-space-md);
+      margin-top: auto;
+    }
+
+    .lp-prefer__icon-box {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--lp-radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+    }
+
+    .lp-prefer__icon-box--teal {
+      background: var(--lp-color-primary);
+      color: #fff;
+    }
+
+    .lp-prefer__icon-box--dark {
+      background: var(--lp-color-dark);
+      color: #fff;
+      border-radius: var(--lp-radius-full);
+    }
+
+    .lp-prefer__card-title {
+      font-weight: 600;
+      margin-bottom: var(--lp-space-xs);
+      font-size: 1rem;
+    }
+
+    .lp-prefer__card-text {
+      font-size: 0.9375rem;
+      color: var(--lp-color-text-secondary);
+      line-height: 1.6;
+    }
+
+    .lp-chart-card__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--lp-space-sm);
+    }
+
+    .lp-chart-card__value {
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+
+    .lp-chart-card__badge {
+      font-size: 0.75rem;
+      color: var(--lp-color-text-muted);
+      border: 1px solid var(--lp-color-border);
+      padding: 0.25rem 0.5rem;
+      border-radius: var(--lp-radius-sm);
+    }
+
+    .lp-chart {
+      width: 100%;
+    }
+
+    .lp-chart svg {
+      width: 100%;
+      height: 110px;
+    }
+
+    .lp-chart__labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      color: var(--lp-color-text-muted);
+      margin-top: var(--lp-space-xs);
+    }
+
+    @media (min-width: 768px) {
+      .lp-prefer__grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* Reserve Account Section */
+    .lp-reserve {
+      background-color: var(--lp-color-dark);
+      color: #fff;
+      padding: var(--lp-space-3xl) 0;
+    }
+
+    .lp-reserve__label { color: rgba(255,255,255,0.6); }
+
+    .lp-reserve__title {
+      color: #fff;
+      max-width: 600px;
+      margin-bottom: var(--lp-space-2xl);
+    }
+
+    .lp-reserve__grid {
+      display: grid;
+      gap: var(--lp-space-lg);
+    }
+
+    .lp-step {
+      background: var(--lp-color-dark-card);
+      border-radius: var(--lp-radius-lg);
+      padding: var(--lp-space-lg);
+    }
+
+    .lp-step__icon {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--lp-radius-full);
+      border: 1px solid rgba(255,255,255,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 1.25rem;
+      margin-bottom: var(--lp-space-md);
+    }
+
+    .lp-step__title {
+      font-weight: 600;
+      margin-bottom: var(--lp-space-xs);
+      color: #fff;
+    }
+
+    .lp-step__text {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.6;
+    }
+
+    @media (min-width: 768px) {
+      .lp-reserve__grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    /* Results Section */
+    .lp-results {
+      background-color: var(--lp-color-surface);
+      padding: var(--lp-space-3xl) 0;
+      text-align: center;
+    }
+
+    .lp-results__header {
+      margin-bottom: var(--lp-space-2xl);
+    }
+
+    .lp-results__grid {
+      display: grid;
+      gap: var(--lp-space-xl);
+      justify-content: center;
+    }
+
+    .lp-result__num {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--lp-color-text);
+      line-height: 1;
+      margin-bottom: var(--lp-space-xs);
+    }
+
+    .lp-result__label {
+      font-size: 0.875rem;
+      color: var(--lp-color-text-secondary);
+    }
+
+    @media (min-width: 768px) {
+      .lp-results__grid { grid-template-columns: repeat(3, 1fr); max-width: 700px; margin: 0 auto; }
+    }
+
+    /* Pricing Section */
+    .lp-pricing {
+      background-color: var(--lp-color-surface);
+      padding: var(--lp-space-3xl) 0;
+    }
+
+    .lp-pricing__label { text-align: center; display: block; margin-bottom: var(--lp-space-md); }
+
+    .lp-pricing__grid {
+      display: grid;
+      gap: var(--lp-space-lg);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .lp-price-card {
+      border: 1px solid var(--lp-color-border);
+      border-radius: var(--lp-radius-lg);
+      padding: var(--lp-space-lg);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 220px;
+      position: relative;
+      overflow: hidden;
+      background: var(--lp-color-surface);
+    }
+
+    .lp-price-card__name {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: var(--lp-space-xs);
+    }
+
+    .lp-price-card__price {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--lp-color-text);
+    }
+
+    .lp-price-card__price span {
+      font-size: 0.875rem;
+      color: var(--lp-color-text-secondary);
+      font-weight: 400;
+    }
+
+    .lp-price-card__arrow {
+      position: absolute;
+      bottom: var(--lp-space-lg);
+      right: var(--lp-space-lg);
+      width: 40px;
+      height: 40px;
+      border-radius: var(--lp-radius-full);
+      border: 1px solid var(--lp-color-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--lp-color-text-secondary);
+      text-decoration: none;
+      transition: var(--lp-transition);
+    }
+
+    .lp-price-card__arrow:hover {
+      background: var(--lp-color-bg);
+      color: var(--lp-color-primary);
+    }
+
+    .lp-price-card--premium {
+      background: linear-gradient(135deg, #0d7377, #14919b);
+      color: #fff;
+      border: none;
+    }
+
+    .lp-price-card--premium .lp-price-card__name,
+    .lp-price-card--premium .lp-price-card__price,
+    .lp-price-card--premium .lp-price-card__price span {
+      color: #fff;
+    }
+
+    .lp-price-card--premium .lp-price-card__arrow {
+      border-color: rgba(255,255,255,0.4);
+      color: #fff;
+    }
+
+    .lp-price-card--premium .lp-price-card__arrow:hover {
+      background: rgba(255,255,255,0.15);
+    }
+
+    .lp-price-card__lines {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .lp-line {
+      position: absolute;
+      border-top: 2px solid rgba(255,255,255,0.15);
+      width: 200%;
+      left: -50%;
+      top: 40%;
+      transform: rotate(-35deg);
+    }
+
+    .lp-line--2 {
+      top: 65%;
+      border-top-width: 1px;
+      opacity: 0.6;
+    }
+
+    .lp-line--3 {
+      top: 80%;
+      border-top-width: 1px;
+      opacity: 0.3;
+    }
+
+    @media (min-width: 768px) {
+      .lp-pricing__grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* CTA Section */
+    .lp-cta {
+      background-color: var(--lp-color-surface);
+      padding-bottom: var(--lp-space-3xl);
+    }
+
+    .lp-cta__inner {
+      background-color: var(--lp-color-dark);
+      border-radius: var(--lp-radius-xl);
+      padding: var(--lp-space-2xl) var(--lp-space-lg);
+      color: #fff;
+      display: grid;
+      gap: var(--lp-space-lg);
+      align-items: center;
+    }
+
+    .lp-cta__title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: var(--lp-space-sm);
+      color: #fff;
+    }
+
+    .lp-cta__text {
+      color: rgba(255,255,255,0.7);
+      font-size: 0.9375rem;
+      max-width: 400px;
+    }
+
+    .lp-cta__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--lp-space-sm);
+    }
+
+    @media (min-width: 768px) {
+      .lp-cta__inner {
+        grid-template-columns: 1fr auto;
+        padding: var(--lp-space-3xl);
+      }
+      .lp-cta__title { font-size: 1.875rem; }
+    }
+
+    /* Footer */
+    .lp-footer {
+      background-color: var(--lp-color-bg);
+      border-top: 1px solid var(--lp-color-border);
+      padding: var(--lp-space-2xl) 0 var(--lp-space-lg);
+    }
+
+    .lp-footer__grid {
+      display: grid;
+      gap: var(--lp-space-xl);
+      margin-bottom: var(--lp-space-2xl);
+    }
+
+    .lp-footer__brand {
+      display: flex;
+      flex-direction: column;
+      gap: var(--lp-space-sm);
+    }
+
+    .lp-footer__logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--lp-color-text);
+      text-decoration: none;
+    }
+
+    .lp-footer__col-title {
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: var(--lp-space-md);
+      color: var(--lp-color-text);
+    }
+
+    .lp-footer__links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: var(--lp-space-xs);
+    }
+
+    .lp-footer__link {
+      color: var(--lp-color-text-secondary);
+      text-decoration: none;
+      font-size: 0.875rem;
+      transition: var(--lp-transition);
+    }
+
+    .lp-footer__link:hover {
+      color: var(--lp-color-primary);
+    }
+
+    .lp-footer__socials {
+      display: flex;
+      gap: var(--lp-space-sm);
+    }
+
+    .lp-footer__social {
+      width: 36px;
+      height: 36px;
+      border-radius: var(--lp-radius-full);
+      background: var(--lp-color-surface);
+      color: var(--lp-color-text-secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: 0.875rem;
+      transition: var(--lp-transition);
+    }
+
+    .lp-footer__social:hover {
+      background: var(--lp-color-primary);
+      color: #fff;
+    }
+
+    .lp-footer__bottom {
+      text-align: center;
+      font-size: 0.8125rem;
+      color: var(--lp-color-text-muted);
+      padding-top: var(--lp-space-lg);
+      border-top: 1px solid var(--lp-color-border);
+    }
+
+    @media (min-width: 768px) {
+      .lp-footer__grid { grid-template-columns: 2fr repeat(3, 1fr); }
+    }
+
+    /* Scroll Reveal */
+    .lp-reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .lp-reveal--visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="lp-header">
+    <div class="lp-container">
+      <div class="lp-header__inner">
+        <input type="checkbox" class="lp-nav__toggle" id="lp-nav-toggle" hidden>
+        <a href="#" class="lp-logo">
+          <span class="lp-logo__icon"><i class="fa-solid fa-paper-plane"></i></span>
+          Finpay
+        </a>
+        <label for="lp-nav-toggle" class="lp-nav__hamburger" aria-label="Toggle menu">
+          <i class="fa-solid fa-bars"></i>
+        </label>
+        <nav class="lp-nav">
+          <a href="#" class="lp-nav__link">Products</a>
+          <a href="#" class="lp-nav__link">Customers</a>
+          <a href="#" class="lp-nav__link">Pricing</a>
+          <a href="#" class="lp-nav__link">Learn</a>
+        </nav>
+        <div class="lp-header__actions">
+          <a href="#" class="lp-btn lp-btn--secondary">Login</a>
+          <a href="#" class="lp-btn lp-btn--primary">Sign Up <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="lp-hero">
+    <div class="lp-hero__blobs">
+      <div class="lp-blob lp-blob--1"></div>
+      <div class="lp-blob lp-blob--2"></div>
+    </div>
+    <div class="lp-container">
+      <div class="lp-hero__inner">
+        <div class="lp-hero__content lp-reveal">
+          <span class="lp-label">Financial Freedom</span>
+          <h1 class="lp-hero__title">Get paid early<br>save automatically<br>all your pay.</h1>
+          <p class="lp-hero__text">Supports small businesses with simple invoicing, powerful integrations, and easy team management tools.</p>
+          <div class="lp-hero__buttons">
+            <a href="#" class="lp-btn lp-btn--secondary">Request demo</a>
+            <a href="#" class="lp-btn lp-btn--primary">Get Started <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+        <div class="lp-hero__visual lp-reveal">
+          <div class="lp-card lp-card--back">
+            <div class="lp-card__header">
+              <i class="fa-solid fa-microchip"></i>
+              <span>Main account</span>
+            </div>
+          </div>
+          <div class="lp-card lp-card--front">
+            <div class="lp-card__top">
+              <div class="lp-card__chip">
+                <i class="fa-solid fa-microchip"></i>
+              </div>
+              <div class="lp-card__brand">
+                <span>VISA</span>
+                <i class="fa-solid fa-wifi"></i>
+              </div>
+            </div>
+            <div class="lp-card__number">234 ****</div>
+            <div class="lp-card__balance">$1,876,580</div>
+            <div class="lp-card__toggle">
+              <span>Hide balance</span>
+              <label class="lp-toggle">
+                <input type="checkbox" class="lp-toggle__input">
+                <span class="lp-toggle__slider"></span>
+              </label>
+            </div>
+            <button class="lp-card__btn">Pay</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Partner Logos -->
+  <section class="lp-partners">
+    <div class="lp-container">
+      <div class="lp-partners__inner lp-reveal">
+        <div class="lp-partner lp-partner--klarna">Klarna</div>
+        <div class="lp-partner lp-partner--coinbase">
+          <i class="fa-solid fa-circle" style="font-size: 0.5rem; vertical-align: middle;"></i> coinbase
+        </div>
+        <div class="lp-partner lp-partner--instacart">
+          <i class="fa-solid fa-carrot"></i> instacart
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="lp-features">
+    <div class="lp-container">
+      <div class="lp-features__header lp-reveal">
+        <div>
+          <span class="lp-label">Powerful Features</span>
+          <h2 class="lp-section-title">Experience that grows<br>with your scale.</h2>
+        </div>
+        <p style="color: var(--lp-color-text-secondary); font-size: 0.9375rem; max-width: 320px; align-self: end;">
+          Design a financial operating system that works for your business. Set up in minutes.
+        </p>
+      </div>
+      <div class="lp-features__grid">
+        <div class="lp-feature lp-reveal">
+          <div class="lp-feature__icon">
+            <i class="fa-solid fa-money-bill-transfer"></i>
+          </div>
+          <h3 class="lp-feature__title">Free transfers</h3>
+          <p class="lp-feature__text">Create an account and start sending and receiving payments instantly with our easy-to-use interface.</p>
+        </div>
+        <div class="lp-feature lp-reveal">
+          <div class="lp-feature__icon">
+            <i class="fa-solid fa-layer-group"></i>
+          </div>
+          <h3 class="lp-feature__title">Multiple account</h3>
+          <p class="lp-feature__text">Open multiple accounts for different purposes and manage them all in one place.</p>
+        </div>
+        <div class="lp-feature lp-reveal">
+          <div class="lp-feature__icon">
+            <i class="fa-solid fa-shield-halved"></i>
+          </div>
+          <h3 class="lp-feature__title">Unmatched security</h3>
+          <p class="lp-feature__text">Your data is protected with bank-grade encryption and 2FA on all accounts.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Prefer Section -->
+  <section class="lp-prefer">
+    <div class="lp-container">
+      <div class="lp-prefer__title lp-reveal">
+        <span class="lp-label" style="display: block; text-align: center;">Why Finpay</span>
+        <h2 class="lp-section-title" style="text-align: center;">Why they prefer Finpay</h2>
+      </div>
+      <div class="lp-prefer__grid">
+        <div class="lp-stat-big lp-reveal">
+          <div class="lp-stat-big__num">3k+</div>
+          <div class="lp-stat-big__label">Businesses already running<br>on Finpay</div>
+        </div>
+        <div class="lp-prefer__card lp-prefer__card--flex lp-reveal">
+          <h3 class="lp-prefer__card-title">Instant Withdraw your funds at any time</h3>
+          <div class="lp-prefer__icons">
+            <div class="lp-prefer__icon-box lp-prefer__icon-box--teal">
+              <i class="fa-solid fa-paper-plane"></i>
+            </div>
+            <div class="lp-prefer__icon-box lp-prefer__icon-box--dark">
+              <i class="fa-solid fa-building-columns"></i>
+            </div>
+          </div>
+        </div>
+        <div class="lp-prefer__card lp-reveal">
+          <h3 class="lp-prefer__card-title">No asset volatility</h3>
+          <p class="lp-prefer__card-text">Guaranteed returns on your balance with no hidden fees or investment risk.</p>
+        </div>
+        <div class="lp-prefer__card lp-reveal">
+          <div class="lp-chart-card__header">
+            <span class="lp-chart-card__value">$1,876,580</span>
+            <span class="lp-chart-card__badge">Monthly</span>
+          </div>
+          <div class="lp-chart">
+            <svg viewBox="0 0 300 90" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="lpChartGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="rgba(13,115,119,0.25)" />
+                  <stop offset="100%" stop-color="rgba(13,115,119,0)" />
+                </linearGradient>
+              </defs>
+              <path d="M0,75 C40,70 60,65 90,60 C130,52 160,45 190,35 C220,25 250,15 300,10 V90 H0 Z" fill="url(#lpChartGrad)" />
+              <path d="M0,75 C40,70 60,65 90,60 C130,52 160,45 190,35 C220,25 250,15 300,10" fill="none" stroke="#0d7377" stroke-width="2" stroke-linecap="round" />
+            </svg>
+            <div class="lp-chart__labels">
+              <span>Jan</span>
+              <span>Feb</span>
+              <span>Mar</span>
+              <span>Apr</span>
+              <span>May</span>
+              <span>Jun</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reserve Account Section -->
+  <section class="lp-reserve">
+    <div class="lp-container">
+      <span class="lp-label lp-reserve__label lp-reveal">Reserve Account</span>
+      <h2 class="lp-section-title lp-reserve__title lp-reveal">Maximize your returns with a Reserve account that generates.</h2>
+      <div class="lp-reserve__grid">
+        <div class="lp-step lp-reveal">
+          <div class="lp-step__icon">
+            <i class="fa-solid fa-arrow-right-to-bracket"></i>
+          </div>
+          <h3 class="lp-step__title">Open your account</h3>
+          <p class="lp-step__text">Sign up in minutes and get your account set up instantly.</p>
+        </div>
+        <div class="lp-step lp-reveal">
+          <div class="lp-step__icon">
+            <i class="fa-solid fa-money-bill-transfer"></i>
+          </div>
+          <h3 class="lp-step__title">Transfer your money</h3>
+          <p class="lp-step__text">Move funds from your bank or other accounts securely.</p>
+        </div>
+        <div class="lp-step lp-reveal">
+          <div class="lp-step__icon">
+            <i class="fa-solid fa-chart-line"></i>
+          </div>
+          <h3 class="lp-step__title">Watch your balance grow</h3>
+          <p class="lp-step__text">Earn competitive returns on your reserve balance daily.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Results Section -->
+  <section class="lp-results">
+    <div class="lp-container">
+      <div class="lp-results__header lp-reveal">
+        <span class="lp-label">Success Stories</span>
+        <h2 class="lp-section-title">We've helped<br>innovative companies</h2>
+        <p style="color: var(--lp-color-text-secondary); font-size: 0.9375rem; max-width: 500px; margin: var(--lp-space-sm) auto 0;">
+          Hundreds of startups and businesses of all sizes trust Finpay for their financial operations.
+        </p>
+      </div>
+      <div class="lp-results__grid">
+        <div class="lp-result lp-reveal">
+          <div class="lp-result__num">24%</div>
+          <div class="lp-result__label">Revenue boost</div>
+        </div>
+        <div class="lp-result lp-reveal">
+          <div class="lp-result__num">180K</div>
+          <div class="lp-result__label">In annual revenue</div>
+        </div>
+        <div class="lp-result lp-reveal">
+          <div class="lp-result__num">10+</div>
+          <div class="lp-result__label">Month of runway</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section class="lp-pricing">
+    <div class="lp-container">
+      <span class="lp-label lp-pricing__label">Choose Plan</span>
+      <div class="lp-pricing__grid">
+        <div class="lp-price-card lp-reveal">
+          <div>
+            <div class="lp-price-card__name">Plus</div>
+            <div class="lp-price-card__price">£2.99<span>/month</span></div>
+          </div>
+          <a href="#" class="lp-price-card__arrow"><i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="lp-price-card lp-price-card--premium lp-reveal">
+          <div class="lp-price-card__lines">
+            <div class="lp-line"></div>
+            <div class="lp-line lp-line--2"></div>
+            <div class="lp-line lp-line--3"></div>
+          </div>
+          <div>
+            <div class="lp-price-card__name">Premium</div>
+            <div class="lp-price-card__price">£6.99<span>/month</span></div>
+          </div>
+          <a href="#" class="lp-price-card__arrow"><i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="lp-cta">
+    <div class="lp-container">
+      <div class="lp-cta__inner lp-reveal">
+        <div>
+          <span class="lp-label" style="color: rgba(255,255,255,0.6);">Get Started</span>
+          <h2 class="lp-cta__title">Ready to level up your<br>payment process?</h2>
+          <p class="lp-cta__text">Join thousands of businesses using Finpay to simplify payments, reduce costs, and move money faster.</p>
+        </div>
+        <div class="lp-cta__actions">
+          <a href="#" class="lp-btn lp-btn--primary">Get Started Now <i class="fa-solid fa-arrow-right"></i></a>
+          <a href="#" class="lp-btn lp-btn--ghost">Learn More</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="lp-footer">
+    <div class="lp-container">
+      <div class="lp-footer__grid">
+        <div class="lp-footer__brand">
+          <a href="#" class="lp-footer__logo">
+            <span class="lp-logo__icon"><i class="fa-solid fa-paper-plane"></i></span>
+            Finpay
+          </a>
+          <div class="lp-footer__socials">
+            <a href="#" class="lp-footer__social" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#" class="lp-footer__social" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="lp-footer__social" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div>
+          <h4 class="lp-footer__col-title">Solutions</h4>
+          <ul class="lp-footer__links">
+            <li><a href="#" class="lp-footer__link">Performance</a></li>
+            <li><a href="#" class="lp-footer__link">Analytics</a></li>
+            <li><a href="#" class="lp-footer__link">Optimization</a></li>
+            <li><a href="#" class="lp-footer__link">Tools</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="lp-footer__col-title">Company</h4>
+          <ul class="lp-footer__links">
+            <li><a href="#" class="lp-footer__link">About</a></li>
+            <li><a href="#" class="lp-footer__link">Contact</a></li>
+            <li><a href="#" class="lp-footer__link">Blog</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="lp-footer__col-title">Learn</h4>
+          <ul class="lp-footer__links">
+            <li><a href="#" class="lp-footer__link">Training</a></li>
+            <li><a href="#" class="lp-footer__link">Tutorials</a></li>
+            <li><a href="#" class="lp-footer__link">Help</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="lp-footer__bottom">
+        ©Finpay 2024. All Right Reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const lpObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('lp-reveal--visible');
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.lp-reveal').forEach(el => lpObserver.observe(el));
+  </script>
+</body>
+</html>
